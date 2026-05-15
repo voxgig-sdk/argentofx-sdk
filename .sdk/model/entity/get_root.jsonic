@@ -1,0 +1,39 @@
+# Entity: get_root
+
+main: kit: entity: get_root: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "documentation"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "message"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "get_root"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          method: "GET"
+          orig: "/"
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

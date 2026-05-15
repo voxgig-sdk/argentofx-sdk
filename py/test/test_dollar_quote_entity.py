@@ -1,0 +1,128 @@
+# DollarQuote entity test
+
+import json
+import os
+import time
+
+import pytest
+
+from utility.voxgig_struct import voxgig_struct as vs
+from argentofx_sdk import ArgentofxSDK
+from core import helpers
+
+_TEST_DIR = os.path.dirname(os.path.abspath(__file__))
+from test import runner
+
+
+class TestDollarQuoteEntity:
+
+    def test_should_create_instance(self):
+        testsdk = ArgentofxSDK.test(None, None)
+        ent = testsdk.DollarQuote(None)
+        assert ent is not None
+
+    def test_should_run_basic_flow(self):
+        setup = _dollar_quote_basic_setup(None)
+        # Per-op sdk-test-control.json skip — basic test exercises a flow with
+        # multiple ops; skipping any one skips the whole flow (steps depend
+        # on each other).
+        _live = setup.get("live", False)
+        for _op in ["list", "load"]:
+            _skip, _reason = runner.is_control_skipped("entityOp", "dollar_quote." + _op, "live" if _live else "unit")
+            if _skip:
+                pytest.skip(_reason or "skipped via sdk-test-control.json")
+                return
+        # The basic flow consumes synthetic IDs from the fixture. In live mode
+        # without an *_ENTID env override, those IDs hit the live API and 4xx.
+        if setup.get("synthetic_only"):
+            pytest.skip("live entity test uses synthetic IDs from fixture — "
+                        "set ARGENTOFX_TEST_DOLLAR_QUOTE_ENTID JSON to run live")
+        client = setup["client"]
+
+        # Bootstrap entity data from existing test data.
+        dollar_quote_ref01_data_raw = vs.items(helpers.to_map(
+            vs.getpath(setup["data"], "existing.dollar_quote")))
+        dollar_quote_ref01_data = None
+        if len(dollar_quote_ref01_data_raw) > 0:
+            dollar_quote_ref01_data = helpers.to_map(dollar_quote_ref01_data_raw[0][1])
+
+        # LIST
+        dollar_quote_ref01_ent = client.DollarQuote(None)
+        dollar_quote_ref01_match = {}
+
+        dollar_quote_ref01_list_result, err = dollar_quote_ref01_ent.list(dollar_quote_ref01_match, None)
+        assert err is None
+        assert isinstance(dollar_quote_ref01_list_result, list)
+
+        # LOAD
+        dollar_quote_ref01_match_dt0 = {}
+        dollar_quote_ref01_data_dt0_loaded, err = dollar_quote_ref01_ent.load(dollar_quote_ref01_match_dt0, None)
+        assert err is None
+        assert dollar_quote_ref01_data_dt0_loaded is not None
+
+
+
+def _dollar_quote_basic_setup(extra):
+    runner.load_env_local()
+
+    entity_data_file = os.path.join(_TEST_DIR, "../../.sdk/test/entity/dollar_quote/DollarQuoteTestData.json")
+    with open(entity_data_file, "r") as f:
+        entity_data_source = f.read()
+
+    entity_data = json.loads(entity_data_source)
+
+    options = {}
+    options["entity"] = entity_data.get("existing")
+
+    client = ArgentofxSDK.test(options, extra)
+
+    # Generate idmap via transform.
+    idmap = vs.transform(
+        ["dollar_quote01", "dollar_quote02", "dollar_quote03", "dolare01", "dolare02", "dolare03"],
+        {
+            "`$PACK`": ["", {
+                "`$KEY`": "`$COPY`",
+                "`$VAL`": ["`$FORMAT`", "upper", "`$COPY`"],
+            }],
+        }
+    )
+
+    # Detect ENTID env override before envOverride consumes it. When live
+    # mode is on without a real override, the basic test runs against synthetic
+    # IDs from the fixture and 4xx's. We surface this so the test can skip.
+    _entid_env_raw = os.environ.get(
+        "ARGENTOFX_TEST_DOLLAR_QUOTE_ENTID")
+    _idmap_overridden = _entid_env_raw is not None and _entid_env_raw.strip().startswith("{")
+
+    env = runner.env_override({
+        "ARGENTOFX_TEST_DOLLAR_QUOTE_ENTID": idmap,
+        "ARGENTOFX_TEST_LIVE": "FALSE",
+        "ARGENTOFX_TEST_EXPLAIN": "FALSE",
+        "ARGENTOFX_APIKEY": "NONE",
+    })
+
+    idmap_resolved = helpers.to_map(
+        env.get("ARGENTOFX_TEST_DOLLAR_QUOTE_ENTID"))
+    if idmap_resolved is None:
+        idmap_resolved = helpers.to_map(idmap)
+
+    if env.get("ARGENTOFX_TEST_LIVE") == "TRUE":
+        merged_opts = vs.merge([
+            {
+                "apikey": env.get("ARGENTOFX_APIKEY"),
+            },
+            extra or {},
+        ])
+        client = ArgentofxSDK(helpers.to_map(merged_opts))
+
+    _live = env.get("ARGENTOFX_TEST_LIVE") == "TRUE"
+    return {
+        "client": client,
+        "data": entity_data,
+        "idmap": idmap_resolved,
+        "env": env,
+        "explain": env.get("ARGENTOFX_TEST_EXPLAIN") == "TRUE",
+        "live": _live,
+        "synthetic_only": _live and not _idmap_overridden,
+        "now": int(time.time() * 1000),
+    }

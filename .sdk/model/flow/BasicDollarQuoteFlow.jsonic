@@ -1,0 +1,44 @@
+# BasicDollarQuoteFlow
+
+main: kit: flow: BasicDollarQuoteFlow:
+{
+  entity: "dollar_quote",
+  kind: "basic",
+  name: "BasicDollarQuoteFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "dollar_quote_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "dollar_quote_ref01",
+        srcdatavar: "dollar_quote_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "dollar_quote01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-dollar_quote_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDollarQuoteFlow"
+}

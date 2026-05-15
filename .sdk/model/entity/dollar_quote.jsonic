@@ -1,0 +1,93 @@
+# Entity: dollar_quote
+
+main: kit: entity: dollar_quote: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "compra"
+      req: true
+      type: "`$NUMBER`"
+    }
+    {
+      name: "fecha_actualizacion"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "nombre"
+      req: true
+      type: "`$STRING`"
+    }
+    {
+      name: "venta"
+      req: true
+      type: "`$NUMBER`"
+    }
+  ]
+
+  name: "dollar_quote"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/dolares"
+          parts: [
+            "dolares"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "type"
+                orig: "type"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/dolares/{type}"
+          parts: [
+            "dolares"
+            "{type}"
+          ]
+          select: {
+            exist: [
+              "type"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "dolare"
+      ]
+    ]
+  }
+
+
+
+}

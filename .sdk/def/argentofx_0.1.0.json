@@ -1,0 +1,323 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "ArgentoFX API",
+    "description": "API RESTful to obtain live quotations of foreign currencies in Argentina. It provides endpoints for various types of dollar quotes, as well as other currencies.",
+    "version": "1.0.0",
+    "contact": {
+      "url": "https://fastapiproject-1-eziw.onrender.com/docs"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://fastapiproject-1-eziw.onrender.com",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Root endpoint",
+        "description": "Returns API information and available endpoints",
+        "operationId": "getRoot",
+        "responses": {
+          "200": {
+            "description": "Successful response with API information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Welcome to ArgentoFX API"
+                    },
+                    "documentation": {
+                      "type": "string",
+                      "example": "/docs"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dolares": {
+      "get": {
+        "summary": "Get all dollar quotations",
+        "description": "Returns all available dollar quotations in Argentina including official, blue, MEP, CCL, and other types",
+        "operationId": "getAllDollarQuotes",
+        "responses": {
+          "200": {
+            "description": "Successful response with all dollar quotations",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DollarQuote"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dolares/{type}": {
+      "get": {
+        "summary": "Get specific dollar quotation",
+        "description": "Returns a specific dollar quotation by type (e.g., oficial, blue, mep, ccl, tarjeta, mayorista)",
+        "operationId": "getDollarQuoteByType",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "description": "Type of dollar quotation (oficial, blue, mep, ccl, tarjeta, mayorista, cripto)",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "oficial",
+                "blue",
+                "mep",
+                "ccl",
+                "tarjeta",
+                "mayorista",
+                "cripto"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with specific dollar quotation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DollarQuote"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Dollar quotation type not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/currencies": {
+      "get": {
+        "summary": "Get all currency quotations",
+        "description": "Returns quotations for various foreign currencies in Argentina",
+        "operationId": "getAllCurrencies",
+        "responses": {
+          "200": {
+            "description": "Successful response with all currency quotations",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CurrencyQuote"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/currencies/{currency}": {
+      "get": {
+        "summary": "Get specific currency quotation",
+        "description": "Returns a specific currency quotation (e.g., EUR, BRL, CLP)",
+        "operationId": "getCurrencyQuote",
+        "parameters": [
+          {
+            "name": "currency",
+            "in": "path",
+            "required": true,
+            "description": "Currency code (e.g., EUR, BRL, CLP, UYU)",
+            "schema": {
+              "type": "string",
+              "example": "EUR"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with specific currency quotation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrencyQuote"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Currency not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DollarQuote": {
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "type": "string",
+            "description": "Name of the dollar type",
+            "example": "Dólar Blue"
+          },
+          "compra": {
+            "type": "number",
+            "format": "float",
+            "description": "Buy price",
+            "example": 365.5
+          },
+          "venta": {
+            "type": "number",
+            "format": "float",
+            "description": "Sell price",
+            "example": 385.5
+          },
+          "fechaActualizacion": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last update timestamp",
+            "example": "2024-01-15T10:30:00Z"
+          }
+        },
+        "required": [
+          "nombre",
+          "compra",
+          "venta",
+          "fechaActualizacion"
+        ]
+      },
+      "CurrencyQuote": {
+        "type": "object",
+        "properties": {
+          "moneda": {
+            "type": "string",
+            "description": "Currency code",
+            "example": "EUR"
+          },
+          "nombre": {
+            "type": "string",
+            "description": "Currency name",
+            "example": "Euro"
+          },
+          "compra": {
+            "type": "number",
+            "format": "float",
+            "description": "Buy price",
+            "example": 395.25
+          },
+          "venta": {
+            "type": "number",
+            "format": "float",
+            "description": "Sell price",
+            "example": 415.75
+          },
+          "fechaActualizacion": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last update timestamp",
+            "example": "2024-01-15T10:30:00Z"
+          }
+        },
+        "required": [
+          "moneda",
+          "nombre",
+          "compra",
+          "venta",
+          "fechaActualizacion"
+        ]
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "detail": {
+            "type": "string",
+            "description": "Error message",
+            "example": "Resource not found"
+          }
+        },
+        "required": [
+          "detail"
+        ]
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Dollar Quotes",
+      "description": "Operations related to dollar quotations"
+    },
+    {
+      "name": "Currency Quotes",
+      "description": "Operations related to foreign currency quotations"
+    }
+  ]
+}

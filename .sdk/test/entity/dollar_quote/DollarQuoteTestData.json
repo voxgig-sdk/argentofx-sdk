@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "dollar_quote": {
+      "DOLLAR_QUOTE00": {
+        "compra": 40,
+        "fecha_actualizacion": "s29",
+        "nombre": "s2a",
+        "venta": 43,
+        "type": "TYPE01"
+      },
+      "DOLLAR_QUOTE01": {
+        "compra": 80,
+        "fecha_actualizacion": "s51",
+        "nombre": "s52",
+        "venta": 83,
+        "type": "TYPE01"
+      },
+      "DOLLAR_QUOTE02": {
+        "compra": 120,
+        "fecha_actualizacion": "s79",
+        "nombre": "s7a",
+        "venta": 123,
+        "type": "TYPE01"
+      }
+    }
+  },
+  "new": {
+    "dollar_quote": {
+      "dollar_quote_ref01": {
+        "compra": 160,
+        "fecha_actualizacion": "sa1",
+        "nombre": "sa2",
+        "venta": 163
+      }
+    }
+  }
+}

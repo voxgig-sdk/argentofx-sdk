@@ -1,0 +1,23 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        url: "https://fastapiproject-1-eziw.onrender.com/docs"
+      }
+      description: "API RESTful to obtain live quotations of foreign currencies in Argentina. It provides endpoints for various types of dollar quotes, as well as other currencies."
+      servers: [
+        {
+          description: "Production server"
+          url: "https://fastapiproject-1-eziw.onrender.com"
+        }
+      ]
+      title: "ArgentoFX API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

@@ -1,0 +1,33 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 3
+  metrics: count: path: 5
+  metrics: count: method: 5
+
+  entity: currency: {
+    path: "/currencies": {
+      op: list: method: *GET
+    }
+    path: "/currencies/{currency}": {
+      rename: param: "currency": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: dollar_quote: {
+    path: "/dolares": {
+      op: list: method: *GET
+    }
+    path: "/dolares/{type}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: get_root: {
+    path: "/": {
+      op: load: method: *GET
+    }
+  }
+
+}
