@@ -6,21 +6,24 @@
         "fecha_actualizacion": "s29",
         "nombre": "s2a",
         "venta": 43,
-        "type": "TYPE01"
+        "type": "TYPE01",
+        "id": "DOLLAR_QUOTE00"
       },
       "DOLLAR_QUOTE01": {
         "compra": 80,
         "fecha_actualizacion": "s51",
         "nombre": "s52",
         "venta": 83,
-        "type": "TYPE01"
+        "type": "TYPE01",
+        "id": "DOLLAR_QUOTE01"
       },
       "DOLLAR_QUOTE02": {
         "compra": 120,
         "fecha_actualizacion": "s79",
         "nombre": "s7a",
         "venta": 123,
-        "type": "TYPE01"
+        "type": "TYPE01",
+        "id": "DOLLAR_QUOTE02"
       }
     }
   },

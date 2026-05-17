@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/argentofx-sdk"
-	"github.com/voxgig-sdk/argentofx-sdk/core"
+	sdk "github.com/voxgig-sdk/argentofx-sdk/go"
+	"github.com/voxgig-sdk/argentofx-sdk/go/core"
 )
 
 func TestDollarQuoteDirect(t *testing.T) {

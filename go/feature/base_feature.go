@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/argentofx-sdk/core"
+	"github.com/voxgig-sdk/argentofx-sdk/go/core"
 )
 
 type BaseFeature struct {

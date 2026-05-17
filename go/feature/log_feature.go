@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/voxgig-sdk/argentofx-sdk/core"
+	"github.com/voxgig-sdk/argentofx-sdk/go/core"
 )
 
 type LogFeature struct {

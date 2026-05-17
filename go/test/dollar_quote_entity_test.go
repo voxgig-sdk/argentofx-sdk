@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/argentofx-sdk"
-	"github.com/voxgig-sdk/argentofx-sdk/core"
+	sdk "github.com/voxgig-sdk/argentofx-sdk/go"
+	"github.com/voxgig-sdk/argentofx-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/argentofx-sdk/go/utility/struct"
 )
 
 func TestDollarQuoteEntity(t *testing.T) {

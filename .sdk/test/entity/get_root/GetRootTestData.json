@@ -3,15 +3,18 @@
     "get_root": {
       "GET_ROOT00": {
         "documentation": "s14",
-        "message": "s15"
+        "message": "s15",
+        "id": "GET_ROOT00"
       },
       "GET_ROOT01": {
         "documentation": "s28",
-        "message": "s29"
+        "message": "s29",
+        "id": "GET_ROOT01"
       },
       "GET_ROOT02": {
         "documentation": "s3c",
-        "message": "s3d"
+        "message": "s3d",
+        "id": "GET_ROOT02"
       }
     }
   },

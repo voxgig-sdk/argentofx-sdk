@@ -1,10 +1,10 @@
 package voxgigargentofxsdk
 
 import (
-	"github.com/voxgig-sdk/argentofx-sdk/core"
-	"github.com/voxgig-sdk/argentofx-sdk/entity"
-	"github.com/voxgig-sdk/argentofx-sdk/feature"
-	_ "github.com/voxgig-sdk/argentofx-sdk/utility"
+	"github.com/voxgig-sdk/argentofx-sdk/go/core"
+	"github.com/voxgig-sdk/argentofx-sdk/go/entity"
+	"github.com/voxgig-sdk/argentofx-sdk/go/feature"
+	_ "github.com/voxgig-sdk/argentofx-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

@@ -6,21 +6,24 @@
         "fecha_actualizacion": "s33",
         "moneda": "s34",
         "nombre": "s35",
-        "venta": 54
+        "venta": 54,
+        "id": "CURRENCY00"
       },
       "CURRENCY01": {
         "compra": 100,
         "fecha_actualizacion": "s65",
         "moneda": "s66",
         "nombre": "s67",
-        "venta": 104
+        "venta": 104,
+        "id": "CURRENCY01"
       },
       "CURRENCY02": {
         "compra": 150,
         "fecha_actualizacion": "s97",
         "moneda": "s98",
         "nombre": "s99",
-        "venta": 154
+        "venta": 154,
+        "id": "CURRENCY02"
       }
     }
   },
