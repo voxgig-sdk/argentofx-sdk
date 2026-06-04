@@ -129,7 +129,6 @@ func currencyBasicSetup(extra map[string]any) *entityTestSetup {
 		"ARGENTOFX_TEST_CURRENCY_ENTID": idmap,
 		"ARGENTOFX_TEST_LIVE":      "FALSE",
 		"ARGENTOFX_TEST_EXPLAIN":   "FALSE",
-		"ARGENTOFX_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["ARGENTOFX_TEST_CURRENCY_ENTID"])
@@ -140,7 +139,6 @@ func currencyBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["ARGENTOFX_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["ARGENTOFX_APIKEY"],
 			},
 			extra,
 		})

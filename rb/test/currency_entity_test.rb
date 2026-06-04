@@ -89,7 +89,6 @@ def currency_basic_setup(extra)
     "ARGENTOFX_TEST_CURRENCY_ENTID" => idmap,
     "ARGENTOFX_TEST_LIVE" => "FALSE",
     "ARGENTOFX_TEST_EXPLAIN" => "FALSE",
-    "ARGENTOFX_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -101,7 +100,6 @@ def currency_basic_setup(extra)
   if env["ARGENTOFX_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ARGENTOFX_APIKEY"],
       },
       extra || {},
     ])

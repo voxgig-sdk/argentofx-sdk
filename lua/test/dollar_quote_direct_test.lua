@@ -117,14 +117,12 @@ function dollar_quote_direct_setup(mockres)
   local env = runner.env_override({
     ["ARGENTOFX_TEST_DOLLAR_QUOTE_ENTID"] = {},
     ["ARGENTOFX_TEST_LIVE"] = "FALSE",
-    ["ARGENTOFX_APIKEY"] = "NONE",
   })
 
   local live = env["ARGENTOFX_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["ARGENTOFX_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

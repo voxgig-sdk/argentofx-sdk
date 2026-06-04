@@ -195,14 +195,12 @@ func dollar_quoteDirectSetup(mockres any) *dollar_quoteDirectSetupResult {
 	env := envOverride(map[string]any{
 		"ARGENTOFX_TEST_DOLLAR_QUOTE_ENTID": map[string]any{},
 		"ARGENTOFX_TEST_LIVE":    "FALSE",
-		"ARGENTOFX_APIKEY":       "NONE",
 	})
 
 	live := env["ARGENTOFX_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["ARGENTOFX_APIKEY"],
 		}
 		client := sdk.NewArgentofxSDK(mergedOpts)
 

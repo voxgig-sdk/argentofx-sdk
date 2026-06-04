@@ -16,8 +16,24 @@ main: {
       ]
       title: "ArgentoFX API"
       version: "1.0.0"
+      tagline: "Live quotations for the US dollar and other foreign currencies in Argentina"
+      homepage: "https://fastapiproject-1-eziw.onrender.com"
+      docs_url: "https://fastapiproject-1-eziw.onrender.com/docs"
+      about_md: `ArgentoFX is a small REST API that exposes live foreign-currency quotations for Argentina, with a focus on the various parallel "dollar" rates (blue, oficial, etc.) that circulate alongside the official peso exchange rate. The service is hosted on Render at [fastapiproject-1-eziw.onrender.com](https://fastapiproject-1-eziw.onrender.com) and is catalogued on [Free Public APIs](https://freepublicapis.com/argentofx-api).
+
+What you get from the API:
+
+- Endpoints for individual dollar quotes (for example \`GET /blue\` for the blue-dollar rate).
+- Quotations for other foreign currencies traded in Argentina.
+- A root endpoint that serves as the entry point to the service.
+
+Interactive OpenAPI documentation is available at \`/docs\`. The upstream catalogue notes that CORS is disabled and that the deployment has been intermittently unreachable, so callers should expect to handle errors and downtime.`
+      entity_desc: {
+        currency: "Foreign-currency quotations available in Argentina beyond the US dollar."
+        dollar_quote: "US dollar quotations against the Argentine peso, including parallel rates such as the blue dollar (for example `GET /blue`)."
+        get_root: "The service root endpoint (`GET /`), typically used as a health or welcome response."
+      }
+      auth: false
     }
   }
-}
-
 }

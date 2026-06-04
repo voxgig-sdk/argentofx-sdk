@@ -123,14 +123,12 @@ function dollar_quote_direct_setup($mockres)
     $env = Runner::env_override([
         "ARGENTOFX_TEST_DOLLAR_QUOTE_ENTID" => [],
         "ARGENTOFX_TEST_LIVE" => "FALSE",
-        "ARGENTOFX_APIKEY" => "NONE",
     ]);
 
     $live = $env["ARGENTOFX_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["ARGENTOFX_APIKEY"],
         ];
         $client = new ArgentofxSDK($merged_opts);
         return [
