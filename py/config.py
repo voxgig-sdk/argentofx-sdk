@@ -15,6 +15,9 @@ def make_config():
         },
         "options": {
             "base": "https://fastapiproject-1-eziw.onrender.com",
+            "auth": {
+                "prefix": "Bearer",
+            },
             "headers": {
         "content-type": "application/json",
       },
@@ -28,79 +31,81 @@ def make_config():
       "currency": {
         "fields": [
           {
+            "active": True,
             "name": "compra",
             "req": True,
             "type": "`$NUMBER`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "fecha_actualizacion",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "moneda",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "nombre",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 3,
           },
           {
+            "active": True,
             "name": "venta",
             "req": True,
             "type": "`$NUMBER`",
-            "active": True,
             "index$": 4,
           },
         ],
         "name": "currency",
         "op": {
           "list": {
+            "input": "data",
             "name": "list",
             "points": [
               {
+                "active": True,
+                "args": {},
                 "method": "GET",
                 "orig": "/currencies",
                 "parts": [
                   "currencies",
                 ],
+                "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
-                "args": {},
-                "select": {},
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "list",
           },
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "example": "EUR",
                       "kind": "param",
                       "name": "id",
                       "orig": "currency",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -124,11 +129,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -139,71 +142,73 @@ def make_config():
       "dollar_quote": {
         "fields": [
           {
+            "active": True,
             "name": "compra",
             "req": True,
             "type": "`$NUMBER`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "fecha_actualizacion",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "nombre",
             "req": True,
             "type": "`$STRING`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "venta",
             "req": True,
             "type": "`$NUMBER`",
-            "active": True,
             "index$": 3,
           },
         ],
         "name": "dollar_quote",
         "op": {
           "list": {
+            "input": "data",
             "name": "list",
             "points": [
               {
+                "active": True,
+                "args": {},
                 "method": "GET",
                 "orig": "/dolares",
                 "parts": [
                   "dolares",
                 ],
+                "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
-                "args": {},
-                "select": {},
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "list",
           },
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "kind": "param",
                       "name": "type",
                       "orig": "type",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -222,11 +227,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -241,40 +244,40 @@ def make_config():
       "get_root": {
         "fields": [
           {
+            "active": True,
             "name": "documentation",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "message",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 1,
           },
         ],
         "name": "get_root",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
+                "args": {},
                 "method": "GET",
                 "orig": "/",
+                "parts": [],
+                "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
-                "parts": [],
-                "args": {},
-                "select": {},
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },

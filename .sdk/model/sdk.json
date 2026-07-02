@@ -1,39 +1,13 @@
 {
-  "name": "argentofx",
-  "origin": "voxgig-sdk",
   "def": "argentofx_0.1.0.json",
   "main": {
+    "def": {
+      "desc": ""
+    },
     "kit": {
-      "info": {
-        "contact": {
-          "url": "https://fastapiproject-1-eziw.onrender.com/docs"
-        },
-        "description": "API RESTful to obtain live quotations of foreign currencies in Argentina. It provides endpoints for various types of dollar quotes, as well as other currencies.",
-        "servers": [
-          {
-            "description": "Production server",
-            "url": "https://fastapiproject-1-eziw.onrender.com"
-          }
-        ],
-        "title": "ArgentoFX API",
-        "version": "1.0.0",
-        "tagline": "Live quotations for the US dollar and other foreign currencies in Argentina",
-        "homepage": "https://fastapiproject-1-eziw.onrender.com",
-        "docs_url": "https://fastapiproject-1-eziw.onrender.com/docs",
-        "about_md": "ArgentoFX is a small REST API that exposes live foreign-currency quotations for Argentina, with a focus on the various parallel \"dollar\" rates (blue, oficial, etc.) that circulate alongside the official peso exchange rate. The service is hosted on Render at [fastapiproject-1-eziw.onrender.com](https://fastapiproject-1-eziw.onrender.com) and is catalogued on [Free Public APIs](https://freepublicapis.com/argentofx-api).\n\nWhat you get from the API:\n\n- Endpoints for individual dollar quotes (for example `GET /blue` for the blue-dollar rate).\n- Quotations for other foreign currencies traded in Argentina.\n- A root endpoint that serves as the entry point to the service.\n\nInteractive OpenAPI documentation is available at `/docs`. The upstream catalogue notes that CORS is disabled and that the deployment has been intermittently unreachable, so callers should expect to handle errors and downtime.",
-        "entity_desc": {
-          "currency": "Foreign-currency quotations available in Argentina beyond the US dollar.",
-          "dollar_quote": "US dollar quotations against the Argentine peso, including parallel rates such as the blue dollar (for example `GET /blue`).",
-          "get_root": "The service root endpoint (`GET /`), typically used as a health or welcome response."
-        },
-        "auth": false
-      },
       "config": {
         "auth": {
           "prefix": "Bearer"
-        },
-        "headers": {
-          "content-type": "application/json"
         },
         "docs_order": [
           "ts",
@@ -42,81 +16,87 @@
           "go",
           "rb",
           "lua"
-        ]
+        ],
+        "headers": {
+          "content-type": "application/json"
+        }
       },
       "entity": {
         "currency": {
+          "active": true,
           "alias": {
             "field": {}
           },
           "fields": [
             {
+              "active": true,
               "name": "compra",
               "req": true,
-              "type": "`$NUMBER`",
-              "active": true
+              "type": "`$NUMBER`"
             },
             {
+              "active": true,
               "name": "fecha_actualizacion",
               "req": true,
-              "type": "`$STRING`",
-              "active": true
+              "type": "`$STRING`"
             },
             {
+              "active": true,
               "name": "moneda",
               "req": true,
-              "type": "`$STRING`",
-              "active": true
+              "type": "`$STRING`"
             },
             {
+              "active": true,
               "name": "nombre",
               "req": true,
-              "type": "`$STRING`",
-              "active": true
+              "type": "`$STRING`"
             },
             {
+              "active": true,
               "name": "venta",
               "req": true,
-              "type": "`$NUMBER`",
-              "active": true
+              "type": "`$NUMBER`"
             }
           ],
           "name": "currency",
           "op": {
             "list": {
+              "input": "data",
               "name": "list",
               "points": [
                 {
+                  "active": true,
+                  "args": {},
                   "method": "GET",
                   "orig": "/currencies",
                   "parts": [
                     "currencies"
                   ],
+                  "select": {},
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true,
-                  "args": {},
-                  "select": {}
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             },
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "params": [
                       {
+                        "active": true,
                         "example": "EUR",
                         "kind": "param",
                         "name": "id",
                         "orig": "currency",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -139,83 +119,83 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
           "relations": {
             "ancestors": []
           }
         },
         "dollar_quote": {
+          "active": true,
           "alias": {
             "field": {}
           },
           "fields": [
             {
+              "active": true,
               "name": "compra",
               "req": true,
-              "type": "`$NUMBER`",
-              "active": true
+              "type": "`$NUMBER`"
             },
             {
+              "active": true,
               "name": "fecha_actualizacion",
               "req": true,
-              "type": "`$STRING`",
-              "active": true
+              "type": "`$STRING`"
             },
             {
+              "active": true,
               "name": "nombre",
               "req": true,
-              "type": "`$STRING`",
-              "active": true
+              "type": "`$STRING`"
             },
             {
+              "active": true,
               "name": "venta",
               "req": true,
-              "type": "`$NUMBER`",
-              "active": true
+              "type": "`$NUMBER`"
             }
           ],
           "name": "dollar_quote",
           "op": {
             "list": {
+              "input": "data",
               "name": "list",
               "points": [
                 {
+                  "active": true,
+                  "args": {},
                   "method": "GET",
                   "orig": "/dolares",
                   "parts": [
                     "dolares"
                   ],
+                  "select": {},
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true,
-                  "args": {},
-                  "select": {}
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             },
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "params": [
                       {
+                        "active": true,
                         "kind": "param",
                         "name": "type",
                         "orig": "type",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -233,11 +213,9 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
           "relations": {
@@ -246,49 +224,48 @@
                 "dolare"
               ]
             ]
-          },
-          "active": true
+          }
         },
         "get_root": {
+          "active": true,
           "alias": {
             "field": {}
           },
           "fields": [
             {
+              "active": true,
               "name": "documentation",
               "req": false,
-              "type": "`$STRING`",
-              "active": true
+              "type": "`$STRING`"
             },
             {
+              "active": true,
               "name": "message",
               "req": false,
-              "type": "`$STRING`",
-              "active": true
+              "type": "`$STRING`"
             }
           ],
           "name": "get_root",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
+                  "args": {},
                   "method": "GET",
                   "orig": "/",
+                  "parts": [],
+                  "select": {},
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true,
-                  "parts": [],
-                  "args": {},
-                  "select": {}
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
           "relations": {
             "ancestors": []
           }
@@ -296,9 +273,6 @@
       },
       "feature": {
         "test": {
-          "name": "test",
-          "title": "In-memory mock transport for testing without a live server",
-          "version": "0.0.1",
           "active": true,
           "config": {
             "options": {
@@ -306,6 +280,14 @@
             }
           },
           "hook": {
+            "GetData": {
+              "active": true,
+              "await": false
+            },
+            "GetMatch": {
+              "active": true,
+              "await": false
+            },
             "PostConstruct": {
               "active": true,
               "await": false
@@ -314,25 +296,11 @@
               "active": true,
               "await": false
             },
-            "SetData": {
-              "active": true,
-              "await": false
-            },
-            "GetData": {
-              "active": true,
-              "await": false
-            },
-            "SetMatch": {
-              "active": true
-            },
-            "GetMatch": {
-              "active": true,
+            "PostOperation": {
+              "active": false,
               "await": false
             },
             "PrePoint": {
-              "active": true
-            },
-            "PreSpec": {
               "active": true,
               "await": false
             },
@@ -348,20 +316,32 @@
               "active": true,
               "await": false
             },
+            "PreSpec": {
+              "active": true,
+              "await": false
+            },
             "PreTarget": {
               "active": false,
               "await": false
             },
-            "PostOperation": {
-              "active": false,
+            "SetData": {
+              "active": true,
+              "await": false
+            },
+            "SetMatch": {
+              "active": true,
               "await": false
             }
           },
+          "name": "test",
           "target": {
-            "ts": {
+            "go": {
               "deps": {}
             },
-            "go": {
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
               "deps": {}
             },
             "lua": {
@@ -376,23 +356,30 @@
             "rb": {
               "deps": {}
             },
-            "go-cli": {
-              "deps": {}
-            },
-            "go-mcp": {
+            "ts": {
               "deps": {}
             }
-          }
+          },
+          "title": "In-memory mock transport for testing without a live server",
+          "version": "0.0.1"
         }
       },
       "flow": {
         "BasicCurrencyFlow": {
+          "active": true,
           "entity": "currency",
+          "key$": "BasicCurrencyFlow",
           "kind": "basic",
           "name": "BasicCurrencyFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
+              "input": {},
+              "match": {},
               "op": "list",
+              "spec": [],
               "valid": [
                 {
                   "apply": "ItemExists",
@@ -400,14 +387,11 @@
                     "ref": "currency_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "input": {},
-              "spec": []
+              ]
             },
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "currency_ref01",
                 "srcdatavar": "currency_ref01_data",
@@ -417,6 +401,7 @@
                 "id": "currency01"
               },
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -424,23 +409,25 @@
                     "mark": "Mark01-currency_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicCurrencyFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicDollarQuoteFlow": {
+          "active": true,
           "entity": "dollar_quote",
+          "key$": "BasicDollarQuoteFlow",
           "kind": "basic",
           "name": "BasicDollarQuoteFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
+              "input": {},
+              "match": {},
               "op": "list",
+              "spec": [],
               "valid": [
                 {
                   "apply": "ItemExists",
@@ -448,14 +435,11 @@
                     "ref": "dollar_quote_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "input": {},
-              "spec": []
+              ]
             },
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "dollar_quote_ref01",
                 "srcdatavar": "dollar_quote_ref01_data",
@@ -465,6 +449,7 @@
                 "id": "dollar_quote01"
               },
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -472,28 +457,29 @@
                     "mark": "Mark01-dollar_quote_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicDollarQuoteFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicGetRootFlow": {
+          "active": true,
           "entity": "get_root",
+          "key$": "BasicGetRootFlow",
           "kind": "basic",
           "name": "BasicGetRootFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "get_root_ref01",
                 "srcdatavar": "get_root_ref01_data",
                 "suffix": "_dt0"
               },
+              "match": {},
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -501,28 +487,52 @@
                     "mark": "Mark01-get_root_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "match": {},
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicGetRootFlow",
-          "active": true,
-          "param": {}
+          ]
         }
       },
+      "info": {
+        "contact": {
+          "url": "https://fastapiproject-1-eziw.onrender.com/docs"
+        },
+        "description": "API RESTful to obtain live quotations of foreign currencies in Argentina. It provides endpoints for various types of dollar quotes, as well as other currencies.",
+        "servers": [
+          {
+            "description": "Production server",
+            "url": "https://fastapiproject-1-eziw.onrender.com"
+          }
+        ],
+        "title": "ArgentoFX API",
+        "version": "1.0.0"
+      },
+      "option": {},
       "target": {
-        "go-cli": {
-          "title": "Go CLI",
-          "ext": "go",
+        "go": {
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "argentofx"
           },
+          "name": "go",
+          "srcfeature": false,
+          "title": "Golang"
+        },
+        "go-cli": {
+          "active": true,
+          "comment": {
+            "line": "//"
+          },
+          "deps": {},
+          "ext": "go",
+          "module": {
+            "name": "argentofx"
+          },
+          "name": "go-cli",
           "phase": {
             "entity": {
               "active": false
@@ -537,19 +547,19 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-cli",
-          "active": true
+          "title": "Go CLI"
         },
         "go-mcp": {
-          "title": "Go MCP server",
-          "ext": "go",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "argentofx"
           },
+          "name": "go-mcp",
           "phase": {
             "entity": {
               "active": false
@@ -564,138 +574,120 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-mcp",
-          "active": true
-        },
-        "ts": {
-          "title": "TypeScript",
-          "ext": "ts",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "argentofx"
-          },
-          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
-          "deps": {
-            "dotenv": {
-              "active": true,
-              "version": "^17.4.2",
-              "kind": "dev"
-            },
-            "typescript": {
-              "active": true,
-              "version": "^5.9.3",
-              "kind": "dev"
-            },
-            "@types/node": {
-              "active": true,
-              "version": "^25.6.0",
-              "kind": "dev"
-            }
-          },
-          "name": "ts",
-          "active": true
-        },
-        "go": {
-          "title": "Golang",
-          "ext": "go",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "argentofx"
-          },
-          "srcfeature": false,
-          "deps": {},
-          "name": "go",
-          "active": true
+          "title": "Go MCP server"
         },
         "lua": {
-          "title": "Lua",
-          "ext": "lua",
+          "active": true,
           "comment": {
             "line": "--"
           },
-          "module": {
-            "name": "argentofx"
-          },
-          "srcfeature": false,
           "deps": {
             "dkjson": {
               "active": true,
-              "version": "2.5",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.5"
             }
           },
+          "ext": "lua",
+          "module": {
+            "name": "argentofx"
+          },
           "name": "lua",
-          "active": true
+          "srcfeature": false,
+          "title": "Lua"
         },
         "php": {
-          "title": "PHP",
-          "ext": "php",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "php",
           "module": {
             "name": "argentofx"
           },
-          "srcfeature": false,
-          "deps": {},
           "name": "php",
-          "active": true
+          "srcfeature": false,
+          "title": "PHP"
         },
         "py": {
-          "title": "Python",
-          "ext": "py",
+          "active": true,
           "comment": {
             "line": "#"
           },
-          "module": {
-            "name": "argentofx"
-          },
-          "srcfeature": false,
           "deps": {
             "requests": {
               "active": true,
-              "version": "2.33",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.33"
             }
           },
-          "name": "py",
-          "active": true
-        },
-        "rb": {
-          "title": "Ruby",
-          "ext": "rb",
-          "comment": {
-            "line": "#"
-          },
+          "ext": "py",
           "module": {
             "name": "argentofx"
           },
+          "name": "py",
           "srcfeature": false,
+          "title": "Python"
+        },
+        "rb": {
+          "active": true,
+          "comment": {
+            "line": "#"
+          },
           "deps": {
-            "voxgig-struct": {
-              "active": true,
-              "version": "0.0.10",
-              "kind": "prod"
-            },
             "json": {
               "active": true,
-              "version": "0",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "0"
+            },
+            "voxgig-struct": {
+              "active": true,
+              "kind": "prod",
+              "version": "0.0.10"
             }
           },
+          "ext": "rb",
+          "module": {
+            "name": "argentofx"
+          },
           "name": "rb",
-          "active": true
+          "srcfeature": false,
+          "title": "Ruby"
+        },
+        "ts": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {
+            "@types/node": {
+              "active": true,
+              "kind": "dev",
+              "version": "^25.6.0"
+            },
+            "dotenv": {
+              "active": true,
+              "kind": "dev",
+              "version": "^17.4.2"
+            },
+            "typescript": {
+              "active": true,
+              "kind": "dev",
+              "version": "^5.9.3"
+            }
+          },
+          "ext": "ts",
+          "module": {
+            "name": "argentofx"
+          },
+          "name": "ts",
+          "title": "TypeScript"
         }
-      },
-      "option": {}
-    },
-    "def": {
-      "desc": ""
+      }
     }
-  }
+  },
+  "name": "argentofx",
+  "origin": "voxgig-sdk"
 }

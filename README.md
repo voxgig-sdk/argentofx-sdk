@@ -1,20 +1,8 @@
 # Argentofx SDK
 
-Live quotations for the US dollar and other foreign currencies in Argentina
+ArgentoFX API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About ArgentoFX API
-
-ArgentoFX is a small REST API that exposes live foreign-currency quotations for Argentina, with a focus on the various parallel "dollar" rates (blue, oficial, etc.) that circulate alongside the official peso exchange rate. The service is hosted on Render at [fastapiproject-1-eziw.onrender.com](https://fastapiproject-1-eziw.onrender.com) and is catalogued on [Free Public APIs](https://freepublicapis.com/argentofx-api).
-
-What you get from the API:
-
-- Endpoints for individual dollar quotes (for example `GET /blue` for the blue-dollar rate).
-- Quotations for other foreign currencies traded in Argentina.
-- A root endpoint that serves as the entry point to the service.
-
-Interactive OpenAPI documentation is available at `/docs`. The upstream catalogue notes that CORS is disabled and that the deployment has been intermittently unreachable, so callers should expect to handle errors and downtime.
 
 ## Try it
 
@@ -48,29 +36,31 @@ gem install argentofx-sdk
 luarocks install argentofx-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { ArgentofxSDK } from 'argentofx'
 
-const client = new ArgentofxSDK({})
+const client = new ArgentofxSDK({
+  apikey: process.env.ARGENTOFX_APIKEY,
+})
 
 // List all currencys
 const currencys = await client.Currency().list()
+console.log(currencys.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -100,9 +90,9 @@ The API exposes 3 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Currency** | Foreign-currency quotations available in Argentina beyond the US dollar. | `/currencies` |
-| **DollarQuote** | US dollar quotations against the Argentine peso, including parallel rates such as the blue dollar (for example `GET /blue`). | `/dolares` |
-| **GetRoot** | The service root endpoint (`GET /`), typically used as a health or welcome response. | `/` |
+| **Currency** |  | `/currencies` |
+| **DollarQuote** |  | `/dolares` |
+| **GetRoot** |  | `/` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -112,17 +102,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from argentofx_sdk import ArgentofxSDK
 
-client = ArgentofxSDK({})
+client = ArgentofxSDK({
+    "apikey": os.environ.get("ARGENTOFX_APIKEY"),
+})
 
 # List all currencys
-currencys, err = client.Currency(None).list(None, None)
+currencys, err = client.Currency().list()
+print(currencys)
 
 # Load a specific currency
-currency, err = client.Currency(None).load(
-    {"id": "example_id"}, None
-)
+currency, err = client.Currency().load({"id": "example_id"})
+print(currency)
 ```
 
 ### PHP
@@ -131,15 +124,17 @@ currency, err = client.Currency(None).load(
 <?php
 require_once 'argentofx_sdk.php';
 
-$client = new ArgentofxSDK([]);
+$client = new ArgentofxSDK([
+    "apikey" => getenv("ARGENTOFX_APIKEY"),
+]);
 
 // List all currencys
-[$currencys, $err] = $client->Currency(null)->list(null, null);
+[$currencys, $err] = $client->Currency()->list();
+print_r($currencys);
 
 // Load a specific currency
-[$currency, $err] = $client->Currency(null)->load(
-    ["id" => "example_id"], null
-);
+[$currency, $err] = $client->Currency()->load(["id" => "example_id"]);
+print_r($currency);
 ```
 
 ### Golang
@@ -147,10 +142,13 @@ $client = new ArgentofxSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/argentofx-sdk/go"
 
-client := sdk.NewArgentofxSDK(map[string]any{})
+client := sdk.NewArgentofxSDK(map[string]any{
+    "apikey": os.Getenv("ARGENTOFX_APIKEY"),
+})
 
 // List all currencys
 currencys, err := client.Currency(nil).List(nil, nil)
+fmt.Println(currencys)
 ```
 
 ### Ruby
@@ -158,15 +156,17 @@ currencys, err := client.Currency(nil).List(nil, nil)
 ```ruby
 require_relative "Argentofx_sdk"
 
-client = ArgentofxSDK.new({})
+client = ArgentofxSDK.new({
+  "apikey" => ENV["ARGENTOFX_APIKEY"],
+})
 
 # List all currencys
-currencys, err = client.Currency(nil).list(nil, nil)
+currencys, err = client.Currency().list
+puts currencys
 
 # Load a specific currency
-currency, err = client.Currency(nil).load(
-  { "id" => "example_id" }, nil
-)
+currency, err = client.Currency().load({ "id" => "example_id" })
+puts currency
 ```
 
 ### Lua
@@ -174,15 +174,17 @@ currency, err = client.Currency(nil).load(
 ```lua
 local sdk = require("argentofx_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("ARGENTOFX_APIKEY"),
+})
 
 -- List all currencys
-local currencys, err = client:Currency(nil):list(nil, nil)
+local currencys, err = client:Currency():list()
+print(currencys)
 
 -- Load a specific currency
-local currency, err = client:Currency(nil):load(
-  { id = "example_id" }, nil
-)
+local currency, err = client:Currency():load({ id = "example_id" })
+print(currency)
 ```
 
 ## Unit testing in offline mode
@@ -201,25 +203,21 @@ const result = await client.Currency().load({ id: 'test01' })
 ### Python
 
 ```python
-client = ArgentofxSDK.test(None, None)
-result, err = client.Currency(None).load(
-    {"id": "test01"}, None
-)
+client = ArgentofxSDK.test()
+result, err = client.Currency().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = ArgentofxSDK::test(null, null);
-[$result, $err] = $client->Currency(null)->load(
-    ["id" => "test01"], null
-);
+$client = ArgentofxSDK::test();
+[$result, $err] = $client->Currency()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Currency(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -228,19 +226,15 @@ result, err := client.Currency(nil).Load(
 ### Ruby
 
 ```ruby
-client = ArgentofxSDK.test(nil, nil)
-result, err = client.Currency(nil).load(
-  { "id" => "test01" }, nil
-)
+client = ArgentofxSDK.test
+result, err = client.Currency().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Currency(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Currency():load({ id = "test01" })
 ```
 
 ## How it works
@@ -344,11 +338,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the ArgentoFX API
-
-- Upstream: [https://fastapiproject-1-eziw.onrender.com](https://fastapiproject-1-eziw.onrender.com)
-- API docs: [https://fastapiproject-1-eziw.onrender.com/docs](https://fastapiproject-1-eziw.onrender.com/docs)
 
 ---
 

@@ -137,12 +137,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'ARGENTOFX_TEST_DOLLAR_QUOTE_ENTID': {},
     'ARGENTOFX_TEST_LIVE': 'FALSE',
+    'ARGENTOFX_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.ARGENTOFX_TEST_LIVE
 
   if (live) {
     const client = new ArgentofxSDK({
+      apikey: env.ARGENTOFX_APIKEY,
     })
 
     let idmap: any = env['ARGENTOFX_TEST_DOLLAR_QUOTE_ENTID']

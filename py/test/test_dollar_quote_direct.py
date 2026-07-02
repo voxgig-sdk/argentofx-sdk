@@ -109,12 +109,14 @@ def _dollar_quote_direct_setup(mockres):
     env = runner.env_override({
         "ARGENTOFX_TEST_DOLLAR_QUOTE_ENTID": {},
         "ARGENTOFX_TEST_LIVE": "FALSE",
+        "ARGENTOFX_APIKEY": "NONE",
     })
 
     live = env.get("ARGENTOFX_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("ARGENTOFX_APIKEY"),
         }
         client = ArgentofxSDK(merged_opts)
         return {

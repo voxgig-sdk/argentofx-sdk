@@ -98,6 +98,7 @@ def _dollar_quote_basic_setup(extra):
         "ARGENTOFX_TEST_DOLLAR_QUOTE_ENTID": idmap,
         "ARGENTOFX_TEST_LIVE": "FALSE",
         "ARGENTOFX_TEST_EXPLAIN": "FALSE",
+        "ARGENTOFX_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -108,6 +109,7 @@ def _dollar_quote_basic_setup(extra):
     if env.get("ARGENTOFX_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("ARGENTOFX_APIKEY"),
             },
             extra or {},
         ])

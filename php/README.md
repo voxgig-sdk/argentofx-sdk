@@ -1,6 +1,11 @@
 # Argentofx PHP SDK
 
-The PHP SDK for the Argentofx API. Provides an entity-oriented interface using PHP conventions.
+
+
+The PHP SDK for the Argentofx API — an entity-oriented client using PHP conventions.
+
+> Other languages, the CLI, and MCP server live alongside this one — see
+> the [top-level README](../README.md).
 
 
 ## Install
@@ -20,13 +25,15 @@ loading a specific record.
 <?php
 require_once 'argentofx_sdk.php';
 
-$client = new ArgentofxSDK([]);
+$client = new ArgentofxSDK([
+    "apikey" => getenv("ARGENTOFX_APIKEY"),
+]);
 ```
 
 ### 2. List currencys
 
 ```php
-[$result, $err] = $client->Currency(null)->list(null, null);
+[$result, $err] = $client->Currency()->list();
 if ($err) { throw new \Exception($err); }
 
 if (is_array($result)) {
@@ -40,7 +47,7 @@ if (is_array($result)) {
 ### 3. Load a currency
 
 ```php
-[$result, $err] = $client->Currency(null)->load(["id" => "example_id"], null);
+[$result, $err] = $client->Currency()->load(["id" => "example_id"]);
 if ($err) { throw new \Exception($err); }
 print_r($result);
 ```
@@ -86,11 +93,9 @@ print_r($fetchdef["headers"]);
 Create a mock client for unit testing — no server required:
 
 ```php
-$client = ArgentofxSDK::test(null, null);
+$client = ArgentofxSDK::test();
 
-[$result, $err] = $client->Argentofx(null)->load(
-    ["id" => "test01"], null
-);
+[$result, $err] = $client->Argentofx()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -125,6 +130,7 @@ Create a `.env.local` file at the project root:
 
 ```
 ARGENTOFX_TEST_LIVE=TRUE
+ARGENTOFX_APIKEY=<your-key>
 ```
 
 Then run:
@@ -147,6 +153,7 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
+| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |

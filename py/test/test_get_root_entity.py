@@ -91,6 +91,7 @@ def _get_root_basic_setup(extra):
         "ARGENTOFX_TEST_GET_ROOT_ENTID": idmap,
         "ARGENTOFX_TEST_LIVE": "FALSE",
         "ARGENTOFX_TEST_EXPLAIN": "FALSE",
+        "ARGENTOFX_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -101,6 +102,7 @@ def _get_root_basic_setup(extra):
     if env.get("ARGENTOFX_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("ARGENTOFX_APIKEY"),
             },
             extra or {},
         ])

@@ -114,12 +114,14 @@ def currency_direct_setup(mockres)
   env = Runner.env_override({
     "ARGENTOFX_TEST_CURRENCY_ENTID" => {},
     "ARGENTOFX_TEST_LIVE" => "FALSE",
+    "ARGENTOFX_APIKEY" => "NONE",
   })
 
   live = env["ARGENTOFX_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["ARGENTOFX_APIKEY"],
     }
     client = ArgentofxSDK.new(merged_opts)
     return {

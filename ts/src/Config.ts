@@ -38,6 +38,10 @@ class Config {
   options = {
     base: 'https://fastapiproject-1-eziw.onrender.com',
 
+    auth: {
+      prefix: 'Bearer',
+    },
+
     headers: {
       "content-type": "application/json"
     },
@@ -61,79 +65,81 @@ class Config {
     "currency": {
       "fields": [
         {
+          "active": true,
           "name": "compra",
           "req": true,
           "type": "`$NUMBER`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "fecha_actualizacion",
           "req": true,
           "type": "`$STRING`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "moneda",
           "req": true,
           "type": "`$STRING`",
-          "active": true,
           "index$": 2
         },
         {
+          "active": true,
           "name": "nombre",
           "req": true,
           "type": "`$STRING`",
-          "active": true,
           "index$": 3
         },
         {
+          "active": true,
           "name": "venta",
           "req": true,
           "type": "`$NUMBER`",
-          "active": true,
           "index$": 4
         }
       ],
       "name": "currency",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/currencies",
               "parts": [
                 "currencies"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "list"
         },
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
               "args": {
                 "params": [
                   {
+                    "active": true,
                     "example": "EUR",
                     "kind": "param",
                     "name": "id",
                     "orig": "currency",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -157,11 +163,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },
@@ -172,71 +176,73 @@ class Config {
     "dollar_quote": {
       "fields": [
         {
+          "active": true,
           "name": "compra",
           "req": true,
           "type": "`$NUMBER`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "fecha_actualizacion",
           "req": true,
           "type": "`$STRING`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "nombre",
           "req": true,
           "type": "`$STRING`",
-          "active": true,
           "index$": 2
         },
         {
+          "active": true,
           "name": "venta",
           "req": true,
           "type": "`$NUMBER`",
-          "active": true,
           "index$": 3
         }
       ],
       "name": "dollar_quote",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/dolares",
               "parts": [
                 "dolares"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "list"
         },
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
               "args": {
                 "params": [
                   {
+                    "active": true,
                     "kind": "param",
                     "name": "type",
                     "orig": "type",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -255,11 +261,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },
@@ -274,40 +278,40 @@ class Config {
     "get_root": {
       "fields": [
         {
+          "active": true,
           "name": "documentation",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "message",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 1
         }
       ],
       "name": "get_root",
       "op": {
         "load": {
+          "input": "data",
           "name": "load",
           "points": [
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/",
+              "parts": [],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "parts": [],
-              "args": {},
-              "select": {},
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "load"
         }
       },

@@ -99,12 +99,14 @@ func get_rootDirectSetup(mockres any) *get_rootDirectSetupResult {
 	env := envOverride(map[string]any{
 		"ARGENTOFX_TEST_GET_ROOT_ENTID": map[string]any{},
 		"ARGENTOFX_TEST_LIVE":    "FALSE",
+		"ARGENTOFX_APIKEY":       "NONE",
 	})
 
 	live := env["ARGENTOFX_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["ARGENTOFX_APIKEY"],
 		}
 		client := sdk.NewArgentofxSDK(mergedOpts)
 
