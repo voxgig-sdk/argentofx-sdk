@@ -10,7 +10,7 @@ The Lua SDK for the Argentofx API — an entity-oriented client using Lua conven
 
 ## Install
 ```bash
-luarocks install argentofx-sdk
+luarocks install voxgig-sdk-argentofx
 ```
 
 If the module is not yet published, add the source directory to

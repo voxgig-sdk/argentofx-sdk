@@ -10,7 +10,7 @@ The TypeScript SDK for the Argentofx API — a type-safe, entity-oriented client
 
 ## Install
 ```bash
-npm install argentofx
+npm install @voxgig-sdk/argentofx
 ```
 ## Tutorial: your first API call
 

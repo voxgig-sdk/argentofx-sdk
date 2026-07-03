@@ -8,12 +8,14 @@ source = {
   dir = "argentofx-sdk/lua"
 }
 description = {
-  summary = "Argentofx SDK for Lua",
-  license = "MIT"
+  summary = "Unofficial generated Lua SDK for the ArgentoFX public API. Not affiliated with or endorsed by the upstream API provider.",
+  homepage = "https://github.com/voxgig-sdk/argentofx-sdk",
+  issues_url = "https://github.com/voxgig-sdk/argentofx-sdk/issues",
+  license = "MIT",
+  labels = { "voxgig", "sdk", "generated-sdk", "openapi", "api-client", "argentofx" }
 }
 dependencies = {
   "lua >= 5.3",
-  "dkjson >= 2.5",
   "dkjson >= 2.5",
 }
 build = {

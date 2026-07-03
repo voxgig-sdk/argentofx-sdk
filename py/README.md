@@ -10,7 +10,7 @@ The Python SDK for the Argentofx API — an entity-oriented client following Pyt
 
 ## Install
 ```bash
-pip install argentofx-sdk
+pip install voxgig-sdk-argentofx
 ```
 
 Or install from source:

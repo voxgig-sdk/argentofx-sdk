@@ -10,13 +10,13 @@ The Ruby SDK for the Argentofx API — an entity-oriented client using idiomatic
 
 ## Install
 ```bash
-gem install argentofx-sdk
+gem install voxgig-sdk-argentofx
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "argentofx-sdk"
+gem "voxgig-sdk-argentofx"
 ```
 
 Then run:

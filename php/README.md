@@ -10,7 +10,7 @@ The PHP SDK for the Argentofx API — an entity-oriented client using PHP conven
 
 ## Install
 ```bash
-composer require voxgig/argentofx-sdk
+composer require voxgig-sdk/argentofx
 ```
 
 
