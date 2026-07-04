@@ -29,18 +29,16 @@ require_once 'argentofx_sdk.php';
 $client = new ArgentofxSDK();
 ```
 
-### 2. List currencys
+### 2. List currency records
 
 ```php
 try {
-    $result = $client->currency()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Currency records — iterate directly.
+    $currencys = $client->Currency()->list();
+    foreach ($currencys as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -49,9 +47,10 @@ try {
 
 ```php
 try {
-    $result = $client->currency()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Currency record (throws on error).
+    $currency = $client->Currency()->load(["id" => "example_id"]);
+    print_r($currency);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -97,13 +96,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = ArgentofxSDK::test();
+$client = ArgentofxSDK::test([
+    "entity" => ["currency" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->currency()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$currency = $client->Currency()->load(["id" => "test01"]);
+print_r($currency);
 ```
 
 ### Use a custom fetch function
@@ -269,7 +272,7 @@ API path: `/`
 
 ### Currency
 
-Create an instance: `const currency = client.currency`
+Create an instance: `$currency = $client->Currency();`
 
 #### Operations
 
@@ -290,20 +293,22 @@ Create an instance: `const currency = client.currency`
 
 #### Example: Load
 
-```ts
-const currency = await client.currency.load({ id: 'currency_id' })
+```php
+// load() returns the bare Currency record (throws on error).
+$currency = $client->Currency()->load(["id" => "currency_id"]);
 ```
 
 #### Example: List
 
-```ts
-const currencys = await client.currency.list()
+```php
+// list() returns an array of Currency records (throws on error).
+$currencys = $client->Currency()->list();
 ```
 
 
 ### DollarQuote
 
-Create an instance: `const dollar_quote = client.dollar_quote`
+Create an instance: `$dollar_quote = $client->DollarQuote();`
 
 #### Operations
 
@@ -323,20 +328,22 @@ Create an instance: `const dollar_quote = client.dollar_quote`
 
 #### Example: Load
 
-```ts
-const dollar_quote = await client.dollar_quote.load({ id: 'dollar_quote_id' })
+```php
+// load() returns the bare DollarQuote record (throws on error).
+$dollar_quote = $client->DollarQuote()->load(["id" => "dollar_quote_id"]);
 ```
 
 #### Example: List
 
-```ts
-const dollar_quotes = await client.dollar_quote.list()
+```php
+// list() returns an array of DollarQuote records (throws on error).
+$dollar_quotes = $client->DollarQuote()->list();
 ```
 
 
 ### GetRoot
 
-Create an instance: `const get_root = client.get_root`
+Create an instance: `$get_root = $client->GetRoot();`
 
 #### Operations
 
@@ -353,8 +360,9 @@ Create an instance: `const get_root = client.get_root`
 
 #### Example: Load
 
-```ts
-const get_root = await client.get_root.load({ id: 'get_root_id' })
+```php
+// load() returns the bare GetRoot record (throws on error).
+$get_root = $client->GetRoot()->load(["id" => "get_root_id"]);
 ```
 
 
@@ -429,7 +437,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$currency = $client->currency();
+$currency = $client->Currency();
 $currency->load(["id" => "example_id"]);
 
 // $currency->dataGet() now returns the loaded currency data

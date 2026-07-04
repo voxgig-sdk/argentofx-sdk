@@ -26,9 +26,11 @@ import { ArgentofxSDK } from '@voxgig-sdk/argentofx'
 
 const client = new ArgentofxSDK()
 
-// List all currencys
-const currencys = await client.currency.list()
-console.log(currencys.data)
+// List all currencys (returns Currency[])
+const currencys = await client.Currency().list()
+for (const currency of currencys) {
+  console.log(currency)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -85,12 +87,13 @@ from argentofx_sdk import ArgentofxSDK
 
 client = ArgentofxSDK()
 
-# List all currencys
-currencys = client.currency.list()
-print(currencys)
+# List all currencys (returns a list, raises on error)
+currencys = client.Currency().list({})
+for currency in currencys:
+    print(currency)
 
-# Load a specific currency
-currency = client.currency.load({"id": "example_id"})
+# Load a specific currency (returns the record, raises on error)
+currency = client.Currency().load({"id": "example_id"})
 print(currency)
 ```
 
@@ -102,12 +105,12 @@ require_once 'argentofx_sdk.php';
 
 $client = new ArgentofxSDK();
 
-// List all currencys (throws on error)
-$currencys = $client->currency()->list();
+// List all currencys (returns an array; throws on error)
+$currencys = $client->Currency()->list();
 print_r($currencys);
 
-// Load a specific currency
-$currency = $client->currency()->load(["id" => "example_id"]);
+// Load a specific currency (returns the bare record; throws on error)
+$currency = $client->Currency()->load(["id" => "example_id"]);
 print_r($currency);
 ```
 
@@ -130,12 +133,12 @@ require_relative "Argentofx_sdk"
 
 client = ArgentofxSDK.new
 
-# List all currencys
-currencys = client.currency.list
+# List all currencys (returns an Array; raises on error)
+currencys = client.Currency.list
 puts currencys
 
-# Load a specific currency
-currency = client.currency.load({ "id" => "example_id" })
+# Load a specific currency (returns the bare record; raises on error)
+currency = client.Currency.load({ "id" => "example_id" })
 puts currency
 ```
 
@@ -147,11 +150,11 @@ local sdk = require("argentofx_sdk")
 local client = sdk.new()
 
 -- List all currencys
-local currencys, err = client:currency():list()
+local currencys, err = client:Currency():list()
 print(currencys)
 
 -- Load a specific currency
-local currency, err = client:currency():load({ id = "example_id" })
+local currency, err = client:Currency():load({ id = "example_id" })
 print(currency)
 ```
 
@@ -164,22 +167,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = ArgentofxSDK.test()
-const result = await client.currency.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const currency = await client.Currency().load({ id: 'test01' })
+// currency is a bare Currency populated with mock data
+console.log(currency)
 ```
 
 ### Python
 
 ```python
 client = ArgentofxSDK.test()
-result = client.currency.load({"id": "test01"})
+currency = client.Currency().load({"id": "test01"})
+print(currency)
 ```
 
 ### PHP
 
 ```php
-$client = ArgentofxSDK::test();
-$result = $client->currency()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = ArgentofxSDK::test([
+    "entity" => ["currency" => ["test01" => ["id" => "test01"]]],
+]);
+$currency = $client->Currency()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -194,15 +202,18 @@ result, err := client.Currency(nil).Load(
 ### Ruby
 
 ```ruby
-client = ArgentofxSDK.test
-result = client.currency.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = ArgentofxSDK.test({
+  "entity" => { "currency" => { "test01" => { "id" => "test01" } } },
+})
+currency = client.Currency.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:currency():load({ id = "test01" })
+local result, err = client:Currency():load({ id = "test01" })
 ```
 
 ## How it works
@@ -250,6 +261,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

@@ -91,7 +91,7 @@ same parameters as `direct()`.
 ## CurrencyEntity
 
 ```lua
-local currency = client:currency(nil)
+local currency = client:Currency(nil)
 ```
 
 ### Fields
@@ -111,7 +111,7 @@ local currency = client:currency(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:currency():list()
+local results, err = client:Currency():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -119,7 +119,7 @@ local results, err = client:currency():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:currency():load({ id = "currency_id" })
+local result, err = client:Currency():load({ id = "currency_id" })
 ```
 
 ### Common Methods
@@ -155,7 +155,7 @@ Return the entity name.
 ## DollarQuoteEntity
 
 ```lua
-local dollar_quote = client:dollar_quote(nil)
+local dollar_quote = client:DollarQuote(nil)
 ```
 
 ### Fields
@@ -174,7 +174,7 @@ local dollar_quote = client:dollar_quote(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:dollar_quote():list()
+local results, err = client:DollarQuote():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -182,7 +182,7 @@ local results, err = client:dollar_quote():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:dollar_quote():load({ id = "dollar_quote_id" })
+local result, err = client:DollarQuote():load({ id = "dollar_quote_id" })
 ```
 
 ### Common Methods
@@ -218,7 +218,7 @@ Return the entity name.
 ## GetRootEntity
 
 ```lua
-local get_root = client:get_root(nil)
+local get_root = client:GetRoot(nil)
 ```
 
 ### Fields
@@ -235,7 +235,7 @@ local get_root = client:get_root(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:get_root():load({ id = "get_root_id" })
+local result, err = client:GetRoot():load({ id = "get_root_id" })
 ```
 
 ### Common Methods

@@ -4,15 +4,19 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Currency:
+class Currency(TypedDict):
     compra: float
     fecha_actualizacion: str
     moneda: str
@@ -20,49 +24,41 @@ class Currency:
     venta: float
 
 
-@dataclass
-class CurrencyLoadMatch:
+class CurrencyLoadMatch(TypedDict):
     id: str
 
 
-@dataclass
-class CurrencyListMatch:
-    compra: Optional[float] = None
-    fecha_actualizacion: Optional[str] = None
-    moneda: Optional[str] = None
-    nombre: Optional[str] = None
-    venta: Optional[float] = None
+class CurrencyListMatch(TypedDict, total=False):
+    compra: float
+    fecha_actualizacion: str
+    moneda: str
+    nombre: str
+    venta: float
 
 
-@dataclass
-class DollarQuote:
+class DollarQuote(TypedDict):
     compra: float
     fecha_actualizacion: str
     nombre: str
     venta: float
 
 
-@dataclass
-class DollarQuoteLoadMatch:
+class DollarQuoteLoadMatch(TypedDict):
     type: str
 
 
-@dataclass
-class DollarQuoteListMatch:
-    compra: Optional[float] = None
-    fecha_actualizacion: Optional[str] = None
-    nombre: Optional[str] = None
-    venta: Optional[float] = None
+class DollarQuoteListMatch(TypedDict, total=False):
+    compra: float
+    fecha_actualizacion: str
+    nombre: str
+    venta: float
 
 
-@dataclass
-class GetRoot:
-    documentation: Optional[str] = None
-    message: Optional[str] = None
+class GetRoot(TypedDict, total=False):
+    documentation: str
+    message: str
 
 
-@dataclass
-class GetRootLoadMatch:
-    documentation: Optional[str] = None
-    message: Optional[str] = None
-
+class GetRootLoadMatch(TypedDict, total=False):
+    documentation: str
+    message: str

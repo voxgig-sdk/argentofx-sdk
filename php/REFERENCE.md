@@ -93,7 +93,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## CurrencyEntity
 
 ```php
-$currency = $client->currency();
+$currency = $client->Currency();
 ```
 
 ### Fields
@@ -113,7 +113,7 @@ $currency = $client->currency();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->currency()->list([]);
+$results = $client->Currency()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -121,7 +121,7 @@ $results = $client->currency()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->currency()->load(["id" => "currency_id"]);
+$result = $client->Currency()->load(["id" => "currency_id"]);
 ```
 
 ### Common Methods
@@ -157,7 +157,7 @@ Return the entity name.
 ## DollarQuoteEntity
 
 ```php
-$dollar_quote = $client->dollar_quote();
+$dollar_quote = $client->DollarQuote();
 ```
 
 ### Fields
@@ -176,7 +176,7 @@ $dollar_quote = $client->dollar_quote();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->dollar_quote()->list([]);
+$results = $client->DollarQuote()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -184,7 +184,7 @@ $results = $client->dollar_quote()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->dollar_quote()->load(["id" => "dollar_quote_id"]);
+$result = $client->DollarQuote()->load(["id" => "dollar_quote_id"]);
 ```
 
 ### Common Methods
@@ -220,7 +220,7 @@ Return the entity name.
 ## GetRootEntity
 
 ```php
-$get_root = $client->get_root();
+$get_root = $client->GetRoot();
 ```
 
 ### Fields
@@ -237,7 +237,7 @@ $get_root = $client->get_root();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->get_root()->load(["id" => "get_root_id"]);
+$result = $client->GetRoot()->load(["id" => "get_root_id"]);
 ```
 
 ### Common Methods

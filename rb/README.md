@@ -28,16 +28,14 @@ require_relative "Argentofx_sdk"
 client = ArgentofxSDK.new
 ```
 
-### 2. List currencys
+### 2. List currency records
 
 ```ruby
 begin
-  result = client.currency.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Currency records — iterate directly.
+  currencys = client.Currency.list
+  currencys.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,8 +46,9 @@ end
 
 ```ruby
 begin
-  result = client.currency.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Currency record (raises on error).
+  currency = client.Currency.load({ "id" => "example_id" })
+  puts currency
 rescue => err
   warn "load failed: #{err}"
 end
@@ -96,13 +95,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = ArgentofxSDK.test
+client = ArgentofxSDK.test({
+  "entity" => { "currency" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.currency.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+currency = client.Currency.load({ "id" => "test01" })
+puts currency
 ```
 
 ### Use a custom fetch function
@@ -264,7 +267,7 @@ API path: `/`
 
 ### Currency
 
-Create an instance: `const currency = client.currency`
+Create an instance: `currency = client.Currency`
 
 #### Operations
 
@@ -285,20 +288,22 @@ Create an instance: `const currency = client.currency`
 
 #### Example: Load
 
-```ts
-const currency = await client.currency.load({ id: 'currency_id' })
+```ruby
+# load returns the bare Currency record (raises on error).
+currency = client.Currency.load({ "id" => "currency_id" })
 ```
 
 #### Example: List
 
-```ts
-const currencys = await client.currency.list()
+```ruby
+# list returns an Array of Currency records (raises on error).
+currencys = client.Currency.list
 ```
 
 
 ### DollarQuote
 
-Create an instance: `const dollar_quote = client.dollar_quote`
+Create an instance: `dollar_quote = client.DollarQuote`
 
 #### Operations
 
@@ -318,20 +323,22 @@ Create an instance: `const dollar_quote = client.dollar_quote`
 
 #### Example: Load
 
-```ts
-const dollar_quote = await client.dollar_quote.load({ id: 'dollar_quote_id' })
+```ruby
+# load returns the bare DollarQuote record (raises on error).
+dollar_quote = client.DollarQuote.load({ "id" => "dollar_quote_id" })
 ```
 
 #### Example: List
 
-```ts
-const dollar_quotes = await client.dollar_quote.list()
+```ruby
+# list returns an Array of DollarQuote records (raises on error).
+dollar_quotes = client.DollarQuote.list
 ```
 
 
 ### GetRoot
 
-Create an instance: `const get_root = client.get_root`
+Create an instance: `get_root = client.GetRoot`
 
 #### Operations
 
@@ -348,8 +355,9 @@ Create an instance: `const get_root = client.get_root`
 
 #### Example: Load
 
-```ts
-const get_root = await client.get_root.load({ id: 'get_root_id' })
+```ruby
+# load returns the bare GetRoot record (raises on error).
+get_root = client.GetRoot.load({ "id" => "get_root_id" })
 ```
 
 
@@ -424,7 +432,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-currency = client.currency
+currency = client.Currency
 currency.load({ "id" => "example_id" })
 
 # currency.data_get now returns the loaded currency data

@@ -208,39 +208,21 @@ class ArgentofxSDK
   end
 
 
-  # Idiomatic facade: client.currency.list / client.currency.load({ "id" => ... })
-  def currency
-    require_relative 'entity/currency_entity'
-    @currency ||= CurrencyEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.currency instead.
+  # Canonical facade: client.Currency.list / client.Currency.load({ "id" => ... })
   def Currency(data = nil)
     require_relative 'entity/currency_entity'
     CurrencyEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.dollar_quote.list / client.dollar_quote.load({ "id" => ... })
-  def dollar_quote
-    require_relative 'entity/dollar_quote_entity'
-    @dollar_quote ||= DollarQuoteEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.dollar_quote instead.
+  # Canonical facade: client.DollarQuote.list / client.DollarQuote.load({ "id" => ... })
   def DollarQuote(data = nil)
     require_relative 'entity/dollar_quote_entity'
     DollarQuoteEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.get_root.list / client.get_root.load({ "id" => ... })
-  def get_root
-    require_relative 'entity/get_root_entity'
-    @get_root ||= GetRootEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.get_root instead.
+  # Canonical facade: client.GetRoot.list / client.GetRoot.load({ "id" => ... })
   def GetRoot(data = nil)
     require_relative 'entity/get_root_entity'
     GetRootEntity.new(self, data)

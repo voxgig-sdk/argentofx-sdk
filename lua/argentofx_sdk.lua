@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:currency():list() / client:currency():load({ id = ... })
-function ArgentofxSDK:currency(data)
+-- Idiomatic facade: client:Currency():list() / client:Currency():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentofxSDK:Currency(data)
   local EntityMod = require("entity.currency_entity")
   if data == nil then
     if self._currency == nil then
@@ -256,15 +257,10 @@ function ArgentofxSDK:currency(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:currency() instead.
-function ArgentofxSDK:Currency(data)
-  local EntityMod = require("entity.currency_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:dollar_quote():list() / client:dollar_quote():load({ id = ... })
-function ArgentofxSDK:dollar_quote(data)
+-- Idiomatic facade: client:DollarQuote():list() / client:DollarQuote():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentofxSDK:DollarQuote(data)
   local EntityMod = require("entity.dollar_quote_entity")
   if data == nil then
     if self._dollar_quote == nil then
@@ -275,15 +271,10 @@ function ArgentofxSDK:dollar_quote(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:dollar_quote() instead.
-function ArgentofxSDK:DollarQuote(data)
-  local EntityMod = require("entity.dollar_quote_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:get_root():list() / client:get_root():load({ id = ... })
-function ArgentofxSDK:get_root(data)
+-- Idiomatic facade: client:GetRoot():list() / client:GetRoot():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function ArgentofxSDK:GetRoot(data)
   local EntityMod = require("entity.get_root_entity")
   if data == nil then
     if self._get_root == nil then
@@ -291,12 +282,6 @@ function ArgentofxSDK:get_root(data)
     end
     return self._get_root
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:get_root() instead.
-function ArgentofxSDK:GetRoot(data)
-  local EntityMod = require("entity.get_root_entity")
   return EntityMod.new(self, data)
 end
 

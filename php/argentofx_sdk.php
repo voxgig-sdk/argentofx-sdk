@@ -233,10 +233,10 @@ class ArgentofxSDK
 
     private $_currency = null;
 
-    // Idiomatic facade: $client->currency()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Currency() (PHP method
-    // names are case-insensitive).
-    public function currency($data = null)
+    // Canonical facade: $client->Currency()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->currency()
+    // resolves here too.
+    public function Currency($data = null)
     {
         require_once __DIR__ . '/entity/currency_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class ArgentofxSDK
 
     private $_dollar_quote = null;
 
-    // Idiomatic facade: $client->dollar_quote()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias DollarQuote() (PHP method
-    // names are case-insensitive).
-    public function dollar_quote($data = null)
+    // Canonical facade: $client->DollarQuote()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->dollar_quote()
+    // resolves here too.
+    public function DollarQuote($data = null)
     {
         require_once __DIR__ . '/entity/dollar_quote_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class ArgentofxSDK
 
     private $_get_root = null;
 
-    // Idiomatic facade: $client->get_root()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias GetRoot() (PHP method
-    // names are case-insensitive).
-    public function get_root($data = null)
+    // Canonical facade: $client->GetRoot()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->get_root()
+    // resolves here too.
+    public function GetRoot($data = null)
     {
         require_once __DIR__ . '/entity/get_root_entity.php';
         if ($data === null) {

@@ -31,24 +31,28 @@ from argentofx_sdk import ArgentofxSDK
 client = ArgentofxSDK()
 ```
 
-### 2. List currencys
+### 2. List currency records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.currency.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    currencys = client.Currency().list({})
+    for currency in currencys:
+        print(currency)
 except Exception as err:
     print(f"list failed: {err}")
 ```
 
 ### 3. Load a currency
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.currency.load({"id": "example_id"})
-    print(result)
+    currency = client.Currency().load({"id": "example_id"})
+    print(currency)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -96,8 +100,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = ArgentofxSDK.test()
 
-result = client.currency.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+currency = client.Currency().load({"id": "test01"})
+# currency contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -260,7 +265,7 @@ API path: `/`
 
 ### Currency
 
-Create an instance: `const currency = client.currency`
+Create an instance: `currency = client.Currency()`
 
 #### Operations
 
@@ -281,20 +286,20 @@ Create an instance: `const currency = client.currency`
 
 #### Example: Load
 
-```ts
-const currency = await client.currency.load({ id: 'currency_id' })
+```python
+currency = client.Currency().load({"id": "currency_id"})
 ```
 
 #### Example: List
 
-```ts
-const currencys = await client.currency.list()
+```python
+currencys = client.Currency().list({})
 ```
 
 
 ### DollarQuote
 
-Create an instance: `const dollar_quote = client.dollar_quote`
+Create an instance: `dollar_quote = client.DollarQuote()`
 
 #### Operations
 
@@ -314,20 +319,20 @@ Create an instance: `const dollar_quote = client.dollar_quote`
 
 #### Example: Load
 
-```ts
-const dollar_quote = await client.dollar_quote.load({ id: 'dollar_quote_id' })
+```python
+dollar_quote = client.DollarQuote().load({"id": "dollar_quote_id"})
 ```
 
 #### Example: List
 
-```ts
-const dollar_quotes = await client.dollar_quote.list()
+```python
+dollar_quotes = client.DollarQuote().list({})
 ```
 
 
 ### GetRoot
 
-Create an instance: `const get_root = client.get_root`
+Create an instance: `get_root = client.GetRoot()`
 
 #### Operations
 
@@ -344,8 +349,8 @@ Create an instance: `const get_root = client.get_root`
 
 #### Example: Load
 
-```ts
-const get_root = await client.get_root.load({ id: 'get_root_id' })
+```python
+get_root = client.GetRoot().load({"id": "get_root_id"})
 ```
 
 
@@ -419,7 +424,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-currency = client.currency
+currency = client.Currency()
 currency.load({"id": "example_id"})
 
 # currency.data_get() now returns the loaded currency data

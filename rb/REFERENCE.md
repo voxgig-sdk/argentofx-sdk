@@ -94,7 +94,7 @@ same parameters as `direct()`. Raises on error.
 ## CurrencyEntity
 
 ```ruby
-currency = client.currency
+currency = client.Currency
 ```
 
 ### Fields
@@ -114,7 +114,7 @@ currency = client.currency
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.currency.list(nil)
+results = client.Currency.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -122,7 +122,7 @@ results = client.currency.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.currency.load({ "id" => "currency_id" })
+result = client.Currency.load({ "id" => "currency_id" })
 ```
 
 ### Common Methods
@@ -158,7 +158,7 @@ Return the entity name.
 ## DollarQuoteEntity
 
 ```ruby
-dollar_quote = client.dollar_quote
+dollar_quote = client.DollarQuote
 ```
 
 ### Fields
@@ -177,7 +177,7 @@ dollar_quote = client.dollar_quote
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.dollar_quote.list(nil)
+results = client.DollarQuote.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -185,7 +185,7 @@ results = client.dollar_quote.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.dollar_quote.load({ "id" => "dollar_quote_id" })
+result = client.DollarQuote.load({ "id" => "dollar_quote_id" })
 ```
 
 ### Common Methods
@@ -221,7 +221,7 @@ Return the entity name.
 ## GetRootEntity
 
 ```ruby
-get_root = client.get_root
+get_root = client.GetRoot
 ```
 
 ### Fields
@@ -238,7 +238,7 @@ get_root = client.get_root
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.get_root.load({ "id" => "get_root_id" })
+result = client.GetRoot.load({ "id" => "get_root_id" })
 ```
 
 ### Common Methods

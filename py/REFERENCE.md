@@ -88,7 +88,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## CurrencyEntity
 
 ```python
-currency = client.currency
+currency = client.Currency()
 ```
 
 ### Fields
@@ -108,7 +108,9 @@ currency = client.currency
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.currency.list({})
+results = client.Currency().list({})
+for currency in results:
+    print(currency)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -116,7 +118,7 @@ results = client.currency.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.currency.load({"id": "currency_id"})
+result = client.Currency().load({"id": "currency_id"})
 ```
 
 ### Common Methods
@@ -151,7 +153,7 @@ Return the entity name.
 ## DollarQuoteEntity
 
 ```python
-dollar_quote = client.dollar_quote
+dollar_quote = client.DollarQuote()
 ```
 
 ### Fields
@@ -170,7 +172,9 @@ dollar_quote = client.dollar_quote
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.dollar_quote.list({})
+results = client.DollarQuote().list({})
+for dollar_quote in results:
+    print(dollar_quote)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -178,7 +182,7 @@ results = client.dollar_quote.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.dollar_quote.load({"id": "dollar_quote_id"})
+result = client.DollarQuote().load({"id": "dollar_quote_id"})
 ```
 
 ### Common Methods
@@ -213,7 +217,7 @@ Return the entity name.
 ## GetRootEntity
 
 ```python
-get_root = client.get_root
+get_root = client.GetRoot()
 ```
 
 ### Fields
@@ -230,7 +234,7 @@ get_root = client.get_root
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.get_root.load({"id": "get_root_id"})
+result = client.GetRoot().load({"id": "get_root_id"})
 ```
 
 ### Common Methods

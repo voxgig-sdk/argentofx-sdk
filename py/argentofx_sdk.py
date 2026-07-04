@@ -220,57 +220,27 @@ class ArgentofxSDK:
         }
 
 
-    @property
-    def currency(self):
-        """Idiomatic facade: client.currency.list() / client.currency.load({"id": ...})."""
-        from entity.currency_entity import CurrencyEntity
-        cached = getattr(self, "_currency", None)
-        if cached is None:
-            cached = CurrencyEntity(self, None)
-            self._currency = cached
-        return cached
-
-    def Currency(self, data=None):
-        # Deprecated: use client.currency instead.
+    def Currency(self, data=None) -> "CurrencyEntity":
+        """Entity factory: client.Currency().list({}) / client.Currency().load({"id": ...})."""
         from entity.currency_entity import CurrencyEntity
         return CurrencyEntity(self, data)
 
 
-    @property
-    def dollar_quote(self):
-        """Idiomatic facade: client.dollar_quote.list() / client.dollar_quote.load({"id": ...})."""
-        from entity.dollar_quote_entity import DollarQuoteEntity
-        cached = getattr(self, "_dollar_quote", None)
-        if cached is None:
-            cached = DollarQuoteEntity(self, None)
-            self._dollar_quote = cached
-        return cached
-
-    def DollarQuote(self, data=None):
-        # Deprecated: use client.dollar_quote instead.
+    def DollarQuote(self, data=None) -> "DollarQuoteEntity":
+        """Entity factory: client.DollarQuote().list({}) / client.DollarQuote().load({"id": ...})."""
         from entity.dollar_quote_entity import DollarQuoteEntity
         return DollarQuoteEntity(self, data)
 
 
-    @property
-    def get_root(self):
-        """Idiomatic facade: client.get_root.list() / client.get_root.load({"id": ...})."""
-        from entity.get_root_entity import GetRootEntity
-        cached = getattr(self, "_get_root", None)
-        if cached is None:
-            cached = GetRootEntity(self, None)
-            self._get_root = cached
-        return cached
-
-    def GetRoot(self, data=None):
-        # Deprecated: use client.get_root instead.
+    def GetRoot(self, data=None) -> "GetRootEntity":
+        """Entity factory: client.GetRoot().list({}) / client.GetRoot().load({"id": ...})."""
         from entity.get_root_entity import GetRootEntity
         return GetRootEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "ArgentofxSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -290,3 +260,11 @@ class ArgentofxSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.currency_entity import CurrencyEntity
+    from entity.dollar_quote_entity import DollarQuoteEntity
+    from entity.get_root_entity import GetRootEntity

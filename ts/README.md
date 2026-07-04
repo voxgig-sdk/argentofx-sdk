@@ -28,25 +28,28 @@ import { ArgentofxSDK } from '@voxgig-sdk/argentofx'
 const client = new ArgentofxSDK()
 ```
 
-### 2. List currencys
+### 2. List currency records
+
+`list()` resolves to an array of Currency objects — iterate it directly:
 
 ```ts
-const result = await client.currency.list()
+const currencys = await client.Currency().list()
 
-if (result.ok) {
-  for (const item of result.data) {
-    console.log(item.id, item.name)
-  }
+for (const currency of currencys) {
+  console.log(currency)
 }
 ```
 
 ### 3. Load a currency
 
-```ts
-const result = await client.currency.load({ id: 'example_id' })
+`load()` returns the entity directly and throws on failure:
 
-if (result.ok) {
-  console.log(result.data)
+```ts
+try {
+  const currency = await client.Currency().load({ id: 'example_id' })
+  console.log(currency)
+} catch (err) {
+  console.error('load failed:', err)
 }
 ```
 
@@ -64,6 +67,9 @@ const result = await client.direct({
   params: { id: 'example' },
 })
 
+if (result instanceof Error) {
+  throw result
+}
 if (result.ok) {
   console.log(result.status)  // 200
   console.log(result.data)    // response body
@@ -92,9 +98,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ArgentofxSDK.test()
 
-const result = await client.currency.load({ id: 'test01' })
-// result.ok === true
-// result.data contains mock response data
+const currency = await client.Currency().load({ id: 'test01' })
+// currency is a bare entity populated with mock response data
+console.log(currency)
 ```
 
 You can also use the instance method:
@@ -109,7 +115,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.currency
+const entity = client.Currency()
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -206,29 +212,30 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `load(reqmatch?, ctrl?): Promise<Result>` | Load a single entity by match criteria. |
-| `list` | `list(reqmatch?, ctrl?): Promise<Result>` | List entities matching the criteria. |
-| `create` | `create(reqdata?, ctrl?): Promise<Result>` | Create a new entity. |
-| `update` | `update(reqdata?, ctrl?): Promise<Result>` | Update an existing entity. |
-| `remove` | `remove(reqmatch?, ctrl?): Promise<Result>` | Remove an entity. |
+| `load` | `load(reqmatch?, ctrl?): Promise<Entity>` | Load a single entity by match criteria. |
+| `list` | `list(reqmatch?, ctrl?): Promise<Entity[]>` | List entities matching the criteria. |
+| `create` | `create(reqdata?, ctrl?): Promise<Entity>` | Create a new entity. |
+| `update` | `update(reqdata?, ctrl?): Promise<Entity>` | Update an existing entity. |
+| `remove` | `remove(reqmatch?, ctrl?): Promise<void>` | Remove an entity. |
 | `data` | `data(data?): any` | Get or set entity data. |
 | `match` | `match(match?): any` | Get or set entity match criteria. |
 | `make` | `make(): Entity` | Create a new instance with the same options. |
 | `client` | `client(): ArgentofxSDK` | Return the parent SDK client. |
 | `entopts` | `entopts(): object` | Return a copy of the entity options. |
 
-#### Result shape
+#### Return values
 
-All entity operations return a Result object:
+Entity operations resolve to the entity data directly — there is no
+result envelope:
 
-```ts
-{
-  ok: boolean      // true if the HTTP status is 2xx
-  status: number   // HTTP status code
-  headers: object  // response headers
-  data: any        // parsed JSON response body
-}
-```
+- `load`, `create` and `update` resolve to a single entity object.
+- `list` resolves to an **array** of entity objects (iterate it directly;
+  there is no `.data` and no `.ok`).
+- `remove` resolves to `void`.
+
+On a failed request these methods **throw**, so wrap calls in
+`try`/`catch` to handle errors. Only `direct()` returns the result
+envelope described below.
 
 ### DirectResult shape
 
@@ -305,7 +312,7 @@ API path: `/`
 
 ### Currency
 
-Create an instance: `const currency = client.currency`
+Create an instance: `const currency = client.Currency()`
 
 #### Operations
 
@@ -327,19 +334,19 @@ Create an instance: `const currency = client.currency`
 #### Example: Load
 
 ```ts
-const currency = await client.currency.load({ id: 'currency_id' })
+const currency = await client.Currency().load({ id: 'currency_id' })
 ```
 
 #### Example: List
 
 ```ts
-const currencys = await client.currency.list()
+const currencys = await client.Currency().list()
 ```
 
 
 ### DollarQuote
 
-Create an instance: `const dollar_quote = client.dollar_quote`
+Create an instance: `const dollar_quote = client.DollarQuote()`
 
 #### Operations
 
@@ -360,19 +367,19 @@ Create an instance: `const dollar_quote = client.dollar_quote`
 #### Example: Load
 
 ```ts
-const dollar_quote = await client.dollar_quote.load({ id: 'dollar_quote_id' })
+const dollar_quote = await client.DollarQuote().load({ id: 'dollar_quote_id' })
 ```
 
 #### Example: List
 
 ```ts
-const dollar_quotes = await client.dollar_quote.list()
+const dollar_quotes = await client.DollarQuote().list()
 ```
 
 
 ### GetRoot
 
-Create an instance: `const get_root = client.get_root`
+Create an instance: `const get_root = client.GetRoot()`
 
 #### Operations
 
@@ -390,7 +397,7 @@ Create an instance: `const get_root = client.get_root`
 #### Example: Load
 
 ```ts
-const get_root = await client.get_root.load({ id: 'get_root_id' })
+const get_root = await client.GetRoot().load({ id: 'get_root_id' })
 ```
 
 
@@ -461,7 +468,7 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const currency = client.currency
+const currency = client.Currency()
 await currency.load({ id: "example_id" })
 
 // currency.data() now returns the loaded currency data

@@ -133,7 +133,7 @@ Alias for `ArgentofxSDK.test()`.
 ## CurrencyEntity
 
 ```ts
-const currency = client.currency
+const currency = client.Currency()
 ```
 
 ### Fields
@@ -153,7 +153,7 @@ const currency = client.currency
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.currency.list()
+const results = await client.Currency().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -161,7 +161,7 @@ const results = await client.currency.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.currency.load({ id: 'currency_id' })
+const result = await client.Currency().load({ id: 'currency_id' })
 ```
 
 ### Common Methods
@@ -195,7 +195,7 @@ Return a copy of the entity options.
 ## DollarQuoteEntity
 
 ```ts
-const dollar_quote = client.dollar_quote
+const dollar_quote = client.DollarQuote()
 ```
 
 ### Fields
@@ -214,7 +214,7 @@ const dollar_quote = client.dollar_quote
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.dollar_quote.list()
+const results = await client.DollarQuote().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -222,7 +222,7 @@ const results = await client.dollar_quote.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.dollar_quote.load({ id: 'dollar_quote_id' })
+const result = await client.DollarQuote().load({ id: 'dollar_quote_id' })
 ```
 
 ### Common Methods
@@ -256,7 +256,7 @@ Return a copy of the entity options.
 ## GetRootEntity
 
 ```ts
-const get_root = client.get_root
+const get_root = client.GetRoot()
 ```
 
 ### Fields
@@ -273,7 +273,7 @@ const get_root = client.get_root
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.get_root.load({ id: 'get_root_id' })
+const result = await client.GetRoot().load({ id: 'get_root_id' })
 ```
 
 ### Common Methods
