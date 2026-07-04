@@ -4,6 +4,8 @@ import { CurrencyEntity } from './entity/CurrencyEntity'
 import { DollarQuoteEntity } from './entity/DollarQuoteEntity'
 import { GetRootEntity } from './entity/GetRootEntity'
 
+export type * from './ArgentofxTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -204,18 +206,42 @@ class ArgentofxSDK {
 
 
 
+  _currency?: CurrencyEntity
+
+  // Idiomatic facade: `client.currency.list()` / `client.currency.load({ id })`.
+  get currency(): CurrencyEntity {
+    return (this._currency ??= new CurrencyEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.currency` instead. */
   Currency(data?: any) {
     const self = this
     return new CurrencyEntity(self,data)
   }
 
 
+  _dollar_quote?: DollarQuoteEntity
+
+  // Idiomatic facade: `client.dollar_quote.list()` / `client.dollar_quote.load({ id })`.
+  get dollar_quote(): DollarQuoteEntity {
+    return (this._dollar_quote ??= new DollarQuoteEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.dollar_quote` instead. */
   DollarQuote(data?: any) {
     const self = this
     return new DollarQuoteEntity(self,data)
   }
 
 
+  _get_root?: GetRootEntity
+
+  // Idiomatic facade: `client.get_root.list()` / `client.get_root.load({ id })`.
+  get get_root(): GetRootEntity {
+    return (this._get_root ??= new GetRootEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.get_root` instead. */
   GetRoot(data?: any) {
     const self = this
     return new GetRootEntity(self,data)

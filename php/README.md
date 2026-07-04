@@ -9,9 +9,10 @@ The PHP SDK for the Argentofx API — an entity-oriented client using PHP conven
 
 
 ## Install
-```bash
-composer require voxgig-sdk/argentofx
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/argentofx-sdk/releases](https://github.com/voxgig-sdk/argentofx-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -25,31 +26,34 @@ loading a specific record.
 <?php
 require_once 'argentofx_sdk.php';
 
-$client = new ArgentofxSDK([
-    "apikey" => getenv("ARGENTOFX_APIKEY"),
-]);
+$client = new ArgentofxSDK();
 ```
 
 ### 2. List currencys
 
 ```php
-[$result, $err] = $client->Currency()->list();
-if ($err) { throw new \Exception($err); }
-
-if (is_array($result)) {
-    foreach ($result as $item) {
-        $d = $item->data_get();
-        echo $d["id"] . " " . $d["name"] . "\n";
+try {
+    $result = $client->currency()->list();
+    if (is_array($result)) {
+        foreach ($result as $item) {
+            $d = $item->data_get();
+            echo $d["id"] . " " . $d["name"] . "\n";
+        }
     }
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
 }
 ```
 
 ### 3. Load a currency
 
 ```php
-[$result, $err] = $client->Currency()->load(["id" => "example_id"]);
-if ($err) { throw new \Exception($err); }
-print_r($result);
+try {
+    $result = $client->currency()->load(["id" => "example_id"]);
+    print_r($result);
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
+}
 ```
 
 
@@ -60,28 +64,31 @@ print_r($result);
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -95,7 +102,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = ArgentofxSDK::test();
 
-[$result, $err] = $client->Argentofx()->load(["id" => "test01"]);
+$result = $client->currency()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -130,7 +137,6 @@ Create a `.env.local` file at the project root:
 
 ```
 ARGENTOFX_TEST_LIVE=TRUE
-ARGENTOFX_APIKEY=<your-key>
 ```
 
 Then run:
@@ -153,7 +159,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -201,8 +206,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -260,7 +269,7 @@ API path: `/`
 
 ### Currency
 
-Create an instance: `const currency = client.Currency()`
+Create an instance: `const currency = client.currency`
 
 #### Operations
 
@@ -282,19 +291,19 @@ Create an instance: `const currency = client.Currency()`
 #### Example: Load
 
 ```ts
-const currency = await client.Currency().load({ id: 'currency_id' })
+const currency = await client.currency.load({ id: 'currency_id' })
 ```
 
 #### Example: List
 
 ```ts
-const currencys = await client.Currency().list()
+const currencys = await client.currency.list()
 ```
 
 
 ### DollarQuote
 
-Create an instance: `const dollar_quote = client.DollarQuote()`
+Create an instance: `const dollar_quote = client.dollar_quote`
 
 #### Operations
 
@@ -315,19 +324,19 @@ Create an instance: `const dollar_quote = client.DollarQuote()`
 #### Example: Load
 
 ```ts
-const dollar_quote = await client.DollarQuote().load({ id: 'dollar_quote_id' })
+const dollar_quote = await client.dollar_quote.load({ id: 'dollar_quote_id' })
 ```
 
 #### Example: List
 
 ```ts
-const dollar_quotes = await client.DollarQuote().list()
+const dollar_quotes = await client.dollar_quote.list()
 ```
 
 
 ### GetRoot
 
-Create an instance: `const get_root = client.GetRoot()`
+Create an instance: `const get_root = client.get_root`
 
 #### Operations
 
@@ -345,7 +354,7 @@ Create an instance: `const get_root = client.GetRoot()`
 #### Example: Load
 
 ```ts
-const get_root = await client.GetRoot().load({ id: 'get_root_id' })
+const get_root = await client.get_root.load({ id: 'get_root_id' })
 ```
 
 
@@ -420,11 +429,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$currency = $client->currency();
+$currency->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $currency->dataGet() now returns the loaded currency data
+// $currency->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

@@ -144,16 +144,23 @@ class ArgentofxSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class ArgentofxSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,25 +212,58 @@ class ArgentofxSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def currency(self):
+        """Idiomatic facade: client.currency.list() / client.currency.load({"id": ...})."""
+        from entity.currency_entity import CurrencyEntity
+        cached = getattr(self, "_currency", None)
+        if cached is None:
+            cached = CurrencyEntity(self, None)
+            self._currency = cached
+        return cached
 
     def Currency(self, data=None):
+        # Deprecated: use client.currency instead.
         from entity.currency_entity import CurrencyEntity
         return CurrencyEntity(self, data)
 
 
+    @property
+    def dollar_quote(self):
+        """Idiomatic facade: client.dollar_quote.list() / client.dollar_quote.load({"id": ...})."""
+        from entity.dollar_quote_entity import DollarQuoteEntity
+        cached = getattr(self, "_dollar_quote", None)
+        if cached is None:
+            cached = DollarQuoteEntity(self, None)
+            self._dollar_quote = cached
+        return cached
+
     def DollarQuote(self, data=None):
+        # Deprecated: use client.dollar_quote instead.
         from entity.dollar_quote_entity import DollarQuoteEntity
         return DollarQuoteEntity(self, data)
 
 
+    @property
+    def get_root(self):
+        """Idiomatic facade: client.get_root.list() / client.get_root.load({"id": ...})."""
+        from entity.get_root_entity import GetRootEntity
+        cached = getattr(self, "_get_root", None)
+        if cached is None:
+            cached = GetRootEntity(self, None)
+            self._get_root = cached
+        return cached
+
     def GetRoot(self, data=None):
+        # Deprecated: use client.get_root instead.
         from entity.get_root_entity import GetRootEntity
         return GetRootEntity(self, data)
 

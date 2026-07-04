@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://fastapiproject-1-eziw.onrender.com',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -139,7 +135,8 @@ class Config {
                     "name": "id",
                     "orig": "currency",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },
@@ -242,7 +239,8 @@ class Config {
                     "name": "type",
                     "orig": "type",
                     "reqd": true,
-                    "type": "`$STRING`"
+                    "type": "`$STRING`",
+                    "index$": 0
                   }
                 ]
               },

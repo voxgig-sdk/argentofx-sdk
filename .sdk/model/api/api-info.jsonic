@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         url: "https://fastapiproject-1-eziw.onrender.com/docs"
       }

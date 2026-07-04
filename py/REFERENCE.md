@@ -20,7 +20,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `dict` | SDK configuration options. |
-| `options["apikey"]` | `str` | API key for authentication. |
 | `options["base"]` | `str` | Base URL for API requests. |
 | `options["prefix"]` | `str` | URL prefix appended after base. |
 | `options["suffix"]` | `str` | URL suffix appended after path. |
@@ -62,9 +61,9 @@ Return a deep copy of the current SDK options.
 
 Return a copy of the SDK utility object.
 
-#### `direct(fetchargs=None) -> tuple`
+#### `direct(fetchargs=None) -> dict`
 
-Make a direct HTTP request to any API endpoint. Returns `(result, err)`.
+Make a direct HTTP request to any API endpoint. Returns a result `dict` with `ok`, `status`, `headers`, and `data` (or `err` on failure). This escape hatch never raises — branch on `result["ok"]`.
 
 **Parameters:**
 
@@ -77,11 +76,11 @@ Make a direct HTTP request to any API endpoint. Returns `(result, err)`.
 | `fetchargs["headers"]` | `dict` | Request headers (merged with defaults). |
 | `fetchargs["body"]` | `any` | Request body (dicts are JSON-serialized). |
 
-**Returns:** `(result_dict, err)`
+**Returns:** `result_dict`
 
-#### `prepare(fetchargs=None) -> tuple`
+#### `prepare(fetchargs=None) -> dict`
 
-Prepare a fetch definition without sending. Returns `(fetchdef, err)`.
+Prepare a fetch definition without sending. Returns the `fetchdef` and raises on error.
 
 
 ---
@@ -89,7 +88,7 @@ Prepare a fetch definition without sending. Returns `(fetchdef, err)`.
 ## CurrencyEntity
 
 ```python
-currency = client.Currency()
+currency = client.currency
 ```
 
 ### Fields
@@ -104,20 +103,20 @@ currency = client.Currency()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.Currency().list({})
+results = client.currency.list({})
 ```
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.Currency().load({"id": "currency_id"})
+result = client.currency.load({"id": "currency_id"})
 ```
 
 ### Common Methods
@@ -152,7 +151,7 @@ Return the entity name.
 ## DollarQuoteEntity
 
 ```python
-dollar_quote = client.DollarQuote()
+dollar_quote = client.dollar_quote
 ```
 
 ### Fields
@@ -166,20 +165,20 @@ dollar_quote = client.DollarQuote()
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> tuple`
+#### `list(reqmatch, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results, err = client.DollarQuote().list({})
+results = client.dollar_quote.list({})
 ```
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.DollarQuote().load({"id": "dollar_quote_id"})
+result = client.dollar_quote.load({"id": "dollar_quote_id"})
 ```
 
 ### Common Methods
@@ -214,7 +213,7 @@ Return the entity name.
 ## GetRootEntity
 
 ```python
-get_root = client.GetRoot()
+get_root = client.get_root
 ```
 
 ### Fields
@@ -226,12 +225,12 @@ get_root = client.GetRoot()
 
 ### Operations
 
-#### `load(reqmatch, ctrl=None) -> tuple`
+#### `load(reqmatch, ctrl=None) -> dict`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result, err = client.GetRoot().load({"id": "get_root_id"})
+result = client.get_root.load({"id": "get_root_id"})
 ```
 
 ### Common Methods

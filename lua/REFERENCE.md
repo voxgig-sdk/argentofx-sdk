@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -92,7 +91,7 @@ same parameters as `direct()`.
 ## CurrencyEntity
 
 ```lua
-local currency = client:Currency(nil)
+local currency = client:currency(nil)
 ```
 
 ### Fields
@@ -112,7 +111,7 @@ local currency = client:Currency(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Currency():list()
+local results, err = client:currency():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -120,7 +119,7 @@ local results, err = client:Currency():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Currency():load({ id = "currency_id" })
+local result, err = client:currency():load({ id = "currency_id" })
 ```
 
 ### Common Methods
@@ -156,7 +155,7 @@ Return the entity name.
 ## DollarQuoteEntity
 
 ```lua
-local dollar_quote = client:DollarQuote(nil)
+local dollar_quote = client:dollar_quote(nil)
 ```
 
 ### Fields
@@ -175,7 +174,7 @@ local dollar_quote = client:DollarQuote(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:DollarQuote():list()
+local results, err = client:dollar_quote():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -183,7 +182,7 @@ local results, err = client:DollarQuote():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:DollarQuote():load({ id = "dollar_quote_id" })
+local result, err = client:dollar_quote():load({ id = "dollar_quote_id" })
 ```
 
 ### Common Methods
@@ -219,7 +218,7 @@ Return the entity name.
 ## GetRootEntity
 
 ```lua
-local get_root = client:GetRoot(nil)
+local get_root = client:get_root(nil)
 ```
 
 ### Fields
@@ -236,7 +235,7 @@ local get_root = client:GetRoot(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GetRoot():load({ id = "get_root_id" })
+local result, err = client:get_root():load({ id = "get_root_id" })
 ```
 
 ### Common Methods

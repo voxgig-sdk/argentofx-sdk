@@ -50,14 +50,12 @@ class TestCurrencyEntity:
         currency_ref01_ent = client.Currency(None)
         currency_ref01_match = {}
 
-        currency_ref01_list_result, err = currency_ref01_ent.list(currency_ref01_match, None)
-        assert err is None
+        currency_ref01_list_result = currency_ref01_ent.list(currency_ref01_match, None)
         assert isinstance(currency_ref01_list_result, list)
 
         # LOAD
         currency_ref01_match_dt0 = {}
-        currency_ref01_data_dt0_loaded, err = currency_ref01_ent.load(currency_ref01_match_dt0, None)
-        assert err is None
+        currency_ref01_data_dt0_loaded = currency_ref01_ent.load(currency_ref01_match_dt0, None)
         assert currency_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _currency_basic_setup(extra):
         "ARGENTOFX_TEST_CURRENCY_ENTID": idmap,
         "ARGENTOFX_TEST_LIVE": "FALSE",
         "ARGENTOFX_TEST_EXPLAIN": "FALSE",
-        "ARGENTOFX_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _currency_basic_setup(extra):
     if env.get("ARGENTOFX_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ARGENTOFX_APIKEY"),
             },
             extra or {},
         ])

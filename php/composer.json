@@ -20,13 +20,10 @@
     "phpunit/phpunit": "^11.0"
   },
   "autoload": {
-    "psr-4": {
-      "Argentofx\\": "src/"
-    }
+    "files": ["argentofx_sdk.php"],
+    "classmap": ["core/", "entity/", "feature/", "types/", "utility/", "config.php", "features.php"]
   },
   "autoload-dev": {
-    "psr-4": {
-      "Argentofx\\Tests\\": "test/"
-    }
+    "classmap": ["test/"]
   }
 }

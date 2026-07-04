@@ -42,8 +42,7 @@ class GetRootEntityTest < Minitest::Test
     # LOAD
     get_root_ref01_ent = client.GetRoot(nil)
     get_root_ref01_match_dt0 = {}
-    get_root_ref01_data_dt0_loaded, err = get_root_ref01_ent.load(get_root_ref01_match_dt0, nil)
-    assert_nil err
+    get_root_ref01_data_dt0_loaded = get_root_ref01_ent.load(get_root_ref01_match_dt0, nil)
     assert !get_root_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def get_root_basic_setup(extra)
     "ARGENTOFX_TEST_GET_ROOT_ENTID" => idmap,
     "ARGENTOFX_TEST_LIVE" => "FALSE",
     "ARGENTOFX_TEST_EXPLAIN" => "FALSE",
-    "ARGENTOFX_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def get_root_basic_setup(extra)
   if env["ARGENTOFX_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ARGENTOFX_APIKEY"],
       },
       extra || {},
     ])

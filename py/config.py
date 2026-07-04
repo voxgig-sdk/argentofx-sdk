@@ -15,9 +15,6 @@ def make_config():
         },
         "options": {
             "base": "https://fastapiproject-1-eziw.onrender.com",
-            "auth": {
-                "prefix": "Bearer",
-            },
             "headers": {
         "content-type": "application/json",
       },
@@ -106,6 +103,7 @@ def make_config():
                       "orig": "currency",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                 },
@@ -209,6 +207,7 @@ def make_config():
                       "orig": "type",
                       "reqd": True,
                       "type": "`$STRING`",
+                      "index$": 0,
                     },
                   ],
                 },

@@ -50,14 +50,12 @@ class CurrencyEntityTest extends TestCase
         $currency_ref01_ent = $client->Currency(null);
         $currency_ref01_match = [];
 
-        [$currency_ref01_list_result, $err] = $currency_ref01_ent->list($currency_ref01_match, null);
-        $this->assertNull($err);
+        $currency_ref01_list_result = $currency_ref01_ent->list($currency_ref01_match, null);
         $this->assertIsArray($currency_ref01_list_result);
 
         // LOAD
         $currency_ref01_match_dt0 = [];
-        [$currency_ref01_data_dt0_loaded, $err] = $currency_ref01_ent->load($currency_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $currency_ref01_data_dt0_loaded = $currency_ref01_ent->load($currency_ref01_match_dt0, null);
         $this->assertNotNull($currency_ref01_data_dt0_loaded);
 
     }
@@ -92,7 +90,6 @@ function currency_basic_setup($extra)
         "ARGENTOFX_TEST_CURRENCY_ENTID" => $idmap,
         "ARGENTOFX_TEST_LIVE" => "FALSE",
         "ARGENTOFX_TEST_EXPLAIN" => "FALSE",
-        "ARGENTOFX_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -104,7 +101,6 @@ function currency_basic_setup($extra)
     if ($env["ARGENTOFX_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ARGENTOFX_APIKEY"],
             ],
             $extra ?? [],
         ]);

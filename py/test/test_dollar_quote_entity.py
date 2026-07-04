@@ -50,14 +50,12 @@ class TestDollarQuoteEntity:
         dollar_quote_ref01_ent = client.DollarQuote(None)
         dollar_quote_ref01_match = {}
 
-        dollar_quote_ref01_list_result, err = dollar_quote_ref01_ent.list(dollar_quote_ref01_match, None)
-        assert err is None
+        dollar_quote_ref01_list_result = dollar_quote_ref01_ent.list(dollar_quote_ref01_match, None)
         assert isinstance(dollar_quote_ref01_list_result, list)
 
         # LOAD
         dollar_quote_ref01_match_dt0 = {}
-        dollar_quote_ref01_data_dt0_loaded, err = dollar_quote_ref01_ent.load(dollar_quote_ref01_match_dt0, None)
-        assert err is None
+        dollar_quote_ref01_data_dt0_loaded = dollar_quote_ref01_ent.load(dollar_quote_ref01_match_dt0, None)
         assert dollar_quote_ref01_data_dt0_loaded is not None
 
 
@@ -98,7 +96,6 @@ def _dollar_quote_basic_setup(extra):
         "ARGENTOFX_TEST_DOLLAR_QUOTE_ENTID": idmap,
         "ARGENTOFX_TEST_LIVE": "FALSE",
         "ARGENTOFX_TEST_EXPLAIN": "FALSE",
-        "ARGENTOFX_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -109,7 +106,6 @@ def _dollar_quote_basic_setup(extra):
     if env.get("ARGENTOFX_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ARGENTOFX_APIKEY"),
             },
             extra or {},
         ])

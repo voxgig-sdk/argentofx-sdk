@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch GetRootLoadMatch
+---@param ctrl? table
+---@return GetRoot
+---@return string? err
 function GetRootEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

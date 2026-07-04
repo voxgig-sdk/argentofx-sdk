@@ -50,14 +50,12 @@ class DollarQuoteEntityTest extends TestCase
         $dollar_quote_ref01_ent = $client->DollarQuote(null);
         $dollar_quote_ref01_match = [];
 
-        [$dollar_quote_ref01_list_result, $err] = $dollar_quote_ref01_ent->list($dollar_quote_ref01_match, null);
-        $this->assertNull($err);
+        $dollar_quote_ref01_list_result = $dollar_quote_ref01_ent->list($dollar_quote_ref01_match, null);
         $this->assertIsArray($dollar_quote_ref01_list_result);
 
         // LOAD
         $dollar_quote_ref01_match_dt0 = [];
-        [$dollar_quote_ref01_data_dt0_loaded, $err] = $dollar_quote_ref01_ent->load($dollar_quote_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $dollar_quote_ref01_data_dt0_loaded = $dollar_quote_ref01_ent->load($dollar_quote_ref01_match_dt0, null);
         $this->assertNotNull($dollar_quote_ref01_data_dt0_loaded);
 
     }
@@ -92,7 +90,6 @@ function dollar_quote_basic_setup($extra)
         "ARGENTOFX_TEST_DOLLAR_QUOTE_ENTID" => $idmap,
         "ARGENTOFX_TEST_LIVE" => "FALSE",
         "ARGENTOFX_TEST_EXPLAIN" => "FALSE",
-        "ARGENTOFX_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -104,7 +101,6 @@ function dollar_quote_basic_setup($extra)
     if ($env["ARGENTOFX_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ARGENTOFX_APIKEY"],
             ],
             $extra ?? [],
         ]);

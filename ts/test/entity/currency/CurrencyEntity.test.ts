@@ -114,7 +114,6 @@ function basicSetup(extra?: any) {
     'ARGENTOFX_TEST_CURRENCY_ENTID': idmap,
     'ARGENTOFX_TEST_LIVE': 'FALSE',
     'ARGENTOFX_TEST_EXPLAIN': 'FALSE',
-    'ARGENTOFX_APIKEY': 'NONE',
   })
 
   idmap = env['ARGENTOFX_TEST_CURRENCY_ENTID']
@@ -124,7 +123,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new ArgentofxSDK(merge([
       {
-        apikey: env.ARGENTOFX_APIKEY,
       },
       extra
     ]))

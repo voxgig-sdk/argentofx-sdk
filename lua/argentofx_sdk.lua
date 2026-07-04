@@ -244,18 +244,57 @@ end
 
 
 
+-- Idiomatic facade: client:currency():list() / client:currency():load({ id = ... })
+function ArgentofxSDK:currency(data)
+  local EntityMod = require("entity.currency_entity")
+  if data == nil then
+    if self._currency == nil then
+      self._currency = EntityMod.new(self, nil)
+    end
+    return self._currency
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:currency() instead.
 function ArgentofxSDK:Currency(data)
   local EntityMod = require("entity.currency_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:dollar_quote():list() / client:dollar_quote():load({ id = ... })
+function ArgentofxSDK:dollar_quote(data)
+  local EntityMod = require("entity.dollar_quote_entity")
+  if data == nil then
+    if self._dollar_quote == nil then
+      self._dollar_quote = EntityMod.new(self, nil)
+    end
+    return self._dollar_quote
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:dollar_quote() instead.
 function ArgentofxSDK:DollarQuote(data)
   local EntityMod = require("entity.dollar_quote_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:get_root():list() / client:get_root():load({ id = ... })
+function ArgentofxSDK:get_root(data)
+  local EntityMod = require("entity.get_root_entity")
+  if data == nil then
+    if self._get_root == nil then
+      self._get_root = EntityMod.new(self, nil)
+    end
+    return self._get_root
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:get_root() instead.
 function ArgentofxSDK:GetRoot(data)
   local EntityMod = require("entity.get_root_entity")
   return EntityMod.new(self, data)

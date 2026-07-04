@@ -9,9 +9,12 @@ The TypeScript SDK for the Argentofx API — a type-safe, entity-oriented client
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/argentofx
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/argentofx-sdk/releases](https://github.com/voxgig-sdk/argentofx-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { ArgentofxSDK } from 'argentofx'
+import { ArgentofxSDK } from '@voxgig-sdk/argentofx'
 
-const client = new ArgentofxSDK({
-  apikey: process.env.ARGENTOFX_APIKEY,
-})
+const client = new ArgentofxSDK()
 ```
 
 ### 2. List currencys
 
 ```ts
-const result = await client.Currency().list()
+const result = await client.currency.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -42,7 +43,7 @@ if (result.ok) {
 ### 3. Load a currency
 
 ```ts
-const result = await client.Currency().load({ id: 'example_id' })
+const result = await client.currency.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -91,7 +92,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ArgentofxSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.currency.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -99,7 +100,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new ArgentofxSDK({ apikey: '...' })
+const client = new ArgentofxSDK()
 const testClient = client.tester()
 ```
 
@@ -108,7 +109,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.currency
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -135,7 +136,6 @@ const logger = {
 }
 
 const client = new ArgentofxSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -146,7 +146,6 @@ Create a `.env.local` file at the project root:
 
 ```
 ARGENTOFX_TEST_LIVE=TRUE
-ARGENTOFX_APIKEY=<your-key>
 ```
 
 Then run:
@@ -164,7 +163,6 @@ cd ts && npm test
 
 ```ts
 new ArgentofxSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -175,7 +173,6 @@ new ArgentofxSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -308,7 +305,7 @@ API path: `/`
 
 ### Currency
 
-Create an instance: `const currency = client.Currency()`
+Create an instance: `const currency = client.currency`
 
 #### Operations
 
@@ -330,19 +327,19 @@ Create an instance: `const currency = client.Currency()`
 #### Example: Load
 
 ```ts
-const currency = await client.Currency().load({ id: 'currency_id' })
+const currency = await client.currency.load({ id: 'currency_id' })
 ```
 
 #### Example: List
 
 ```ts
-const currencys = await client.Currency().list()
+const currencys = await client.currency.list()
 ```
 
 
 ### DollarQuote
 
-Create an instance: `const dollar_quote = client.DollarQuote()`
+Create an instance: `const dollar_quote = client.dollar_quote`
 
 #### Operations
 
@@ -363,19 +360,19 @@ Create an instance: `const dollar_quote = client.DollarQuote()`
 #### Example: Load
 
 ```ts
-const dollar_quote = await client.DollarQuote().load({ id: 'dollar_quote_id' })
+const dollar_quote = await client.dollar_quote.load({ id: 'dollar_quote_id' })
 ```
 
 #### Example: List
 
 ```ts
-const dollar_quotes = await client.DollarQuote().list()
+const dollar_quotes = await client.dollar_quote.list()
 ```
 
 
 ### GetRoot
 
-Create an instance: `const get_root = client.GetRoot()`
+Create an instance: `const get_root = client.get_root`
 
 #### Operations
 
@@ -393,7 +390,7 @@ Create an instance: `const get_root = client.GetRoot()`
 #### Example: Load
 
 ```ts
-const get_root = await client.GetRoot().load({ id: 'get_root_id' })
+const get_root = await client.get_root.load({ id: 'get_root_id' })
 ```
 
 
@@ -454,7 +451,7 @@ argentofx/
 Import the SDK from the package root:
 
 ```ts
-import { ArgentofxSDK } from 'argentofx'
+import { ArgentofxSDK } from '@voxgig-sdk/argentofx'
 ```
 
 ### Entity state
@@ -464,11 +461,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const currency = client.currency
+await currency.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// currency.data() now returns the loaded currency data
+// currency.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

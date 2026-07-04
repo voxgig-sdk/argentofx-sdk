@@ -55,6 +55,9 @@ class DollarQuoteEntity
         return new DollarQuoteEntity($this->_client, $opts);
     }
 
+    /**
+     * @param DollarQuote|array $args DollarQuote data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class DollarQuoteEntity
         }
     }
 
+    /**
+     * @return DollarQuote|array The current DollarQuote data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of DollarQuote fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class DollarQuoteEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of DollarQuote fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -84,7 +96,16 @@ class DollarQuoteEntity
     }
 
     
-    public function load($reqmatch, $ctrl = null): array
+    /**
+     * Load a single DollarQuote.
+     *
+     * @param DollarQuoteLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed DollarQuoteLoadMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return DollarQuote|array The loaded DollarQuote as an assoc-array at the
+     *   SDK boundary; throws ArgentofxError on failure (item-5 convention).
+     */
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -110,7 +131,16 @@ class DollarQuoteEntity
 
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List DollarQuote items matching the given filter.
+     *
+     * @param DollarQuoteListMatch|array|null $reqmatch Match filter (any subset
+     *   of DollarQuote fields) as an assoc-array; DollarQuoteListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return DollarQuote[]|array A list of DollarQuote items as assoc-arrays at
+     *   the SDK boundary; throws ArgentofxError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -138,7 +168,7 @@ class DollarQuoteEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

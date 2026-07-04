@@ -43,14 +43,12 @@ class DollarQuoteEntityTest < Minitest::Test
     dollar_quote_ref01_ent = client.DollarQuote(nil)
     dollar_quote_ref01_match = {}
 
-    dollar_quote_ref01_list_result, err = dollar_quote_ref01_ent.list(dollar_quote_ref01_match, nil)
-    assert_nil err
+    dollar_quote_ref01_list_result = dollar_quote_ref01_ent.list(dollar_quote_ref01_match, nil)
     assert dollar_quote_ref01_list_result.is_a?(Array)
 
     # LOAD
     dollar_quote_ref01_match_dt0 = {}
-    dollar_quote_ref01_data_dt0_loaded, err = dollar_quote_ref01_ent.load(dollar_quote_ref01_match_dt0, nil)
-    assert_nil err
+    dollar_quote_ref01_data_dt0_loaded = dollar_quote_ref01_ent.load(dollar_quote_ref01_match_dt0, nil)
     assert !dollar_quote_ref01_data_dt0_loaded.nil?
 
   end
@@ -89,7 +87,6 @@ def dollar_quote_basic_setup(extra)
     "ARGENTOFX_TEST_DOLLAR_QUOTE_ENTID" => idmap,
     "ARGENTOFX_TEST_LIVE" => "FALSE",
     "ARGENTOFX_TEST_EXPLAIN" => "FALSE",
-    "ARGENTOFX_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -101,7 +98,6 @@ def dollar_quote_basic_setup(extra)
   if env["ARGENTOFX_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ARGENTOFX_APIKEY"],
       },
       extra || {},
     ])

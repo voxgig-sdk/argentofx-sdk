@@ -43,14 +43,12 @@ class CurrencyEntityTest < Minitest::Test
     currency_ref01_ent = client.Currency(nil)
     currency_ref01_match = {}
 
-    currency_ref01_list_result, err = currency_ref01_ent.list(currency_ref01_match, nil)
-    assert_nil err
+    currency_ref01_list_result = currency_ref01_ent.list(currency_ref01_match, nil)
     assert currency_ref01_list_result.is_a?(Array)
 
     # LOAD
     currency_ref01_match_dt0 = {}
-    currency_ref01_data_dt0_loaded, err = currency_ref01_ent.load(currency_ref01_match_dt0, nil)
-    assert_nil err
+    currency_ref01_data_dt0_loaded = currency_ref01_ent.load(currency_ref01_match_dt0, nil)
     assert !currency_ref01_data_dt0_loaded.nil?
 
   end
@@ -89,7 +87,6 @@ def currency_basic_setup(extra)
     "ARGENTOFX_TEST_CURRENCY_ENTID" => idmap,
     "ARGENTOFX_TEST_LIVE" => "FALSE",
     "ARGENTOFX_TEST_EXPLAIN" => "FALSE",
-    "ARGENTOFX_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -101,7 +98,6 @@ def currency_basic_setup(extra)
   if env["ARGENTOFX_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ARGENTOFX_APIKEY"],
       },
       extra || {},
     ])

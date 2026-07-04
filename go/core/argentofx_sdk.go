@@ -245,16 +245,25 @@ func (sdk *ArgentofxSDK) Direct(fetchargs map[string]any) (map[string]any, error
 }
 
 
+// Currency returns a Currency entity bound to this client.
+// Idiomatic usage: client.Currency(nil).List(nil, nil) or
+// client.Currency(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentofxSDK) Currency(data map[string]any) ArgentofxEntity {
 	return NewCurrencyEntityFunc(sdk, data)
 }
 
 
+// DollarQuote returns a DollarQuote entity bound to this client.
+// Idiomatic usage: client.DollarQuote(nil).List(nil, nil) or
+// client.DollarQuote(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentofxSDK) DollarQuote(data map[string]any) ArgentofxEntity {
 	return NewDollarQuoteEntityFunc(sdk, data)
 }
 
 
+// GetRoot returns a GetRoot entity bound to this client.
+// Idiomatic usage: client.GetRoot(nil).List(nil, nil) or
+// client.GetRoot(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *ArgentofxSDK) GetRoot(data map[string]any) ArgentofxEntity {
 	return NewGetRootEntityFunc(sdk, data)
 }

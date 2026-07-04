@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -134,7 +133,7 @@ Alias for `ArgentofxSDK.test()`.
 ## CurrencyEntity
 
 ```ts
-const currency = client.Currency()
+const currency = client.currency
 ```
 
 ### Fields
@@ -154,7 +153,7 @@ const currency = client.Currency()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Currency().list()
+const results = await client.currency.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -162,7 +161,7 @@ const results = await client.Currency().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Currency().load({ id: 'currency_id' })
+const result = await client.currency.load({ id: 'currency_id' })
 ```
 
 ### Common Methods
@@ -196,7 +195,7 @@ Return a copy of the entity options.
 ## DollarQuoteEntity
 
 ```ts
-const dollar_quote = client.DollarQuote()
+const dollar_quote = client.dollar_quote
 ```
 
 ### Fields
@@ -215,7 +214,7 @@ const dollar_quote = client.DollarQuote()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.DollarQuote().list()
+const results = await client.dollar_quote.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -223,7 +222,7 @@ const results = await client.DollarQuote().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.DollarQuote().load({ id: 'dollar_quote_id' })
+const result = await client.dollar_quote.load({ id: 'dollar_quote_id' })
 ```
 
 ### Common Methods
@@ -257,7 +256,7 @@ Return a copy of the entity options.
 ## GetRootEntity
 
 ```ts
-const get_root = client.GetRoot()
+const get_root = client.get_root
 ```
 
 ### Fields
@@ -274,7 +273,7 @@ const get_root = client.GetRoot()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GetRoot().load({ id: 'get_root_id' })
+const result = await client.get_root.load({ id: 'get_root_id' })
 ```
 
 ### Common Methods

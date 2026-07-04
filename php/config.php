@@ -20,9 +20,6 @@ class ArgentofxConfig
             ],
             "options" => [
                 "base" => "https://fastapiproject-1-eziw.onrender.com",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
@@ -111,6 +108,7 @@ class ArgentofxConfig
                         'orig' => 'currency',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -214,6 +212,7 @@ class ArgentofxConfig
                         'orig' => 'type',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                   ],

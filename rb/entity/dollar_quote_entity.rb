@@ -45,6 +45,7 @@ class DollarQuoteEntity
     end
   end
 
+  # @return [DollarQuote, Hash] the current DollarQuote data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class DollarQuoteEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of DollarQuote fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single DollarQuote.
+  #
+  # @param reqmatch [DollarQuoteLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [DollarQuote, Hash] the loaded DollarQuote; raises ArgentofxError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class DollarQuoteEntity
 
 
   
+  # List DollarQuote items matching the given filter.
+  #
+  # @param reqmatch [DollarQuoteListMatch, Hash, nil] match filter (any subset of DollarQuote fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<DollarQuote>, Array] the matching DollarQuote items; raises ArgentofxError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
