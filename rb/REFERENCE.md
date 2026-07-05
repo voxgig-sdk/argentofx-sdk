@@ -8,7 +8,7 @@ Complete API reference for the Argentofx Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'argentofx_sdk'
+require_relative 'Argentofx_sdk'
 
 client = ArgentofxSDK.new(options)
 ```
@@ -101,20 +101,20 @@ currency = client.Currency
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `compra` | ``$NUMBER`` | Yes |  |
-| `fecha_actualizacion` | ``$STRING`` | Yes |  |
-| `moneda` | ``$STRING`` | Yes |  |
-| `nombre` | ``$STRING`` | Yes |  |
-| `venta` | ``$NUMBER`` | Yes |  |
+| `compra` | `Float` | Yes |  |
+| `fecha_actualizacion` | `String` | Yes |  |
+| `moneda` | `String` | Yes |  |
+| `nombre` | `String` | Yes |  |
+| `venta` | `Float` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Currency.list(nil)
+results = client.Currency.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -165,19 +165,19 @@ dollar_quote = client.DollarQuote
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `compra` | ``$NUMBER`` | Yes |  |
-| `fecha_actualizacion` | ``$STRING`` | Yes |  |
-| `nombre` | ``$STRING`` | Yes |  |
-| `venta` | ``$NUMBER`` | Yes |  |
+| `compra` | `Float` | Yes |  |
+| `fecha_actualizacion` | `String` | Yes |  |
+| `nombre` | `String` | Yes |  |
+| `venta` | `Float` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.DollarQuote.list(nil)
+results = client.DollarQuote.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -185,7 +185,7 @@ results = client.DollarQuote.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.DollarQuote.load({ "id" => "dollar_quote_id" })
+result = client.DollarQuote.load()
 ```
 
 ### Common Methods
@@ -228,8 +228,8 @@ get_root = client.GetRoot
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `documentation` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
+| `documentation` | `String` | No |  |
+| `message` | `String` | No |  |
 
 ### Operations
 
@@ -238,7 +238,7 @@ get_root = client.GetRoot
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.GetRoot.load({ "id" => "get_root_id" })
+result = client.GetRoot.load()
 ```
 
 ### Common Methods

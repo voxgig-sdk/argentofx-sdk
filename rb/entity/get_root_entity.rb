@@ -67,10 +67,12 @@ class GetRootEntity
   
   # Load a single GetRoot.
   #
-  # @param reqmatch [GetRootLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param reqmatch [GetRootLoadMatch, Hash, nil] match criteria (id/query fields);
+  #   optional — an entity with no id-like key loads with no match (nil is treated
+  #   as an empty match, so client.GetRoot.load works with no args).
   # @param ctrl [Object, nil] optional per-call control
   # @return [GetRoot, Hash] the loaded GetRoot; raises ArgentofxError on failure
-  def load(reqmatch, ctrl = nil)
+  def load(reqmatch = nil, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
       "opname" => "load",

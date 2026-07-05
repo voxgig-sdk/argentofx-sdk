@@ -53,11 +53,11 @@ Create a new `DollarQuoteEntity` instance. Pass `null` for no initial data.
 
 Create a new `GetRootEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): ArgentofxUtility`
 
 Return a copy of the SDK utility object.
 
@@ -100,20 +100,20 @@ $currency = $client->Currency();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `compra` | ``$NUMBER`` | Yes |  |
-| `fecha_actualizacion` | ``$STRING`` | Yes |  |
-| `moneda` | ``$STRING`` | Yes |  |
-| `nombre` | ``$STRING`` | Yes |  |
-| `venta` | ``$NUMBER`` | Yes |  |
+| `compra` | `float` | Yes |  |
+| `fecha_actualizacion` | `string` | Yes |  |
+| `moneda` | `string` | Yes |  |
+| `nombre` | `string` | Yes |  |
+| `venta` | `float` | Yes |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Currency()->list([]);
+$results = $client->Currency()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -126,19 +126,19 @@ $result = $client->Currency()->load(["id" => "currency_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -147,7 +147,7 @@ Set the entity match criteria.
 Create a new `CurrencyEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -164,19 +164,19 @@ $dollar_quote = $client->DollarQuote();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `compra` | ``$NUMBER`` | Yes |  |
-| `fecha_actualizacion` | ``$STRING`` | Yes |  |
-| `nombre` | ``$STRING`` | Yes |  |
-| `venta` | ``$NUMBER`` | Yes |  |
+| `compra` | `float` | Yes |  |
+| `fecha_actualizacion` | `string` | Yes |  |
+| `nombre` | `string` | Yes |  |
+| `venta` | `float` | Yes |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->DollarQuote()->list([]);
+$results = $client->DollarQuote()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -184,24 +184,24 @@ $results = $client->DollarQuote()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->DollarQuote()->load(["id" => "dollar_quote_id"]);
+$result = $client->DollarQuote()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -210,7 +210,7 @@ Set the entity match criteria.
 Create a new `DollarQuoteEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -227,8 +227,8 @@ $get_root = $client->GetRoot();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `documentation` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
+| `documentation` | `string` | No |  |
+| `message` | `string` | No |  |
 
 ### Operations
 
@@ -237,24 +237,24 @@ $get_root = $client->GetRoot();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->GetRoot()->load(["id" => "get_root_id"]);
+$result = $client->GetRoot()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -263,7 +263,7 @@ Set the entity match criteria.
 Create a new `GetRootEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

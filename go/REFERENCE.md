@@ -105,11 +105,11 @@ currency := client.Currency(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `compra` | ``$NUMBER`` | Yes |  |
-| `fecha_actualizacion` | ``$STRING`` | Yes |  |
-| `moneda` | ``$STRING`` | Yes |  |
-| `nombre` | ``$STRING`` | Yes |  |
-| `venta` | ``$NUMBER`` | Yes |  |
+| `compra` | `float64` | Yes |  |
+| `fecha_actualizacion` | `string` | Yes |  |
+| `moneda` | `string` | Yes |  |
+| `nombre` | `string` | Yes |  |
+| `venta` | `float64` | Yes |  |
 
 ### Operations
 
@@ -163,10 +163,10 @@ dollar_quote := client.DollarQuote(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `compra` | ``$NUMBER`` | Yes |  |
-| `fecha_actualizacion` | ``$STRING`` | Yes |  |
-| `nombre` | ``$STRING`` | Yes |  |
-| `venta` | ``$NUMBER`` | Yes |  |
+| `compra` | `float64` | Yes |  |
+| `fecha_actualizacion` | `string` | Yes |  |
+| `nombre` | `string` | Yes |  |
+| `venta` | `float64` | Yes |  |
 
 ### Operations
 
@@ -183,7 +183,7 @@ results, err := client.DollarQuote(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.DollarQuote(nil).Load(map[string]any{"id": "dollar_quote_id"}, nil)
+result, err := client.DollarQuote(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -220,8 +220,8 @@ get_root := client.GetRoot(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `documentation` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
+| `documentation` | `string` | No |  |
+| `message` | `string` | No |  |
 
 ### Operations
 
@@ -230,7 +230,7 @@ get_root := client.GetRoot(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.GetRoot(nil).Load(map[string]any{"id": "get_root_id"}, nil)
+result, err := client.GetRoot(nil).Load(nil, nil)
 ```
 
 ### Common Methods

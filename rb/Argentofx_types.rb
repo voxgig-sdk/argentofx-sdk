@@ -42,7 +42,7 @@ CurrencyLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Currency#list (any subset of Currency fields).
+# Request payload for Currency#list.
 #
 # @!attribute [rw] compra
 #   @return [Float, nil]
@@ -97,7 +97,7 @@ DollarQuoteLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for DollarQuote#list (any subset of DollarQuote fields).
+# Request payload for DollarQuote#list.
 #
 # @!attribute [rw] compra
 #   @return [Float, nil]
@@ -131,7 +131,7 @@ GetRoot = Struct.new(
   keyword_init: true
 )
 
-# Match filter for GetRoot#load (any subset of GetRoot fields).
+# Request payload for GetRoot#load.
 #
 # @!attribute [rw] documentation
 #   @return [String, nil]

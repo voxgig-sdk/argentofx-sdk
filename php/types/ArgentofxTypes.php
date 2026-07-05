@@ -28,7 +28,7 @@ class CurrencyLoadMatch
     public string $id;
 }
 
-/** Match filter for Currency#list (any subset of Currency fields). */
+/** Request payload for Currency#list. */
 class CurrencyListMatch
 {
     public ?float $compra = null;
@@ -53,7 +53,7 @@ class DollarQuoteLoadMatch
     public string $type;
 }
 
-/** Match filter for DollarQuote#list (any subset of DollarQuote fields). */
+/** Request payload for DollarQuote#list. */
 class DollarQuoteListMatch
 {
     public ?float $compra = null;
@@ -69,7 +69,7 @@ class GetRoot
     public ?string $message = null;
 }
 
-/** Match filter for GetRoot#load (any subset of GetRoot fields). */
+/** Request payload for GetRoot#load. */
 class GetRootLoadMatch
 {
     public ?string $documentation = null;

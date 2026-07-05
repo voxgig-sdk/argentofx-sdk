@@ -95,20 +95,20 @@ currency = client.Currency()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `compra` | ``$NUMBER`` | Yes |  |
-| `fecha_actualizacion` | ``$STRING`` | Yes |  |
-| `moneda` | ``$STRING`` | Yes |  |
-| `nombre` | ``$STRING`` | Yes |  |
-| `venta` | ``$NUMBER`` | Yes |  |
+| `compra` | `float` | Yes |  |
+| `fecha_actualizacion` | `str` | Yes |  |
+| `moneda` | `str` | Yes |  |
+| `nombre` | `str` | Yes |  |
+| `venta` | `float` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Currency().list({})
+results = client.Currency().list()
 for currency in results:
     print(currency)
 ```
@@ -160,19 +160,19 @@ dollar_quote = client.DollarQuote()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `compra` | ``$NUMBER`` | Yes |  |
-| `fecha_actualizacion` | ``$STRING`` | Yes |  |
-| `nombre` | ``$STRING`` | Yes |  |
-| `venta` | ``$NUMBER`` | Yes |  |
+| `compra` | `float` | Yes |  |
+| `fecha_actualizacion` | `str` | Yes |  |
+| `nombre` | `str` | Yes |  |
+| `venta` | `float` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.DollarQuote().list({})
+results = client.DollarQuote().list()
 for dollar_quote in results:
     print(dollar_quote)
 ```
@@ -182,7 +182,7 @@ for dollar_quote in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.DollarQuote().load({"id": "dollar_quote_id"})
+result = client.DollarQuote().load()
 ```
 
 ### Common Methods
@@ -224,8 +224,8 @@ get_root = client.GetRoot()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `documentation` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
+| `documentation` | `str` | No |  |
+| `message` | `str` | No |  |
 
 ### Operations
 
@@ -234,7 +234,7 @@ get_root = client.GetRoot()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.GetRoot().load({"id": "get_root_id"})
+result = client.GetRoot().load()
 ```
 
 ### Common Methods

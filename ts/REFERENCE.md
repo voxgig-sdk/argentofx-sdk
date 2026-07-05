@@ -140,11 +140,11 @@ const currency = client.Currency()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `compra` | ``$NUMBER`` | Yes |  |
-| `fecha_actualizacion` | ``$STRING`` | Yes |  |
-| `moneda` | ``$STRING`` | Yes |  |
-| `nombre` | ``$STRING`` | Yes |  |
-| `venta` | ``$NUMBER`` | Yes |  |
+| `compra` | `number` | Yes |  |
+| `fecha_actualizacion` | `string` | Yes |  |
+| `moneda` | `string` | Yes |  |
+| `nombre` | `string` | Yes |  |
+| `venta` | `number` | Yes |  |
 
 ### Operations
 
@@ -202,10 +202,10 @@ const dollar_quote = client.DollarQuote()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `compra` | ``$NUMBER`` | Yes |  |
-| `fecha_actualizacion` | ``$STRING`` | Yes |  |
-| `nombre` | ``$STRING`` | Yes |  |
-| `venta` | ``$NUMBER`` | Yes |  |
+| `compra` | `number` | Yes |  |
+| `fecha_actualizacion` | `string` | Yes |  |
+| `nombre` | `string` | Yes |  |
+| `venta` | `number` | Yes |  |
 
 ### Operations
 
@@ -222,7 +222,7 @@ const results = await client.DollarQuote().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.DollarQuote().load({ id: 'dollar_quote_id' })
+const result = await client.DollarQuote().load()
 ```
 
 ### Common Methods
@@ -263,8 +263,8 @@ const get_root = client.GetRoot()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `documentation` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
+| `documentation` | `string` | No |  |
+| `message` | `string` | No |  |
 
 ### Operations
 
@@ -273,7 +273,7 @@ const get_root = client.GetRoot()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GetRoot().load({ id: 'get_root_id' })
+const result = await client.GetRoot().load()
 ```
 
 ### Common Methods

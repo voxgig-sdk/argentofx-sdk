@@ -17,6 +17,11 @@
 ---@field id string
 
 ---@class CurrencyListMatch
+---@field compra? number
+---@field fecha_actualizacion? string
+---@field moneda? string
+---@field nombre? string
+---@field venta? number
 
 ---@class DollarQuote
 ---@field compra number
@@ -28,12 +33,18 @@
 ---@field type string
 
 ---@class DollarQuoteListMatch
+---@field compra? number
+---@field fecha_actualizacion? string
+---@field nombre? string
+---@field venta? number
 
 ---@class GetRoot
 ---@field documentation? string
 ---@field message? string
 
 ---@class GetRootLoadMatch
+---@field documentation? string
+---@field message? string
 
 local M = {}
 

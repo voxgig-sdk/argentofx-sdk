@@ -221,19 +221,19 @@ class ArgentofxSDK:
 
 
     def Currency(self, data=None) -> "CurrencyEntity":
-        """Entity factory: client.Currency().list({}) / client.Currency().load({"id": ...})."""
+        """Entity factory: client.Currency().list() / client.Currency().load({"id": ...})."""
         from entity.currency_entity import CurrencyEntity
         return CurrencyEntity(self, data)
 
 
     def DollarQuote(self, data=None) -> "DollarQuoteEntity":
-        """Entity factory: client.DollarQuote().list({}) / client.DollarQuote().load({"id": ...})."""
+        """Entity factory: client.DollarQuote().list() / client.DollarQuote().load({"id": ...})."""
         from entity.dollar_quote_entity import DollarQuoteEntity
         return DollarQuoteEntity(self, data)
 
 
     def GetRoot(self, data=None) -> "GetRootEntity":
-        """Entity factory: client.GetRoot().list({}) / client.GetRoot().load({"id": ...})."""
+        """Entity factory: client.GetRoot().list() / client.GetRoot().load({"id": ...})."""
         from entity.get_root_entity import GetRootEntity
         return GetRootEntity(self, data)
 

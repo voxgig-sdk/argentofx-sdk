@@ -17,7 +17,13 @@ export interface CurrencyLoadMatch {
   id: string
 }
 
-export type CurrencyListMatch = Partial<Currency>
+export interface CurrencyListMatch {
+  compra?: number
+  fecha_actualizacion?: string
+  moneda?: string
+  nombre?: string
+  venta?: number
+}
 
 export interface DollarQuote {
   compra: number
@@ -30,12 +36,20 @@ export interface DollarQuoteLoadMatch {
   type: string
 }
 
-export type DollarQuoteListMatch = Partial<DollarQuote>
+export interface DollarQuoteListMatch {
+  compra?: number
+  fecha_actualizacion?: string
+  nombre?: string
+  venta?: number
+}
 
 export interface GetRoot {
   documentation?: string
   message?: string
 }
 
-export type GetRootLoadMatch = Partial<GetRoot>
+export interface GetRootLoadMatch {
+  documentation?: string
+  message?: string
+}
 

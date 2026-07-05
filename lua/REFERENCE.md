@@ -98,11 +98,11 @@ local currency = client:Currency(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `compra` | ``$NUMBER`` | Yes |  |
-| `fecha_actualizacion` | ``$STRING`` | Yes |  |
-| `moneda` | ``$STRING`` | Yes |  |
-| `nombre` | ``$STRING`` | Yes |  |
-| `venta` | ``$NUMBER`` | Yes |  |
+| `compra` | `number` | Yes |  |
+| `fecha_actualizacion` | `string` | Yes |  |
+| `moneda` | `string` | Yes |  |
+| `nombre` | `string` | Yes |  |
+| `venta` | `number` | Yes |  |
 
 ### Operations
 
@@ -162,10 +162,10 @@ local dollar_quote = client:DollarQuote(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `compra` | ``$NUMBER`` | Yes |  |
-| `fecha_actualizacion` | ``$STRING`` | Yes |  |
-| `nombre` | ``$STRING`` | Yes |  |
-| `venta` | ``$NUMBER`` | Yes |  |
+| `compra` | `number` | Yes |  |
+| `fecha_actualizacion` | `string` | Yes |  |
+| `nombre` | `string` | Yes |  |
+| `venta` | `number` | Yes |  |
 
 ### Operations
 
@@ -182,7 +182,7 @@ local results, err = client:DollarQuote():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:DollarQuote():load({ id = "dollar_quote_id" })
+local result, err = client:DollarQuote():load()
 ```
 
 ### Common Methods
@@ -225,8 +225,8 @@ local get_root = client:GetRoot(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `documentation` | ``$STRING`` | No |  |
-| `message` | ``$STRING`` | No |  |
+| `documentation` | `string` | No |  |
+| `message` | `string` | No |  |
 
 ### Operations
 
@@ -235,7 +235,7 @@ local get_root = client:GetRoot(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GetRoot():load({ id = "get_root_id" })
+local result, err = client:GetRoot():load()
 ```
 
 ### Common Methods

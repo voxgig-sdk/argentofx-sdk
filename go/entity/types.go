@@ -22,8 +22,7 @@ type CurrencyLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// CurrencyListMatch mirrors the currency fields as an all-optional match
-// filter (Go analog of Partial<Currency>).
+// CurrencyListMatch is the typed request payload for Currency.ListTyped.
 type CurrencyListMatch struct {
 	Compra *float64 `json:"compra,omitempty"`
 	FechaActualizacion *string `json:"fecha_actualizacion,omitempty"`
@@ -45,8 +44,7 @@ type DollarQuoteLoadMatch struct {
 	Type string `json:"type"`
 }
 
-// DollarQuoteListMatch mirrors the dollar_quote fields as an all-optional match
-// filter (Go analog of Partial<DollarQuote>).
+// DollarQuoteListMatch is the typed request payload for DollarQuote.ListTyped.
 type DollarQuoteListMatch struct {
 	Compra *float64 `json:"compra,omitempty"`
 	FechaActualizacion *string `json:"fecha_actualizacion,omitempty"`
@@ -60,8 +58,7 @@ type GetRoot struct {
 	Message *string `json:"message,omitempty"`
 }
 
-// GetRootLoadMatch mirrors the get_root fields as an all-optional match
-// filter (Go analog of Partial<GetRoot>).
+// GetRootLoadMatch is the typed request payload for GetRoot.LoadTyped.
 type GetRootLoadMatch struct {
 	Documentation *string `json:"documentation,omitempty"`
 	Message *string `json:"message,omitempty"`
