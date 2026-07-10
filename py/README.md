@@ -50,14 +50,15 @@ except Exception as err:
     print(f"list failed: {err}")
 ```
 
-### 3. Load a currency
+### 3. Load a dollarquote
 
+DollarQuote is nested under type, so provide the `type`.
 `load()` returns the bare record (a `dict`) and raises on error.
 
 ```python
 try:
-    currency = client.Currency().load({"id": "example_id"})
-    print(currency)
+    dollarquote = client.DollarQuote().load({"type": "example_type"})
+    print(dollarquote)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -353,7 +354,7 @@ Create an instance: `dollar_quote = client.DollarQuote()`
 #### Example: Load
 
 ```python
-dollar_quote = client.DollarQuote().load()
+dollar_quote = client.DollarQuote().load({"type": "type"})
 ```
 
 #### Example: List

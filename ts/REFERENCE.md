@@ -222,7 +222,7 @@ const results = await client.DollarQuote().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.DollarQuote().load()
+const result = await client.DollarQuote().load({ type: 'type' })
 ```
 
 ### Common Methods

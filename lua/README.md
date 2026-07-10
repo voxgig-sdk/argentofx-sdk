@@ -47,12 +47,14 @@ for _, item in ipairs(currencys) do
 end
 ```
 
-### 3. Load a currency
+### 3. Load a dollarquote
+
+DollarQuote is nested under type, so provide the `type`.
 
 ```lua
-local currency, err = client:Currency():load({ id = "example_id" })
+local dollarquote, err = client:DollarQuote():load({ type = "example_type" })
 if err then error(err) end
-print(currency)
+print(dollarquote)
 ```
 
 
@@ -339,7 +341,7 @@ Create an instance: `local dollar_quote = client:DollarQuote(nil)`
 #### Example: Load
 
 ```lua
-local dollar_quote, err = client:DollarQuote():load()
+local dollar_quote, err = client:DollarQuote():load({ type = "type" })
 ```
 
 #### Example: List

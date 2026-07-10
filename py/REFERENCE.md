@@ -182,7 +182,7 @@ for dollar_quote in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.DollarQuote().load()
+result = client.DollarQuote().load({"type": "type"})
 ```
 
 ### Common Methods

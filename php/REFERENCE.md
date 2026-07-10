@@ -184,7 +184,7 @@ $results = $client->DollarQuote()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->DollarQuote()->load();
+$result = $client->DollarQuote()->load(["type" => "type"]);
 ```
 
 ### Common Methods

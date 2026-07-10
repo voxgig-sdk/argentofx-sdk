@@ -44,13 +44,15 @@ rescue => err
 end
 ```
 
-### 3. Load a currency
+### 3. Load a dollarquote
+
+DollarQuote is nested under type, so provide the `type`.
 
 ```ruby
 begin
-  # load returns the bare Currency record (raises on error).
-  currency = client.Currency.load({ "id" => "example_id" })
-  puts currency
+  # load returns the bare DollarQuote record (raises on error).
+  dollarquote = client.DollarQuote.load({ "type" => "example_type" })
+  puts dollarquote
 rescue => err
   warn "load failed: #{err}"
 end
@@ -353,7 +355,7 @@ Create an instance: `dollar_quote = client.DollarQuote`
 
 ```ruby
 # load returns the bare DollarQuote record (raises on error).
-dollar_quote = client.DollarQuote.load()
+dollar_quote = client.DollarQuote.load({ "type" => "type" })
 ```
 
 #### Example: List

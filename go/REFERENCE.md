@@ -99,6 +99,7 @@ same parameters as `Direct()`.
 
 ```go
 currency := client.Currency(nil)
+fmt.Println(currency.GetName()) // "currency"
 ```
 
 ### Fields
@@ -119,6 +120,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Currency(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -127,6 +132,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Currency(nil).Load(map[string]any{"id": "currency_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -156,7 +165,8 @@ Return the entity name.
 ## DollarQuoteEntity
 
 ```go
-dollar_quote := client.DollarQuote(nil)
+dollarQuote := client.DollarQuote(nil)
+fmt.Println(dollarQuote.GetName()) // "dollar_quote"
 ```
 
 ### Fields
@@ -176,6 +186,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.DollarQuote(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -183,7 +197,11 @@ results, err := client.DollarQuote(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.DollarQuote(nil).Load(nil, nil)
+result, err := client.DollarQuote(nil).Load(map[string]any{"type": "type"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -213,7 +231,8 @@ Return the entity name.
 ## GetRootEntity
 
 ```go
-get_root := client.GetRoot(nil)
+getRoot := client.GetRoot(nil)
+fmt.Println(getRoot.GetName()) // "get_root"
 ```
 
 ### Fields
@@ -231,6 +250,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.GetRoot(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

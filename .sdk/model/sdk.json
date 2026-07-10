@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -498,14 +495,17 @@
           "url": "https://fastapiproject-1-eziw.onrender.com/docs"
         },
         "description": "API RESTful to obtain live quotations of foreign currencies in Argentina. It provides endpoints for various types of dollar quotes, as well as other currencies.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://fastapiproject-1-eziw.onrender.com"
           }
         ],
+        "summary": "API RESTful to obtain live quotations of foreign currencies in Argentina.",
         "title": "ArgentoFX API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://fastapiproject-1-eziw.onrender.com"
       },
       "option": {},
       "target": {
@@ -558,6 +558,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -608,6 +611,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

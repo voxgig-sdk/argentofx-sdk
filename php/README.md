@@ -45,13 +45,15 @@ try {
 }
 ```
 
-### 3. Load a currency
+### 3. Load a dollarquote
+
+DollarQuote is nested under type, so provide the `type`.
 
 ```php
 try {
-    // load() returns the bare Currency record (throws on error).
-    $currency = $client->Currency()->load(["id" => "example_id"]);
-    print_r($currency);
+    // load() returns the bare DollarQuote record (throws on error).
+    $dollarquote = $client->DollarQuote()->load(["type" => "example_type"]);
+    print_r($dollarquote);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -363,7 +365,7 @@ Create an instance: `$dollar_quote = $client->DollarQuote();`
 
 ```php
 // load() returns the bare DollarQuote record (throws on error).
-$dollar_quote = $client->DollarQuote()->load();
+$dollar_quote = $client->DollarQuote()->load(["type" => "type"]);
 ```
 
 #### Example: List

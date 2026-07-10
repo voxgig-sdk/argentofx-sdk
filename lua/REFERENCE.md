@@ -182,7 +182,7 @@ local results, err = client:DollarQuote():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:DollarQuote():load()
+local result, err = client:DollarQuote():load({ type = "type" })
 ```
 
 ### Common Methods

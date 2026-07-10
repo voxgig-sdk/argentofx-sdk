@@ -60,7 +60,7 @@ func main() {
     }
 
     // Load a single currency — the value is the loaded record.
-    currency, err := client.Currency(nil).Load(map[string]any{"id": "example"}, nil)
+    currency, err := client.Currency(nil).Load(map[string]any{"id": "example_id"}, nil)
     if err != nil {
         panic(err)
     }
@@ -354,7 +354,7 @@ fmt.Println(currencys) // the array of records
 
 ### DollarQuote
 
-Create an instance: `dollar_quote := client.DollarQuote(nil)`
+Create an instance: `dollarQuote := client.DollarQuote(nil)`
 
 #### Operations
 
@@ -375,27 +375,27 @@ Create an instance: `dollar_quote := client.DollarQuote(nil)`
 #### Example: Load
 
 ```go
-dollar_quote, err := client.DollarQuote(nil).Load(nil, nil)
+dollarQuote, err := client.DollarQuote(nil).Load(map[string]any{"type": "type"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(dollar_quote) // the loaded record
+fmt.Println(dollarQuote) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-dollar_quotes, err := client.DollarQuote(nil).List(nil, nil)
+dollarQuotes, err := client.DollarQuote(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(dollar_quotes) // the array of records
+fmt.Println(dollarQuotes) // the array of records
 ```
 
 
 ### GetRoot
 
-Create an instance: `get_root := client.GetRoot(nil)`
+Create an instance: `getRoot := client.GetRoot(nil)`
 
 #### Operations
 
@@ -413,11 +413,11 @@ Create an instance: `get_root := client.GetRoot(nil)`
 #### Example: Load
 
 ```go
-get_root, err := client.GetRoot(nil).Load(nil, nil)
+getRoot, err := client.GetRoot(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(get_root) // the loaded record
+fmt.Println(getRoot) // the loaded record
 ```
 
 
