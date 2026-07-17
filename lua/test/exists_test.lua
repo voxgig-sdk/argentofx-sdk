@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- Argentofx SDK exists test
 
 local sdk = require("argentofx_sdk")
 
