@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# Argentofx SDK exists test
 
 import pytest
 from argentofx_sdk import ArgentofxSDK

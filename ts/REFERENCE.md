@@ -141,7 +141,7 @@ const currency = client.Currency()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `compra` | `number` | Yes |  |
-| `fecha_actualizacion` | `string` | Yes |  |
+| `fechaActualizacion` | `string` | Yes |  |
 | `moneda` | `string` | Yes |  |
 | `nombre` | `string` | Yes |  |
 | `venta` | `number` | Yes |  |
@@ -203,7 +203,7 @@ const dollar_quote = client.DollarQuote()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `compra` | `number` | Yes |  |
-| `fecha_actualizacion` | `string` | Yes |  |
+| `fechaActualizacion` | `string` | Yes |  |
 | `nombre` | `string` | Yes |  |
 | `venta` | `number` | Yes |  |
 

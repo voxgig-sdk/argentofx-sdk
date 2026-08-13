@@ -11,7 +11,7 @@ main: kit: entity: dollar_quote: {
       type: "`$NUMBER`"
     }
     {
-      name: "fecha_actualizacion"
+      name: "fechaActualizacion"
       req: true
       type: "`$STRING`"
     }

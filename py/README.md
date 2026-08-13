@@ -53,7 +53,7 @@ except Exception as err:
 ### 3. Load a dollarquote
 
 DollarQuote is nested under type, so provide the `type`.
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -137,7 +137,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = ArgentofxSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 currency = client.Currency().list()
 # currency contains the mock response record
 ```
@@ -236,7 +237,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -259,7 +260,7 @@ On error, `ok` is `False` and `err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `compra` |  |
-| `fecha_actualizacion` |  |
+| `fechaActualizacion` |  |
 | `moneda` |  |
 | `nombre` |  |
 | `venta` |  |
@@ -273,7 +274,7 @@ API path: `/currencies`
 | Field | Description |
 | --- | --- |
 | `compra` |  |
-| `fecha_actualizacion` |  |
+| `fechaActualizacion` |  |
 | `nombre` |  |
 | `venta` |  |
 
@@ -313,7 +314,7 @@ Create an instance: `currency = client.Currency()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `compra` | `float` |  |
-| `fecha_actualizacion` | `str` |  |
+| `fechaActualizacion` | `str` |  |
 | `moneda` | `str` |  |
 | `nombre` | `str` |  |
 | `venta` | `float` |  |
@@ -347,7 +348,7 @@ Create an instance: `dollar_quote = client.DollarQuote()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `compra` | `float` |  |
-| `fecha_actualizacion` | `str` |  |
+| `fechaActualizacion` | `str` |  |
 | `nombre` | `str` |  |
 | `venta` | `float` |  |
 

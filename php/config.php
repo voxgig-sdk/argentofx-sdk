@@ -41,7 +41,7 @@ class ArgentofxConfig
             ],
             [
               'active' => true,
-              'name' => 'fecha_actualizacion',
+              'name' => 'fechaActualizacion',
               'req' => true,
               'type' => '`$STRING`',
               'index$' => 1,
@@ -77,6 +77,7 @@ class ArgentofxConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/currencies',
                   'parts' => [
@@ -112,6 +113,7 @@ class ArgentofxConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/currencies/{currency}',
                   'parts' => [
@@ -153,7 +155,7 @@ class ArgentofxConfig
             ],
             [
               'active' => true,
-              'name' => 'fecha_actualizacion',
+              'name' => 'fechaActualizacion',
               'req' => true,
               'type' => '`$STRING`',
               'index$' => 1,
@@ -182,6 +184,7 @@ class ArgentofxConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/dolares',
                   'parts' => [
@@ -216,6 +219,7 @@ class ArgentofxConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/dolares/{type}',
                   'parts' => [
@@ -271,6 +275,7 @@ class ArgentofxConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/',
                   'parts' => [],

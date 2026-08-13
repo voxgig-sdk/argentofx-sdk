@@ -51,7 +51,7 @@ DollarQuote is nested under type, so provide the `type`.
 
 ```php
 try {
-    // load() returns the bare DollarQuote record (throws on error).
+    // load() returns the ENTITY — call data_get() for the DollarQuote record (throws on error).
     $dollarquote = $client->DollarQuote()->load(["type" => "example_type"]);
     print_r($dollarquote);
 } catch (\Throwable $err) {
@@ -142,7 +142,8 @@ $client = ArgentofxSDK::test([
     "entity" => ["currency" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $currency = $client->Currency()->list();
 print_r($currency);
 ```
@@ -244,7 +245,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -267,7 +268,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | Field | Description |
 | --- | --- |
 | `compra` |  |
-| `fecha_actualizacion` |  |
+| `fechaActualizacion` |  |
 | `moneda` |  |
 | `nombre` |  |
 | `venta` |  |
@@ -281,7 +282,7 @@ API path: `/currencies`
 | Field | Description |
 | --- | --- |
 | `compra` |  |
-| `fecha_actualizacion` |  |
+| `fechaActualizacion` |  |
 | `nombre` |  |
 | `venta` |  |
 
@@ -321,7 +322,7 @@ Create an instance: `$currency = $client->Currency();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `compra` | `float` |  |
-| `fecha_actualizacion` | `string` |  |
+| `fechaActualizacion` | `string` |  |
 | `moneda` | `string` |  |
 | `nombre` | `string` |  |
 | `venta` | `float` |  |
@@ -329,7 +330,7 @@ Create an instance: `$currency = $client->Currency();`
 #### Example: Load
 
 ```php
-// load() returns the bare Currency record (throws on error).
+// load() returns the ENTITY — call data_get() for the Currency record (throws on error).
 $currency = $client->Currency()->load(["id" => "currency_id"]);
 ```
 
@@ -357,14 +358,14 @@ Create an instance: `$dollar_quote = $client->DollarQuote();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `compra` | `float` |  |
-| `fecha_actualizacion` | `string` |  |
+| `fechaActualizacion` | `string` |  |
 | `nombre` | `string` |  |
 | `venta` | `float` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare DollarQuote record (throws on error).
+// load() returns the ENTITY — call data_get() for the DollarQuote record (throws on error).
 $dollar_quote = $client->DollarQuote()->load(["type" => "type"]);
 ```
 
@@ -396,7 +397,7 @@ Create an instance: `$get_root = $client->GetRoot();`
 #### Example: Load
 
 ```php
-// load() returns the bare GetRoot record (throws on error).
+// load() returns the ENTITY — call data_get() for the GetRoot record (throws on error).
 $get_root = $client->GetRoot()->load();
 ```
 

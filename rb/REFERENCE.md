@@ -102,7 +102,7 @@ currency = client.Currency
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `compra` | `Float` | Yes |  |
-| `fecha_actualizacion` | `String` | Yes |  |
+| `fechaActualizacion` | `String` | Yes |  |
 | `moneda` | `String` | Yes |  |
 | `nombre` | `String` | Yes |  |
 | `venta` | `Float` | Yes |  |
@@ -166,7 +166,7 @@ dollar_quote = client.DollarQuote
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `compra` | `Float` | Yes |  |
-| `fecha_actualizacion` | `String` | Yes |  |
+| `fechaActualizacion` | `String` | Yes |  |
 | `nombre` | `String` | Yes |  |
 | `venta` | `Float` | Yes |  |
 

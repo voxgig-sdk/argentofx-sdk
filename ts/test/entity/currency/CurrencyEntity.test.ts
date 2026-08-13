@@ -63,7 +63,7 @@ describe('CurrencyEntity', async () => {
     const currency_ref01_ent = client.Currency()
     const currency_ref01_match: any = {}
 
-    const currency_ref01_list = await currency_ref01_ent.list(currency_ref01_match)
+    const currency_ref01_list = (await currency_ref01_ent.list(currency_ref01_match)).map((e: any) => e.data())
 
 
 

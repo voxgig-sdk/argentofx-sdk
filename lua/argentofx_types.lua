@@ -8,7 +8,7 @@
 
 ---@class Currency
 ---@field compra number
----@field fecha_actualizacion string
+---@field fechaActualizacion string
 ---@field moneda string
 ---@field nombre string
 ---@field venta number
@@ -18,14 +18,14 @@
 
 ---@class CurrencyListMatch
 ---@field compra? number
----@field fecha_actualizacion? string
+---@field fechaActualizacion? string
 ---@field moneda? string
 ---@field nombre? string
 ---@field venta? number
 
 ---@class DollarQuote
 ---@field compra number
----@field fecha_actualizacion string
+---@field fechaActualizacion string
 ---@field nombre string
 ---@field venta number
 
@@ -34,7 +34,7 @@
 
 ---@class DollarQuoteListMatch
 ---@field compra? number
----@field fecha_actualizacion? string
+---@field fechaActualizacion? string
 ---@field nombre? string
 ---@field venta? number
 

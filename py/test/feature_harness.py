@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import ArgentofxControl
-from core.error import ArgentofxError
-from core.result import ArgentofxResult
-from core.spec import ArgentofxSpec
+from argentofx_sdk.config import make_config
+from argentofx_sdk.features import _make_feature
+from argentofx_sdk.core.control import ArgentofxControl
+from argentofx_sdk.core.error import ArgentofxError
+from argentofx_sdk.core.result import ArgentofxResult
+from argentofx_sdk.core.spec import ArgentofxSpec
 
 
 # True when this SDK was generated with the named feature.

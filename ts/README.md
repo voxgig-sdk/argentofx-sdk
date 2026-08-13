@@ -35,7 +35,9 @@ const client = new ArgentofxSDK()
 
 ### 2. List currency records
 
-`list()` resolves to an array of Currency objects — iterate it directly:
+`list()` resolves to an array of Currency ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const currencys = await client.Currency().list()
@@ -136,7 +138,8 @@ Create a mock client for unit testing — no server required:
 const client = ArgentofxSDK.test()
 
 const currency = await client.Currency().list()
-// currency is a bare entity populated with mock response data
+// currency is the entity, populated with mock response data
+// — call currency.data() for the record itself
 console.log(currency)
 ```
 
@@ -305,7 +308,7 @@ The `prepare()` method returns:
 | Field | Description |
 | --- | --- |
 | `compra` |  |
-| `fecha_actualizacion` |  |
+| `fechaActualizacion` |  |
 | `moneda` |  |
 | `nombre` |  |
 | `venta` |  |
@@ -319,7 +322,7 @@ API path: `/currencies`
 | Field | Description |
 | --- | --- |
 | `compra` |  |
-| `fecha_actualizacion` |  |
+| `fechaActualizacion` |  |
 | `nombre` |  |
 | `venta` |  |
 
@@ -359,7 +362,7 @@ Create an instance: `const currency = client.Currency()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `compra` | `number` |  |
-| `fecha_actualizacion` | `string` |  |
+| `fechaActualizacion` | `string` |  |
 | `moneda` | `string` |  |
 | `nombre` | `string` |  |
 | `venta` | `number` |  |
@@ -393,7 +396,7 @@ Create an instance: `const dollar_quote = client.DollarQuote()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `compra` | `number` |  |
-| `fecha_actualizacion` | `string` |  |
+| `fechaActualizacion` | `string` |  |
 | `nombre` | `string` |  |
 | `venta` | `number` |  |
 

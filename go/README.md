@@ -272,7 +272,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | Field | Description |
 | --- | --- |
 | `"compra"` |  |
-| `"fecha_actualizacion"` |  |
+| `"fechaActualizacion"` |  |
 | `"moneda"` |  |
 | `"nombre"` |  |
 | `"venta"` |  |
@@ -286,7 +286,7 @@ API path: `/currencies`
 | Field | Description |
 | --- | --- |
 | `"compra"` |  |
-| `"fecha_actualizacion"` |  |
+| `"fechaActualizacion"` |  |
 | `"nombre"` |  |
 | `"venta"` |  |
 
@@ -326,7 +326,7 @@ Create an instance: `currency := client.Currency(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `compra` | `float64` |  |
-| `fecha_actualizacion` | `string` |  |
+| `fechaActualizacion` | `string` |  |
 | `moneda` | `string` |  |
 | `nombre` | `string` |  |
 | `venta` | `float64` |  |
@@ -368,7 +368,7 @@ Create an instance: `dollarQuote := client.DollarQuote(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `compra` | `float64` |  |
-| `fecha_actualizacion` | `string` |  |
+| `fechaActualizacion` | `string` |  |
 | `nombre` | `string` |  |
 | `venta` | `float64` |  |
 

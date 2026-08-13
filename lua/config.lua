@@ -35,7 +35,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "fecha_actualizacion",
+            ["name"] = "fechaActualizacion",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 1,
@@ -71,6 +71,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/currencies",
                 ["parts"] = {
@@ -106,6 +107,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/currencies/{currency}",
                 ["parts"] = {
@@ -147,7 +149,7 @@ local function make_config()
           },
           {
             ["active"] = true,
-            ["name"] = "fecha_actualizacion",
+            ["name"] = "fechaActualizacion",
             ["req"] = true,
             ["type"] = "`$STRING`",
             ["index$"] = 1,
@@ -176,6 +178,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/dolares",
                 ["parts"] = {
@@ -210,6 +213,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/dolares/{type}",
                 ["parts"] = {
@@ -265,6 +269,7 @@ local function make_config()
               {
                 ["active"] = true,
                 ["args"] = {},
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/",
                 ["parts"] = {},

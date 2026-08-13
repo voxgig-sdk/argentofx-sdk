@@ -43,7 +43,7 @@ local currencys, err = client:Currency():list()
 if err then error(err) end
 
 for _, item in ipairs(currencys) do
-  print(item["fecha_actualizacion"])
+  print(item["fechaActualizacion"])
 end
 ```
 
@@ -246,7 +246,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | Field | Description |
 | --- | --- |
 | `compra` |  |
-| `fecha_actualizacion` |  |
+| `fechaActualizacion` |  |
 | `moneda` |  |
 | `nombre` |  |
 | `venta` |  |
@@ -260,7 +260,7 @@ API path: `/currencies`
 | Field | Description |
 | --- | --- |
 | `compra` |  |
-| `fecha_actualizacion` |  |
+| `fechaActualizacion` |  |
 | `nombre` |  |
 | `venta` |  |
 
@@ -300,7 +300,7 @@ Create an instance: `local currency = client:Currency(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `compra` | `number` |  |
-| `fecha_actualizacion` | `string` |  |
+| `fechaActualizacion` | `string` |  |
 | `moneda` | `string` |  |
 | `nombre` | `string` |  |
 | `venta` | `number` |  |
@@ -334,7 +334,7 @@ Create an instance: `local dollar_quote = client:DollarQuote(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `compra` | `number` |  |
-| `fecha_actualizacion` | `string` |  |
+| `fechaActualizacion` | `string` |  |
 | `nombre` | `string` |  |
 | `venta` | `number` |  |
 

@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'Argentofx',
   }
 
 
@@ -69,7 +69,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "fecha_actualizacion",
+          "name": "fechaActualizacion",
           "req": true,
           "type": "`$STRING`",
           "index$": 1
@@ -105,6 +105,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/currencies",
               "parts": [
@@ -140,6 +141,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/currencies/{currency}",
               "parts": [
@@ -181,7 +183,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "fecha_actualizacion",
+          "name": "fechaActualizacion",
           "req": true,
           "type": "`$STRING`",
           "index$": 1
@@ -210,6 +212,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/dolares",
               "parts": [
@@ -244,6 +247,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/dolares/{type}",
               "parts": [
@@ -299,6 +303,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/",
               "parts": [],

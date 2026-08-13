@@ -7,7 +7,7 @@
 
 export interface Currency {
   compra: number
-  fecha_actualizacion: string
+  fechaActualizacion: string
   moneda: string
   nombre: string
   venta: number
@@ -19,7 +19,7 @@ export interface CurrencyLoadMatch {
 
 export interface CurrencyListMatch {
   compra?: number
-  fecha_actualizacion?: string
+  fechaActualizacion?: string
   moneda?: string
   nombre?: string
   venta?: number
@@ -27,7 +27,7 @@ export interface CurrencyListMatch {
 
 export interface DollarQuote {
   compra: number
-  fecha_actualizacion: string
+  fechaActualizacion: string
   nombre: string
   venta: number
 }
@@ -38,7 +38,7 @@ export interface DollarQuoteLoadMatch {
 
 export interface DollarQuoteListMatch {
   compra?: number
-  fecha_actualizacion?: string
+  fechaActualizacion?: string
   nombre?: string
   venta?: number
 }

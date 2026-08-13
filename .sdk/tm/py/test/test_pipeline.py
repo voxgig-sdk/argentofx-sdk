@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import ArgentofxSDK
-from core.error import ArgentofxError
-from core.result import ArgentofxResult
-from core.response import ArgentofxResponse
-from core.spec import ArgentofxSpec
-from feature.base_feature import ArgentofxBaseFeature
+from projectname_sdk.core.error import ArgentofxError
+from projectname_sdk.core.result import ArgentofxResult
+from projectname_sdk.core.response import ArgentofxResponse
+from projectname_sdk.core.spec import ArgentofxSpec
+from projectname_sdk.feature.base_feature import ArgentofxBaseFeature
 
 
 def _client():

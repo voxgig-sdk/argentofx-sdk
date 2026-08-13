@@ -16,7 +16,7 @@ declare(strict_types=1);
 class Currency
 {
     public float $compra;
-    public string $fecha_actualizacion;
+    public string $fechaActualizacion;
     public string $moneda;
     public string $nombre;
     public float $venta;
@@ -32,7 +32,7 @@ class CurrencyLoadMatch
 class CurrencyListMatch
 {
     public ?float $compra = null;
-    public ?string $fecha_actualizacion = null;
+    public ?string $fechaActualizacion = null;
     public ?string $moneda = null;
     public ?string $nombre = null;
     public ?float $venta = null;
@@ -42,7 +42,7 @@ class CurrencyListMatch
 class DollarQuote
 {
     public float $compra;
-    public string $fecha_actualizacion;
+    public string $fechaActualizacion;
     public string $nombre;
     public float $venta;
 }
@@ -57,7 +57,7 @@ class DollarQuoteLoadMatch
 class DollarQuoteListMatch
 {
     public ?float $compra = null;
-    public ?string $fecha_actualizacion = null;
+    public ?string $fechaActualizacion = null;
     public ?string $nombre = null;
     public ?float $venta = null;
 }

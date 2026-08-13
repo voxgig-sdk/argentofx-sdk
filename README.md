@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = ArgentofxSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = ArgentofxSDK.test({
+  entity: {
+    currency: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const currencys = await client.Currency().list()
-// currencys is an array of bare Currency records populated with mock data
+// currencys is an array of Currency entities, populated with mock data
+// — call currencys[0].data() for the record itself
 console.log(currencys)
 ```
 
@@ -110,7 +119,7 @@ import { ArgentofxSDK } from '@voxgig-sdk/argentofx'
 
 const client = new ArgentofxSDK()
 
-// List all currencys (returns Currency[])
+// List all currencys (returns CurrencyEntity[] — .data() for the record)
 const currencys = await client.Currency().list()
 for (const currency of currencys) {
   console.log(currency)
@@ -199,7 +208,7 @@ $client = new ArgentofxSDK();
 $currencys = $client->Currency()->list();
 print_r($currencys);
 
-// Load a specific currency (returns the bare record; throws on error)
+// Load a specific currency (returns the ENTITY; call data_get() for the record; throws on error)
 $currency = $client->Currency()->load(["id" => "example_id"]);
 print_r($currency);
 ```
@@ -239,7 +248,7 @@ client = ArgentofxSDK.new
 currencys = client.Currency.list
 puts currencys
 
-# Load a specific currency (returns the bare record; raises on error)
+# Load a specific currency (returns the ENTITY; call data_get for the record)
 currency = client.Currency.load({ "id" => "example_id" })
 puts currency
 ```
@@ -376,6 +385,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://fastapiproject-1-eziw.onrender.com/docs](https://fastapiproject-1-eziw.onrender.com/docs)
 

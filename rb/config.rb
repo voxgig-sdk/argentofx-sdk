@@ -36,7 +36,7 @@ module ArgentofxConfig
             },
             {
               "active" => true,
-              "name" => "fecha_actualizacion",
+              "name" => "fechaActualizacion",
               "req" => true,
               "type" => "`$STRING`",
               "index$" => 1,
@@ -72,6 +72,7 @@ module ArgentofxConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/currencies",
                   "parts" => [
@@ -107,6 +108,7 @@ module ArgentofxConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/currencies/{currency}",
                   "parts" => [
@@ -148,7 +150,7 @@ module ArgentofxConfig
             },
             {
               "active" => true,
-              "name" => "fecha_actualizacion",
+              "name" => "fechaActualizacion",
               "req" => true,
               "type" => "`$STRING`",
               "index$" => 1,
@@ -177,6 +179,7 @@ module ArgentofxConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/dolares",
                   "parts" => [
@@ -211,6 +214,7 @@ module ArgentofxConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/dolares/{type}",
                   "parts" => [
@@ -266,6 +270,7 @@ module ArgentofxConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/",
                   "parts" => [],

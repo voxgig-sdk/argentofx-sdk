@@ -3,7 +3,7 @@
     "currency": {
       "CURRENCY00": {
         "compra": 50,
-        "fecha_actualizacion": "s33",
+        "fechaActualizacion": "s33",
         "moneda": "s34",
         "nombre": "s35",
         "venta": 54,
@@ -11,7 +11,7 @@
       },
       "CURRENCY01": {
         "compra": 100,
-        "fecha_actualizacion": "s65",
+        "fechaActualizacion": "s65",
         "moneda": "s66",
         "nombre": "s67",
         "venta": 104,
@@ -19,7 +19,7 @@
       },
       "CURRENCY02": {
         "compra": 150,
-        "fecha_actualizacion": "s97",
+        "fechaActualizacion": "s97",
         "moneda": "s98",
         "nombre": "s99",
         "venta": 154,
@@ -31,7 +31,7 @@
     "currency": {
       "currency_ref01": {
         "compra": 200,
-        "fecha_actualizacion": "sc9",
+        "fechaActualizacion": "sc9",
         "moneda": "sca",
         "nombre": "scb",
         "venta": 204

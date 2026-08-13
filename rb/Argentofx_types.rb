@@ -13,7 +13,7 @@
 # @!attribute [rw] compra
 #   @return [Float]
 #
-# @!attribute [rw] fecha_actualizacion
+# @!attribute [rw] fechaActualizacion
 #   @return [String]
 #
 # @!attribute [rw] moneda
@@ -26,7 +26,7 @@
 #   @return [Float]
 Currency = Struct.new(
   :compra,
-  :fecha_actualizacion,
+  :fechaActualizacion,
   :moneda,
   :nombre,
   :venta,
@@ -47,7 +47,7 @@ CurrencyLoadMatch = Struct.new(
 # @!attribute [rw] compra
 #   @return [Float, nil]
 #
-# @!attribute [rw] fecha_actualizacion
+# @!attribute [rw] fechaActualizacion
 #   @return [String, nil]
 #
 # @!attribute [rw] moneda
@@ -60,7 +60,7 @@ CurrencyLoadMatch = Struct.new(
 #   @return [Float, nil]
 CurrencyListMatch = Struct.new(
   :compra,
-  :fecha_actualizacion,
+  :fechaActualizacion,
   :moneda,
   :nombre,
   :venta,
@@ -72,7 +72,7 @@ CurrencyListMatch = Struct.new(
 # @!attribute [rw] compra
 #   @return [Float]
 #
-# @!attribute [rw] fecha_actualizacion
+# @!attribute [rw] fechaActualizacion
 #   @return [String]
 #
 # @!attribute [rw] nombre
@@ -82,7 +82,7 @@ CurrencyListMatch = Struct.new(
 #   @return [Float]
 DollarQuote = Struct.new(
   :compra,
-  :fecha_actualizacion,
+  :fechaActualizacion,
   :nombre,
   :venta,
   keyword_init: true
@@ -102,7 +102,7 @@ DollarQuoteLoadMatch = Struct.new(
 # @!attribute [rw] compra
 #   @return [Float, nil]
 #
-# @!attribute [rw] fecha_actualizacion
+# @!attribute [rw] fechaActualizacion
 #   @return [String, nil]
 #
 # @!attribute [rw] nombre
@@ -112,7 +112,7 @@ DollarQuoteLoadMatch = Struct.new(
 #   @return [Float, nil]
 DollarQuoteListMatch = Struct.new(
   :compra,
-  :fecha_actualizacion,
+  :fechaActualizacion,
   :nombre,
   :venta,
   keyword_init: true

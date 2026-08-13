@@ -107,7 +107,7 @@ fmt.Println(currency.GetName()) // "currency"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `compra` | `float64` | Yes |  |
-| `fecha_actualizacion` | `string` | Yes |  |
+| `fechaActualizacion` | `string` | Yes |  |
 | `moneda` | `string` | Yes |  |
 | `nombre` | `string` | Yes |  |
 | `venta` | `float64` | Yes |  |
@@ -174,7 +174,7 @@ fmt.Println(dollarQuote.GetName()) // "dollar_quote"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `compra` | `float64` | Yes |  |
-| `fecha_actualizacion` | `string` | Yes |  |
+| `fechaActualizacion` | `string` | Yes |  |
 | `nombre` | `string` | Yes |  |
 | `venta` | `float64` | Yes |  |
 

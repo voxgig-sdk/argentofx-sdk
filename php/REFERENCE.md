@@ -101,7 +101,7 @@ $currency = $client->Currency();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `compra` | `float` | Yes |  |
-| `fecha_actualizacion` | `string` | Yes |  |
+| `fechaActualizacion` | `string` | Yes |  |
 | `moneda` | `string` | Yes |  |
 | `nombre` | `string` | Yes |  |
 | `venta` | `float` | Yes |  |
@@ -165,7 +165,7 @@ $dollar_quote = $client->DollarQuote();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `compra` | `float` | Yes |  |
-| `fecha_actualizacion` | `string` | Yes |  |
+| `fechaActualizacion` | `string` | Yes |  |
 | `nombre` | `string` | Yes |  |
 | `venta` | `float` | Yes |  |
 

@@ -50,7 +50,7 @@ DollarQuote is nested under type, so provide the `type`.
 
 ```ruby
 begin
-  # load returns the bare DollarQuote record (raises on error).
+  # load returns the ENTITY — call data_get for the DollarQuote record (raises on error).
   dollarquote = client.DollarQuote.load({ "type" => "example_type" })
   puts dollarquote
 rescue => err
@@ -136,7 +136,8 @@ client = ArgentofxSDK.test({
   "entity" => { "currency" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 currency = client.Currency.list()
 puts currency
 ```
@@ -257,7 +258,7 @@ returns a result `Hash` with these keys:
 | Field | Description |
 | --- | --- |
 | `compra` |  |
-| `fecha_actualizacion` |  |
+| `fechaActualizacion` |  |
 | `moneda` |  |
 | `nombre` |  |
 | `venta` |  |
@@ -271,7 +272,7 @@ API path: `/currencies`
 | Field | Description |
 | --- | --- |
 | `compra` |  |
-| `fecha_actualizacion` |  |
+| `fechaActualizacion` |  |
 | `nombre` |  |
 | `venta` |  |
 
@@ -311,7 +312,7 @@ Create an instance: `currency = client.Currency`
 | Field | Type | Description |
 | --- | --- | --- |
 | `compra` | `Float` |  |
-| `fecha_actualizacion` | `String` |  |
+| `fechaActualizacion` | `String` |  |
 | `moneda` | `String` |  |
 | `nombre` | `String` |  |
 | `venta` | `Float` |  |
@@ -319,7 +320,7 @@ Create an instance: `currency = client.Currency`
 #### Example: Load
 
 ```ruby
-# load returns the bare Currency record (raises on error).
+# load returns the ENTITY — call data_get for the Currency record (raises on error).
 currency = client.Currency.load({ "id" => "currency_id" })
 ```
 
@@ -347,14 +348,14 @@ Create an instance: `dollar_quote = client.DollarQuote`
 | Field | Type | Description |
 | --- | --- | --- |
 | `compra` | `Float` |  |
-| `fecha_actualizacion` | `String` |  |
+| `fechaActualizacion` | `String` |  |
 | `nombre` | `String` |  |
 | `venta` | `Float` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare DollarQuote record (raises on error).
+# load returns the ENTITY — call data_get for the DollarQuote record (raises on error).
 dollar_quote = client.DollarQuote.load({ "type" => "type" })
 ```
 
@@ -386,7 +387,7 @@ Create an instance: `get_root = client.GetRoot`
 #### Example: Load
 
 ```ruby
-# load returns the bare GetRoot record (raises on error).
+# load returns the ENTITY — call data_get for the GetRoot record (raises on error).
 get_root = client.GetRoot.load()
 ```
 

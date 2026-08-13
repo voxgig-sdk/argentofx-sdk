@@ -62,7 +62,7 @@ describe('GetRootEntity', async () => {
     // LOAD
     const get_root_ref01_ent = client.GetRoot()
     const get_root_ref01_match_dt0: any = {}
-    const get_root_ref01_data_dt0 = await get_root_ref01_ent.load(get_root_ref01_match_dt0)
+    const get_root_ref01_data_dt0 = (await get_root_ref01_ent.load(get_root_ref01_match_dt0)).data()
     assert(null != get_root_ref01_data_dt0)
 
 

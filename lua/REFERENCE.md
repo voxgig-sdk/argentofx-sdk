@@ -99,7 +99,7 @@ local currency = client:Currency(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `compra` | `number` | Yes |  |
-| `fecha_actualizacion` | `string` | Yes |  |
+| `fechaActualizacion` | `string` | Yes |  |
 | `moneda` | `string` | Yes |  |
 | `nombre` | `string` | Yes |  |
 | `venta` | `number` | Yes |  |
@@ -163,7 +163,7 @@ local dollar_quote = client:DollarQuote(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `compra` | `number` | Yes |  |
-| `fecha_actualizacion` | `string` | Yes |  |
+| `fechaActualizacion` | `string` | Yes |  |
 | `nombre` | `string` | Yes |  |
 | `venta` | `number` | Yes |  |
 

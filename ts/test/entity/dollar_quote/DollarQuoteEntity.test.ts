@@ -63,7 +63,7 @@ describe('DollarQuoteEntity', async () => {
     const dollar_quote_ref01_ent = client.DollarQuote()
     const dollar_quote_ref01_match: any = {}
 
-    const dollar_quote_ref01_list = await dollar_quote_ref01_ent.list(dollar_quote_ref01_match)
+    const dollar_quote_ref01_list = (await dollar_quote_ref01_ent.list(dollar_quote_ref01_match)).map((e: any) => e.data())
 
 
 

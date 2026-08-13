@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from argentofx_sdk.utility.voxgig_struct import voxgig_struct as vs
 from argentofx_sdk import ArgentofxSDK
-from core import helpers
+from argentofx_sdk.core import helpers
 from test import runner
 
 
