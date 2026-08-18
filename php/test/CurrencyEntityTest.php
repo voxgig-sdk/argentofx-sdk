@@ -40,7 +40,7 @@ class CurrencyEntityTest extends TestCase
         $this->assertCount(3, $seen);
 
         // Inbound: streaming active -> yields each item from the feature.
-        $cfg = ArgentofxConfig::make_config();
+        $cfg = ArgentofxConfig::shared_config();
         if (isset($cfg["feature"]) && is_array($cfg["feature"]) && isset($cfg["feature"]["streaming"])) {
             $sdk = ArgentofxSDK::test($seed, ["feature" => ["streaming" => ["active" => true]]]);
             $got = [];

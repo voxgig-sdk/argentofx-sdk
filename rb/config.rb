@@ -1,6 +1,20 @@
 # Argentofx SDK configuration
 
 module ArgentofxConfig
+  # Return the process-wide config, built once on first use. The SDK reads
+  # the config on every request and never writes to it, so one instance is
+  # shared by every client rather than rebuilt per client.
+  #
+  # The returned hash is shared: treat it as read-only. Callers that need to
+  # mutate should use make_config, which always returns a fresh copy.
+  def self.shared_config
+    @shared_config ||= make_config
+  end
+
+
+  # Build a fresh, fully materialised config hash. Every call rebuilds the
+  # whole structure, so prefer shared_config unless you need a private copy
+  # you intend to mutate.
   def self.make_config
     {
       "main" => {
@@ -28,39 +42,29 @@ module ArgentofxConfig
         "currency" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "compra",
               "req" => true,
               "type" => "`$NUMBER`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "fechaActualizacion",
               "req" => true,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "moneda",
               "req" => true,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "nombre",
               "req" => true,
               "type" => "`$STRING`",
-              "index$" => 3,
             },
             {
-              "active" => true,
               "name" => "venta",
               "req" => true,
               "type" => "`$NUMBER`",
-              "index$" => 4,
             },
           ],
           "name" => "currency",
@@ -70,7 +74,6 @@ module ArgentofxConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
@@ -83,28 +86,23 @@ module ArgentofxConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
             "load" => {
               "input" => "data",
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "params" => [
                       {
-                        "active" => true,
                         "example" => "EUR",
                         "kind" => "param",
                         "name" => "id",
                         "orig" => "currency",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                     ],
                   },
@@ -129,10 +127,8 @@ module ArgentofxConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {
@@ -142,32 +138,24 @@ module ArgentofxConfig
         "dollar_quote" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "compra",
               "req" => true,
               "type" => "`$NUMBER`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "fechaActualizacion",
               "req" => true,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "nombre",
               "req" => true,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "venta",
               "req" => true,
               "type" => "`$NUMBER`",
-              "index$" => 3,
             },
           ],
           "name" => "dollar_quote",
@@ -177,7 +165,6 @@ module ArgentofxConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
@@ -190,27 +177,22 @@ module ArgentofxConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
             "load" => {
               "input" => "data",
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "params" => [
                       {
-                        "active" => true,
                         "kind" => "param",
                         "name" => "type",
                         "orig" => "type",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                     ],
                   },
@@ -230,10 +212,8 @@ module ArgentofxConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {
@@ -247,18 +227,12 @@ module ArgentofxConfig
         "get_root" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "documentation",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "message",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
           ],
           "name" => "get_root",
@@ -268,7 +242,6 @@ module ArgentofxConfig
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
@@ -279,10 +252,8 @@ module ArgentofxConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {

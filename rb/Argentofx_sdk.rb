@@ -28,7 +28,7 @@ class ArgentofxSDK
     utility = ArgentofxUtility.new
     @_utility = utility
 
-    config = ArgentofxConfig.make_config
+    config = ArgentofxConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

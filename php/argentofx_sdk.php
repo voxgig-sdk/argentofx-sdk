@@ -40,7 +40,7 @@ class ArgentofxSDK
         $utility = new ArgentofxUtility();
         $this->_utility = $utility;
 
-        $config = ArgentofxConfig::make_config();
+        $config = ArgentofxConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
