@@ -1,6 +1,6 @@
-# Entity: currency
+# Entity: dollar_quote
 
-main: kit: entity: currency: {
+main: kit: entity: dollar_quote: {
 
   alias: field: {}
 
@@ -8,40 +8,39 @@ main: kit: entity: currency: {
     {
       name: "compra"
       req: true
+      short: "Buy price"
       type: "`$NUMBER`"
     }
     {
       name: "fechaActualizacion"
       req: true
-      type: "`$STRING`"
-    }
-    {
-      name: "moneda"
-      req: true
+      short: "Last update timestamp"
       type: "`$STRING`"
     }
     {
       name: "nombre"
       req: true
+      short: "Name of the dollar type"
       type: "`$STRING`"
     }
     {
       name: "venta"
       req: true
+      short: "Sell price"
       type: "`$NUMBER`"
     }
   ]
 
-  name: "currency"
+  name: "dollar_quote"
   op: {
     list: {
       name: "list"
       points: [
         {
           method: "GET"
-          orig: "/currencies"
+          orig: "/dolares"
           parts: [
-            "currencies"
+            "dolares"
           ]
           transform: {
             req: "`reqdata`"
@@ -57,29 +56,23 @@ main: kit: entity: currency: {
           args: {
             params: [
               {
-                example: "EUR"
                 kind: "param"
-                name: "id"
-                orig: "currency"
+                name: "type"
+                orig: "type"
                 reqd: true
                 type: "`$STRING`"
               }
             ]
           }
           method: "GET"
-          orig: "/currencies/{currency}"
+          orig: "/dolares/{type}"
           parts: [
-            "currencies"
-            "{id}"
+            "dolares"
+            "{type}"
           ]
-          rename: {
-            param: {
-              currency: "id"
-            }
-          }
           select: {
             exist: [
-              "id"
+              "type"
             ]
           }
           transform: {
@@ -89,6 +82,14 @@ main: kit: entity: currency: {
         }
       ]
     }
+  }
+
+  relations: {
+    ancestors: [
+      [
+        "dolare"
+      ]
+    ]
   }
 
 

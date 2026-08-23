@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -307,11 +307,11 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `compra` |  |
-| `fechaActualizacion` |  |
-| `moneda` |  |
-| `nombre` |  |
-| `venta` |  |
+| `compra` | Buy price |
+| `fechaActualizacion` | Last update timestamp |
+| `moneda` | Currency code |
+| `nombre` | Currency name |
+| `venta` | Sell price |
 
 Operations: list, load.
 
@@ -321,10 +321,10 @@ API path: `/currencies`
 
 | Field | Description |
 | --- | --- |
-| `compra` |  |
-| `fechaActualizacion` |  |
-| `nombre` |  |
-| `venta` |  |
+| `compra` | Buy price |
+| `fechaActualizacion` | Last update timestamp |
+| `nombre` | Name of the dollar type |
+| `venta` | Sell price |
 
 Operations: list, load.
 
@@ -361,11 +361,11 @@ Create an instance: `const currency = client.Currency()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `compra` | `number` |  |
-| `fechaActualizacion` | `string` |  |
-| `moneda` | `string` |  |
-| `nombre` | `string` |  |
-| `venta` | `number` |  |
+| `compra` | `number` | Buy price |
+| `fechaActualizacion` | `string` | Last update timestamp |
+| `moneda` | `string` | Currency code |
+| `nombre` | `string` | Currency name |
+| `venta` | `number` | Sell price |
 
 #### Example: Load
 
@@ -395,10 +395,10 @@ Create an instance: `const dollar_quote = client.DollarQuote()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `compra` | `number` |  |
-| `fechaActualizacion` | `string` |  |
-| `nombre` | `string` |  |
-| `venta` | `number` |  |
+| `compra` | `number` | Buy price |
+| `fechaActualizacion` | `string` | Last update timestamp |
+| `nombre` | `string` | Name of the dollar type |
+| `venta` | `number` | Sell price |
 
 #### Example: Load
 

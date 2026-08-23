@@ -33,6 +33,9 @@ class ArgentofxConfig
         return [
             "main" => [
                 "name" => "Argentofx",
+                "slug" => "argentofx",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -58,26 +61,31 @@ class ArgentofxConfig
             [
               'name' => 'compra',
               'req' => true,
+              'short' => 'Buy price',
               'type' => '`$NUMBER`',
             ],
             [
               'name' => 'fechaActualizacion',
               'req' => true,
+              'short' => 'Last update timestamp',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'moneda',
               'req' => true,
+              'short' => 'Currency code',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'nombre',
               'req' => true,
+              'short' => 'Currency name',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'venta',
               'req' => true,
+              'short' => 'Sell price',
               'type' => '`$NUMBER`',
             ],
           ],
@@ -154,21 +162,25 @@ class ArgentofxConfig
             [
               'name' => 'compra',
               'req' => true,
+              'short' => 'Buy price',
               'type' => '`$NUMBER`',
             ],
             [
               'name' => 'fechaActualizacion',
               'req' => true,
+              'short' => 'Last update timestamp',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'nombre',
               'req' => true,
+              'short' => 'Name of the dollar type',
               'type' => '`$STRING`',
             ],
             [
               'name' => 'venta',
               'req' => true,
+              'short' => 'Sell price',
               'type' => '`$NUMBER`',
             ],
           ],

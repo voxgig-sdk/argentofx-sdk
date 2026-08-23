@@ -267,11 +267,11 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `compra` |  |
-| `fechaActualizacion` |  |
-| `moneda` |  |
-| `nombre` |  |
-| `venta` |  |
+| `compra` | Buy price |
+| `fechaActualizacion` | Last update timestamp |
+| `moneda` | Currency code |
+| `nombre` | Currency name |
+| `venta` | Sell price |
 
 Operations: List, Load.
 
@@ -281,10 +281,10 @@ API path: `/currencies`
 
 | Field | Description |
 | --- | --- |
-| `compra` |  |
-| `fechaActualizacion` |  |
-| `nombre` |  |
-| `venta` |  |
+| `compra` | Buy price |
+| `fechaActualizacion` | Last update timestamp |
+| `nombre` | Name of the dollar type |
+| `venta` | Sell price |
 
 Operations: List, Load.
 
@@ -321,11 +321,11 @@ Create an instance: `$currency = $client->Currency();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `compra` | `float` |  |
-| `fechaActualizacion` | `string` |  |
-| `moneda` | `string` |  |
-| `nombre` | `string` |  |
-| `venta` | `float` |  |
+| `compra` | `float` | Buy price |
+| `fechaActualizacion` | `string` | Last update timestamp |
+| `moneda` | `string` | Currency code |
+| `nombre` | `string` | Currency name |
+| `venta` | `float` | Sell price |
 
 #### Example: Load
 
@@ -357,10 +357,10 @@ Create an instance: `$dollar_quote = $client->DollarQuote();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `compra` | `float` |  |
-| `fechaActualizacion` | `string` |  |
-| `nombre` | `string` |  |
-| `venta` | `float` |  |
+| `compra` | `float` | Buy price |
+| `fechaActualizacion` | `string` | Last update timestamp |
+| `nombre` | `string` | Name of the dollar type |
+| `venta` | `float` | Sell price |
 
 #### Example: Load
 

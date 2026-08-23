@@ -259,11 +259,11 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `compra` |  |
-| `fechaActualizacion` |  |
-| `moneda` |  |
-| `nombre` |  |
-| `venta` |  |
+| `compra` | Buy price |
+| `fechaActualizacion` | Last update timestamp |
+| `moneda` | Currency code |
+| `nombre` | Currency name |
+| `venta` | Sell price |
 
 Operations: List, Load.
 
@@ -273,10 +273,10 @@ API path: `/currencies`
 
 | Field | Description |
 | --- | --- |
-| `compra` |  |
-| `fechaActualizacion` |  |
-| `nombre` |  |
-| `venta` |  |
+| `compra` | Buy price |
+| `fechaActualizacion` | Last update timestamp |
+| `nombre` | Name of the dollar type |
+| `venta` | Sell price |
 
 Operations: List, Load.
 
@@ -313,11 +313,11 @@ Create an instance: `currency = client.Currency()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `compra` | `float` |  |
-| `fechaActualizacion` | `str` |  |
-| `moneda` | `str` |  |
-| `nombre` | `str` |  |
-| `venta` | `float` |  |
+| `compra` | `float` | Buy price |
+| `fechaActualizacion` | `str` | Last update timestamp |
+| `moneda` | `str` | Currency code |
+| `nombre` | `str` | Currency name |
+| `venta` | `float` | Sell price |
 
 #### Example: Load
 
@@ -347,10 +347,10 @@ Create an instance: `dollar_quote = client.DollarQuote()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `compra` | `float` |  |
-| `fechaActualizacion` | `str` |  |
-| `nombre` | `str` |  |
-| `venta` | `float` |  |
+| `compra` | `float` | Buy price |
+| `fechaActualizacion` | `str` | Last update timestamp |
+| `nombre` | `str` | Name of the dollar type |
+| `venta` | `float` | Sell price |
 
 #### Example: Load
 

@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "Argentofx",
+      slug = "argentofx",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -32,26 +35,31 @@ local function make_config()
           {
             ["name"] = "compra",
             ["req"] = true,
+            ["short"] = "Buy price",
             ["type"] = "`$NUMBER`",
           },
           {
             ["name"] = "fechaActualizacion",
             ["req"] = true,
+            ["short"] = "Last update timestamp",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "moneda",
             ["req"] = true,
+            ["short"] = "Currency code",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "nombre",
             ["req"] = true,
+            ["short"] = "Currency name",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "venta",
             ["req"] = true,
+            ["short"] = "Sell price",
             ["type"] = "`$NUMBER`",
           },
         },
@@ -128,21 +136,25 @@ local function make_config()
           {
             ["name"] = "compra",
             ["req"] = true,
+            ["short"] = "Buy price",
             ["type"] = "`$NUMBER`",
           },
           {
             ["name"] = "fechaActualizacion",
             ["req"] = true,
+            ["short"] = "Last update timestamp",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "nombre",
             ["req"] = true,
+            ["short"] = "Name of the dollar type",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "venta",
             ["req"] = true,
+            ["short"] = "Sell price",
             ["type"] = "`$NUMBER`",
           },
         },

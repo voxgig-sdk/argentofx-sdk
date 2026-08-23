@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "Argentofx",
+			"slug": "argentofx",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -36,26 +39,31 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "compra",
 						"req": true,
+						"short": "Buy price",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "fechaActualizacion",
 						"req": true,
+						"short": "Last update timestamp",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "moneda",
 						"req": true,
+						"short": "Currency code",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "nombre",
 						"req": true,
+						"short": "Currency name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "venta",
 						"req": true,
+						"short": "Sell price",
 						"type": "`$NUMBER`",
 					},
 				},
@@ -132,21 +140,25 @@ func MakeConfig() map[string]any {
 					map[string]any{
 						"name": "compra",
 						"req": true,
+						"short": "Buy price",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "fechaActualizacion",
 						"req": true,
+						"short": "Last update timestamp",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "nombre",
 						"req": true,
+						"short": "Name of the dollar type",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "venta",
 						"req": true,
+						"short": "Sell price",
 						"type": "`$NUMBER`",
 					},
 				},

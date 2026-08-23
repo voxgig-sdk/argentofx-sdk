@@ -98,11 +98,11 @@ local currency = client:Currency(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `compra` | `number` | Yes |  |
-| `fechaActualizacion` | `string` | Yes |  |
-| `moneda` | `string` | Yes |  |
-| `nombre` | `string` | Yes |  |
-| `venta` | `number` | Yes |  |
+| `compra` | `number` | Yes | Buy price |
+| `fechaActualizacion` | `string` | Yes | Last update timestamp |
+| `moneda` | `string` | Yes | Currency code |
+| `nombre` | `string` | Yes | Currency name |
+| `venta` | `number` | Yes | Sell price |
 
 ### Operations
 
@@ -162,10 +162,10 @@ local dollar_quote = client:DollarQuote(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `compra` | `number` | Yes |  |
-| `fechaActualizacion` | `string` | Yes |  |
-| `nombre` | `string` | Yes |  |
-| `venta` | `number` | Yes |  |
+| `compra` | `number` | Yes | Buy price |
+| `fechaActualizacion` | `string` | Yes | Last update timestamp |
+| `nombre` | `string` | Yes | Name of the dollar type |
+| `venta` | `number` | Yes | Sell price |
 
 ### Operations
 

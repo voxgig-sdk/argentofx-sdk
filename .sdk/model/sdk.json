@@ -36,30 +36,35 @@
               "active": true,
               "name": "compra",
               "req": true,
+              "short": "Buy price",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "fechaActualizacion",
               "req": true,
+              "short": "Last update timestamp",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "moneda",
               "req": true,
+              "short": "Currency code",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "nombre",
               "req": true,
+              "short": "Currency name",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "venta",
               "req": true,
+              "short": "Sell price",
               "type": "`$NUMBER`"
             }
           ],
@@ -144,24 +149,28 @@
               "active": true,
               "name": "compra",
               "req": true,
+              "short": "Buy price",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "fechaActualizacion",
               "req": true,
+              "short": "Last update timestamp",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "nombre",
               "req": true,
+              "short": "Name of the dollar type",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "venta",
               "req": true,
+              "short": "Sell price",
               "type": "`$NUMBER`"
             }
           ],

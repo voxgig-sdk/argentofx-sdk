@@ -257,11 +257,11 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `compra` |  |
-| `fechaActualizacion` |  |
-| `moneda` |  |
-| `nombre` |  |
-| `venta` |  |
+| `compra` | Buy price |
+| `fechaActualizacion` | Last update timestamp |
+| `moneda` | Currency code |
+| `nombre` | Currency name |
+| `venta` | Sell price |
 
 Operations: List, Load.
 
@@ -271,10 +271,10 @@ API path: `/currencies`
 
 | Field | Description |
 | --- | --- |
-| `compra` |  |
-| `fechaActualizacion` |  |
-| `nombre` |  |
-| `venta` |  |
+| `compra` | Buy price |
+| `fechaActualizacion` | Last update timestamp |
+| `nombre` | Name of the dollar type |
+| `venta` | Sell price |
 
 Operations: List, Load.
 
@@ -311,11 +311,11 @@ Create an instance: `currency = client.Currency`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `compra` | `Float` |  |
-| `fechaActualizacion` | `String` |  |
-| `moneda` | `String` |  |
-| `nombre` | `String` |  |
-| `venta` | `Float` |  |
+| `compra` | `Float` | Buy price |
+| `fechaActualizacion` | `String` | Last update timestamp |
+| `moneda` | `String` | Currency code |
+| `nombre` | `String` | Currency name |
+| `venta` | `Float` | Sell price |
 
 #### Example: Load
 
@@ -347,10 +347,10 @@ Create an instance: `dollar_quote = client.DollarQuote`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `compra` | `Float` |  |
-| `fechaActualizacion` | `String` |  |
-| `nombre` | `String` |  |
-| `venta` | `Float` |  |
+| `compra` | `Float` | Buy price |
+| `fechaActualizacion` | `String` | Last update timestamp |
+| `nombre` | `String` | Name of the dollar type |
+| `venta` | `Float` | Sell price |
 
 #### Example: Load
 

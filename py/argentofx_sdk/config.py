@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "Argentofx",
+            "slug": "argentofx",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -53,26 +56,31 @@ def make_config():
           {
             "name": "compra",
             "req": True,
+            "short": "Buy price",
             "type": "`$NUMBER`",
           },
           {
             "name": "fechaActualizacion",
             "req": True,
+            "short": "Last update timestamp",
             "type": "`$STRING`",
           },
           {
             "name": "moneda",
             "req": True,
+            "short": "Currency code",
             "type": "`$STRING`",
           },
           {
             "name": "nombre",
             "req": True,
+            "short": "Currency name",
             "type": "`$STRING`",
           },
           {
             "name": "venta",
             "req": True,
+            "short": "Sell price",
             "type": "`$NUMBER`",
           },
         ],
@@ -149,21 +157,25 @@ def make_config():
           {
             "name": "compra",
             "req": True,
+            "short": "Buy price",
             "type": "`$NUMBER`",
           },
           {
             "name": "fechaActualizacion",
             "req": True,
+            "short": "Last update timestamp",
             "type": "`$STRING`",
           },
           {
             "name": "nombre",
             "req": True,
+            "short": "Name of the dollar type",
             "type": "`$STRING`",
           },
           {
             "name": "venta",
             "req": True,
+            "short": "Sell price",
             "type": "`$NUMBER`",
           },
         ],

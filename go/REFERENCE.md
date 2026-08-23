@@ -106,11 +106,11 @@ fmt.Println(currency.GetName()) // "currency"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `compra` | `float64` | Yes |  |
-| `fechaActualizacion` | `string` | Yes |  |
-| `moneda` | `string` | Yes |  |
-| `nombre` | `string` | Yes |  |
-| `venta` | `float64` | Yes |  |
+| `compra` | `float64` | Yes | Buy price |
+| `fechaActualizacion` | `string` | Yes | Last update timestamp |
+| `moneda` | `string` | Yes | Currency code |
+| `nombre` | `string` | Yes | Currency name |
+| `venta` | `float64` | Yes | Sell price |
 
 ### Operations
 
@@ -173,10 +173,10 @@ fmt.Println(dollarQuote.GetName()) // "dollar_quote"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `compra` | `float64` | Yes |  |
-| `fechaActualizacion` | `string` | Yes |  |
-| `nombre` | `string` | Yes |  |
-| `venta` | `float64` | Yes |  |
+| `compra` | `float64` | Yes | Buy price |
+| `fechaActualizacion` | `string` | Yes | Last update timestamp |
+| `nombre` | `string` | Yes | Name of the dollar type |
+| `venta` | `float64` | Yes | Sell price |
 
 ### Operations
 

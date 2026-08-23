@@ -245,11 +245,11 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `compra` |  |
-| `fechaActualizacion` |  |
-| `moneda` |  |
-| `nombre` |  |
-| `venta` |  |
+| `compra` | Buy price |
+| `fechaActualizacion` | Last update timestamp |
+| `moneda` | Currency code |
+| `nombre` | Currency name |
+| `venta` | Sell price |
 
 Operations: List, Load.
 
@@ -259,10 +259,10 @@ API path: `/currencies`
 
 | Field | Description |
 | --- | --- |
-| `compra` |  |
-| `fechaActualizacion` |  |
-| `nombre` |  |
-| `venta` |  |
+| `compra` | Buy price |
+| `fechaActualizacion` | Last update timestamp |
+| `nombre` | Name of the dollar type |
+| `venta` | Sell price |
 
 Operations: List, Load.
 
@@ -299,11 +299,11 @@ Create an instance: `local currency = client:Currency(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `compra` | `number` |  |
-| `fechaActualizacion` | `string` |  |
-| `moneda` | `string` |  |
-| `nombre` | `string` |  |
-| `venta` | `number` |  |
+| `compra` | `number` | Buy price |
+| `fechaActualizacion` | `string` | Last update timestamp |
+| `moneda` | `string` | Currency code |
+| `nombre` | `string` | Currency name |
+| `venta` | `number` | Sell price |
 
 #### Example: Load
 
@@ -333,10 +333,10 @@ Create an instance: `local dollar_quote = client:DollarQuote(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `compra` | `number` |  |
-| `fechaActualizacion` | `string` |  |
-| `nombre` | `string` |  |
-| `venta` | `number` |  |
+| `compra` | `number` | Buy price |
+| `fechaActualizacion` | `string` | Last update timestamp |
+| `nombre` | `string` | Name of the dollar type |
+| `venta` | `number` | Sell price |
 
 #### Example: Load
 

@@ -6,7 +6,7 @@ The Golang SDK for the Argentofx API — an entity-oriented client using standar
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Currency(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -271,11 +271,11 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"compra"` |  |
-| `"fechaActualizacion"` |  |
-| `"moneda"` |  |
-| `"nombre"` |  |
-| `"venta"` |  |
+| `"compra"` | Buy price |
+| `"fechaActualizacion"` | Last update timestamp |
+| `"moneda"` | Currency code |
+| `"nombre"` | Currency name |
+| `"venta"` | Sell price |
 
 Operations: List, Load.
 
@@ -285,10 +285,10 @@ API path: `/currencies`
 
 | Field | Description |
 | --- | --- |
-| `"compra"` |  |
-| `"fechaActualizacion"` |  |
-| `"nombre"` |  |
-| `"venta"` |  |
+| `"compra"` | Buy price |
+| `"fechaActualizacion"` | Last update timestamp |
+| `"nombre"` | Name of the dollar type |
+| `"venta"` | Sell price |
 
 Operations: List, Load.
 
@@ -325,11 +325,11 @@ Create an instance: `currency := client.Currency(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `compra` | `float64` |  |
-| `fechaActualizacion` | `string` |  |
-| `moneda` | `string` |  |
-| `nombre` | `string` |  |
-| `venta` | `float64` |  |
+| `compra` | `float64` | Buy price |
+| `fechaActualizacion` | `string` | Last update timestamp |
+| `moneda` | `string` | Currency code |
+| `nombre` | `string` | Currency name |
+| `venta` | `float64` | Sell price |
 
 #### Example: Load
 
@@ -367,10 +367,10 @@ Create an instance: `dollarQuote := client.DollarQuote(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `compra` | `float64` |  |
-| `fechaActualizacion` | `string` |  |
-| `nombre` | `string` |  |
-| `venta` | `float64` |  |
+| `compra` | `float64` | Buy price |
+| `fechaActualizacion` | `string` | Last update timestamp |
+| `nombre` | `string` | Name of the dollar type |
+| `venta` | `float64` | Sell price |
 
 #### Example: Load
 
