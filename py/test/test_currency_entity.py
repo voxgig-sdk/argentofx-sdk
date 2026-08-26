@@ -88,9 +88,13 @@ class TestCurrencyEntity:
         assert isinstance(currency_ref01_list_result, list)
 
         # LOAD
-        currency_ref01_match_dt0 = {}
+        currency_ref01_match_dt0 = {
+            "id": currency_ref01_data["id"],
+        }
         currency_ref01_data_dt0_loaded = currency_ref01_ent.load(currency_ref01_match_dt0, None)
-        assert currency_ref01_data_dt0_loaded is not None
+        currency_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(currency_ref01_data_dt0_loaded))
+        assert currency_ref01_data_dt0_load_result is not None
+        assert currency_ref01_data_dt0_load_result["id"] == currency_ref01_data["id"]
 
 
 

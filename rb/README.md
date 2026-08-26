@@ -37,7 +37,7 @@ begin
   # list returns an Array of Currency records — iterate directly.
   currencys = client.Currency.list
   currencys.each do |item|
-    puts "#{item["compra"]}"
+    puts "#{item["id"]} #{item["compra"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -259,6 +259,7 @@ returns a result `Hash` with these keys:
 | --- | --- |
 | `compra` | Buy price |
 | `fechaActualizacion` | Last update timestamp |
+| `id` |  |
 | `moneda` | Currency code |
 | `nombre` | Currency name |
 | `venta` | Sell price |
@@ -313,6 +314,7 @@ Create an instance: `currency = client.Currency`
 | --- | --- | --- |
 | `compra` | `Float` | Buy price |
 | `fechaActualizacion` | `String` | Last update timestamp |
+| `id` | `String` |  |
 | `moneda` | `String` | Currency code |
 | `nombre` | `String` | Currency name |
 | `venta` | `Float` | Sell price |

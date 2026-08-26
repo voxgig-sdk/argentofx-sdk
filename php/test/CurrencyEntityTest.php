@@ -93,9 +93,13 @@ class CurrencyEntityTest extends TestCase
         $this->assertIsArray($currency_ref01_list_result);
 
         // LOAD
-        $currency_ref01_match_dt0 = [];
+        $currency_ref01_match_dt0 = [
+            "id" => $currency_ref01_data["id"],
+        ];
         $currency_ref01_data_dt0_loaded = $currency_ref01_ent->load($currency_ref01_match_dt0, null);
-        $this->assertNotNull($currency_ref01_data_dt0_loaded);
+        $currency_ref01_data_dt0_load_result = Helpers::to_map(is_object($currency_ref01_data_dt0_loaded) && method_exists($currency_ref01_data_dt0_loaded, 'data_get') ? $currency_ref01_data_dt0_loaded->data_get() : $currency_ref01_data_dt0_loaded);
+        $this->assertNotNull($currency_ref01_data_dt0_load_result);
+        $this->assertEquals($currency_ref01_data_dt0_load_result["id"], $currency_ref01_data["id"]);
 
     }
 }

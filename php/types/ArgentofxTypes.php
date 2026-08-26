@@ -17,6 +17,7 @@ class Currency
 {
     public float $compra;
     public string $fechaActualizacion;
+    public ?string $id = null;
     public string $moneda;
     public string $nombre;
     public float $venta;
@@ -33,6 +34,7 @@ class CurrencyListMatch
 {
     public ?float $compra = null;
     public ?string $fechaActualizacion = null;
+    public ?string $id = null;
     public ?string $moneda = null;
     public ?string $nombre = null;
     public ?float $venta = null;

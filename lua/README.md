@@ -43,7 +43,7 @@ local currencys, err = client:Currency():list()
 if err then error(err) end
 
 for _, item in ipairs(currencys) do
-  print(item["fechaActualizacion"])
+  print(item["id"], item["fechaActualizacion"])
 end
 ```
 
@@ -247,6 +247,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | --- | --- |
 | `compra` | Buy price |
 | `fechaActualizacion` | Last update timestamp |
+| `id` |  |
 | `moneda` | Currency code |
 | `nombre` | Currency name |
 | `venta` | Sell price |
@@ -301,6 +302,7 @@ Create an instance: `local currency = client:Currency(nil)`
 | --- | --- | --- |
 | `compra` | `number` | Buy price |
 | `fechaActualizacion` | `string` | Last update timestamp |
+| `id` | `string` |  |
 | `moneda` | `string` | Currency code |
 | `nombre` | `string` | Currency name |
 | `venta` | `number` | Sell price |

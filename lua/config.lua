@@ -16,6 +16,7 @@ local function make_config()
         ["options"] = {
           ["active"] = false,
         },
+        ["transport"] = "base",
       },
     },
     options = {
@@ -42,6 +43,10 @@ local function make_config()
             ["name"] = "fechaActualizacion",
             ["req"] = true,
             ["short"] = "Last update timestamp",
+            ["type"] = "`$STRING`",
+          },
+          {
+            ["name"] = "id",
             ["type"] = "`$STRING`",
           },
           {

@@ -103,6 +103,7 @@ currency = client.Currency
 | --- | --- | --- | --- |
 | `compra` | `Float` | Yes | Buy price |
 | `fechaActualizacion` | `String` | Yes | Last update timestamp |
+| `id` | `String` | No |  |
 | `moneda` | `String` | Yes | Currency code |
 | `nombre` | `String` | Yes | Currency name |
 | `venta` | `Float` | Yes | Sell price |

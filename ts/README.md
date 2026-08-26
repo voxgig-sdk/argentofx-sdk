@@ -162,7 +162,7 @@ await entity.list()
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data)
+console.log(data.id)
 ```
 
 ### Add custom middleware
@@ -309,6 +309,7 @@ The `prepare()` method returns:
 | --- | --- |
 | `compra` | Buy price |
 | `fechaActualizacion` | Last update timestamp |
+| `id` |  |
 | `moneda` | Currency code |
 | `nombre` | Currency name |
 | `venta` | Sell price |
@@ -363,6 +364,7 @@ Create an instance: `const currency = client.Currency()`
 | --- | --- | --- |
 | `compra` | `number` | Buy price |
 | `fechaActualizacion` | `string` | Last update timestamp |
+| `id` | `string` |  |
 | `moneda` | `string` | Currency code |
 | `nombre` | `string` | Currency name |
 | `venta` | `number` | Sell price |

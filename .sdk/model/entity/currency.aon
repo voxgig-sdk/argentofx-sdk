@@ -18,6 +18,11 @@ main: kit: entity: currency: {
       type: "`$STRING`"
     }
     {
+      name: "id"
+      req: false
+      type: "`$STRING`"
+    }
+    {
       name: "moneda"
       req: true
       short: "Currency code"
@@ -36,6 +41,11 @@ main: kit: entity: currency: {
       type: "`$NUMBER`"
     }
   ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
 
   name: "currency"
   op: {

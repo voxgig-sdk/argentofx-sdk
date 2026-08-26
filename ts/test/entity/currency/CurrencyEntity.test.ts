@@ -66,6 +66,12 @@ describe('CurrencyEntity', async () => {
     const currency_ref01_list = (await currency_ref01_ent.list(currency_ref01_match)).map((e: any) => e.data())
 
 
+    // LOAD
+    const currency_ref01_match_dt0: any = {}
+    currency_ref01_match_dt0.id = currency_ref01_data.id
+    const currency_ref01_data_dt0 = (await currency_ref01_ent.load(currency_ref01_match_dt0)).data()
+    assert(currency_ref01_data_dt0.id === currency_ref01_data.id)
+
 
   })
 })

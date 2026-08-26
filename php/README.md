@@ -38,7 +38,7 @@ try {
     // list() returns an array of Currency records — iterate directly.
     $currencys = $client->Currency()->list();
     foreach ($currencys as $item) {
-        echo $item["compra"] . "\n";
+        echo $item["id"] . " " . $item["compra"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -269,6 +269,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | --- | --- |
 | `compra` | Buy price |
 | `fechaActualizacion` | Last update timestamp |
+| `id` |  |
 | `moneda` | Currency code |
 | `nombre` | Currency name |
 | `venta` | Sell price |
@@ -323,6 +324,7 @@ Create an instance: `$currency = $client->Currency();`
 | --- | --- | --- |
 | `compra` | `float` | Buy price |
 | `fechaActualizacion` | `string` | Last update timestamp |
+| `id` | `string` |  |
 | `moneda` | `string` | Currency code |
 | `nombre` | `string` | Currency name |
 | `venta` | `float` | Sell price |

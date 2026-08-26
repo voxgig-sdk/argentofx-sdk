@@ -37,6 +37,7 @@ def make_config():
         "options": {
           "active": False,
         },
+        "transport": "base",
       },
         },
         "options": {
@@ -63,6 +64,10 @@ def make_config():
             "name": "fechaActualizacion",
             "req": True,
             "short": "Last update timestamp",
+            "type": "`$STRING`",
+          },
+          {
+            "name": "id",
             "type": "`$STRING`",
           },
           {

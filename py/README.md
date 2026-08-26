@@ -261,6 +261,7 @@ On error, `ok` is `False` and `err` contains the error value.
 | --- | --- |
 | `compra` | Buy price |
 | `fechaActualizacion` | Last update timestamp |
+| `id` |  |
 | `moneda` | Currency code |
 | `nombre` | Currency name |
 | `venta` | Sell price |
@@ -315,6 +316,7 @@ Create an instance: `currency = client.Currency()`
 | --- | --- | --- |
 | `compra` | `float` | Buy price |
 | `fechaActualizacion` | `str` | Last update timestamp |
+| `id` | `str` |  |
 | `moneda` | `str` | Currency code |
 | `nombre` | `str` | Currency name |
 | `venta` | `float` | Sell price |

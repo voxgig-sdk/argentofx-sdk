@@ -16,6 +16,9 @@
 # @!attribute [rw] fechaActualizacion
 #   @return [String]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] moneda
 #   @return [String]
 #
@@ -27,6 +30,7 @@
 Currency = Struct.new(
   :compra,
   :fechaActualizacion,
+  :id,
   :moneda,
   :nombre,
   :venta,
@@ -50,6 +54,9 @@ CurrencyLoadMatch = Struct.new(
 # @!attribute [rw] fechaActualizacion
 #   @return [String, nil]
 #
+# @!attribute [rw] id
+#   @return [String, nil]
+#
 # @!attribute [rw] moneda
 #   @return [String, nil]
 #
@@ -61,6 +68,7 @@ CurrencyLoadMatch = Struct.new(
 CurrencyListMatch = Struct.new(
   :compra,
   :fechaActualizacion,
+  :id,
   :moneda,
   :nombre,
   :venta,

@@ -16,12 +16,16 @@ from __future__ import annotations
 from typing import TypedDict, Any
 
 
-class Currency(TypedDict):
+class CurrencyRequired(TypedDict):
     compra: float
     fechaActualizacion: str
     moneda: str
     nombre: str
     venta: float
+
+
+class Currency(CurrencyRequired, total=False):
+    id: str
 
 
 class CurrencyLoadMatch(TypedDict):
@@ -31,6 +35,7 @@ class CurrencyLoadMatch(TypedDict):
 class CurrencyListMatch(TypedDict, total=False):
     compra: float
     fechaActualizacion: str
+    id: str
     moneda: str
     nombre: str
     venta: float

@@ -108,6 +108,7 @@ fmt.Println(currency.GetName()) // "currency"
 | --- | --- | --- | --- |
 | `compra` | `float64` | Yes | Buy price |
 | `fechaActualizacion` | `string` | Yes | Last update timestamp |
+| `id` | `string` | No |  |
 | `moneda` | `string` | Yes | Currency code |
 | `nombre` | `string` | Yes | Currency name |
 | `venta` | `float64` | Yes | Sell price |

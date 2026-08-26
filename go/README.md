@@ -273,6 +273,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | --- | --- |
 | `"compra"` | Buy price |
 | `"fechaActualizacion"` | Last update timestamp |
+| `"id"` |  |
 | `"moneda"` | Currency code |
 | `"nombre"` | Currency name |
 | `"venta"` | Sell price |
@@ -327,6 +328,7 @@ Create an instance: `currency := client.Currency(nil)`
 | --- | --- | --- |
 | `compra` | `float64` | Buy price |
 | `fechaActualizacion` | `string` | Last update timestamp |
+| `id` | `string` |  |
 | `moneda` | `string` | Currency code |
 | `nombre` | `string` | Currency name |
 | `venta` | `float64` | Sell price |

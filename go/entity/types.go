@@ -16,6 +16,7 @@ import (
 type Currency struct {
 	Compra float64 `json:"compra"`
 	FechaActualizacion string `json:"fechaActualizacion"`
+	Id *string `json:"id,omitempty"`
 	Moneda string `json:"moneda"`
 	Nombre string `json:"nombre"`
 	Venta float64 `json:"venta"`
@@ -30,6 +31,7 @@ type CurrencyLoadMatch struct {
 type CurrencyListMatch struct {
 	Compra *float64 `json:"compra,omitempty"`
 	FechaActualizacion *string `json:"fechaActualizacion,omitempty"`
+	Id *string `json:"id,omitempty"`
 	Moneda *string `json:"moneda,omitempty"`
 	Nombre *string `json:"nombre,omitempty"`
 	Venta *float64 `json:"venta,omitempty"`

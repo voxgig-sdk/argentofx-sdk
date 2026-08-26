@@ -92,10 +92,14 @@ describe("CurrencyEntity", function()
     assert.is_table(currency_ref01_list_result)
 
     -- LOAD
-    local currency_ref01_match_dt0 = {}
+    local currency_ref01_match_dt0 = {
+      id = currency_ref01_data["id"],
+    }
     local currency_ref01_data_dt0_loaded, err = currency_ref01_ent:load(currency_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(currency_ref01_data_dt0_loaded)
+    local currency_ref01_data_dt0_load_result = helpers.to_map(type(currency_ref01_data_dt0_loaded) == 'table' and currency_ref01_data_dt0_loaded.data_get and currency_ref01_data_dt0_loaded:data_get() or currency_ref01_data_dt0_loaded)
+    assert.is_not_nil(currency_ref01_data_dt0_load_result)
+    assert.are.equal(currency_ref01_data_dt0_load_result["id"], currency_ref01_data["id"])
 
   end)
 end)

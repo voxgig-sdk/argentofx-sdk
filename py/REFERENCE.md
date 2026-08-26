@@ -97,6 +97,7 @@ currency = client.Currency()
 | --- | --- | --- | --- |
 | `compra` | `float` | Yes | Buy price |
 | `fechaActualizacion` | `str` | Yes | Last update timestamp |
+| `id` | `str` | No |  |
 | `moneda` | `str` | Yes | Currency code |
 | `nombre` | `str` | Yes | Currency name |
 | `venta` | `float` | Yes | Sell price |

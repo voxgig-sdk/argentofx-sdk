@@ -2,39 +2,39 @@
   "existing": {
     "currency": {
       "CURRENCY00": {
-        "compra": 50,
-        "fechaActualizacion": "s33",
-        "moneda": "s34",
-        "nombre": "s35",
-        "venta": 54,
-        "id": "CURRENCY00"
+        "compra": 60,
+        "fechaActualizacion": "s3d",
+        "id": "CURRENCY00",
+        "moneda": "s3f",
+        "nombre": "s40",
+        "venta": 65
       },
       "CURRENCY01": {
-        "compra": 100,
-        "fechaActualizacion": "s65",
-        "moneda": "s66",
-        "nombre": "s67",
-        "venta": 104,
-        "id": "CURRENCY01"
+        "compra": 120,
+        "fechaActualizacion": "s79",
+        "id": "CURRENCY01",
+        "moneda": "s7b",
+        "nombre": "s7c",
+        "venta": 125
       },
       "CURRENCY02": {
-        "compra": 150,
-        "fechaActualizacion": "s97",
-        "moneda": "s98",
-        "nombre": "s99",
-        "venta": 154,
-        "id": "CURRENCY02"
+        "compra": 180,
+        "fechaActualizacion": "sb5",
+        "id": "CURRENCY02",
+        "moneda": "sb7",
+        "nombre": "sb8",
+        "venta": 185
       }
     }
   },
   "new": {
     "currency": {
       "currency_ref01": {
-        "compra": 200,
-        "fechaActualizacion": "sc9",
-        "moneda": "sca",
-        "nombre": "scb",
-        "venta": 204
+        "compra": 240,
+        "fechaActualizacion": "sf1",
+        "moneda": "sf3",
+        "nombre": "sf4",
+        "venta": 245
       }
     }
   }

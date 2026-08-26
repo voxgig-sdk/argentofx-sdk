@@ -8,6 +8,7 @@
 export interface Currency {
   compra: number
   fechaActualizacion: string
+  id?: string
   moneda: string
   nombre: string
   venta: number
@@ -20,6 +21,7 @@ export interface CurrencyLoadMatch {
 export interface CurrencyListMatch {
   compra?: number
   fechaActualizacion?: string
+  id?: string
   moneda?: string
   nombre?: string
   venta?: number
