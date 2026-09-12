@@ -46,12 +46,14 @@ module ArgentofxConfig
         "currency" => {
           "fields" => [
             {
+              "format" => "float",
               "name" => "compra",
               "req" => true,
               "short" => "Buy price",
               "type" => "`$NUMBER`",
             },
             {
+              "format" => "date-time",
               "name" => "fechaActualizacion",
               "req" => true,
               "short" => "Last update timestamp",
@@ -74,12 +76,17 @@ module ArgentofxConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "float",
               "name" => "venta",
               "req" => true,
               "short" => "Sell price",
               "type" => "`$NUMBER`",
             },
           ],
+          "id" => {
+            "field" => "id",
+            "name" => "id",
+          },
           "name" => "currency",
           "op" => {
             "list" => {
@@ -91,14 +98,19 @@ module ArgentofxConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/currencies",
-                  "parts" => [
-                    "currencies",
+                  "segments" => [
+                    {
+                      "lit" => "currencies",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "currencies",
+                  ],
                 },
               ],
             },
@@ -122,15 +134,19 @@ module ArgentofxConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/currencies/{currency}",
-                  "parts" => [
-                    "currencies",
-                    "{id}",
-                  ],
                   "rename" => {
                     "param" => {
                       "currency" => "id",
                     },
                   },
+                  "segments" => [
+                    {
+                      "lit" => "currencies",
+                    },
+                    {
+                      "var" => "id",
+                    },
+                  ],
                   "select" => {
                     "exist" => [
                       "id",
@@ -140,6 +156,10 @@ module ArgentofxConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "currencies",
+                    "{id}",
+                  ],
                 },
               ],
             },
@@ -151,12 +171,14 @@ module ArgentofxConfig
         "dollar_quote" => {
           "fields" => [
             {
+              "format" => "float",
               "name" => "compra",
               "req" => true,
               "short" => "Buy price",
               "type" => "`$NUMBER`",
             },
             {
+              "format" => "date-time",
               "name" => "fechaActualizacion",
               "req" => true,
               "short" => "Last update timestamp",
@@ -169,6 +191,7 @@ module ArgentofxConfig
               "type" => "`$STRING`",
             },
             {
+              "format" => "float",
               "name" => "venta",
               "req" => true,
               "short" => "Sell price",
@@ -186,14 +209,19 @@ module ArgentofxConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/dolares",
-                  "parts" => [
-                    "dolares",
+                  "segments" => [
+                    {
+                      "lit" => "dolares",
+                    },
                   ],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "dolares",
+                  ],
                 },
               ],
             },
@@ -216,9 +244,13 @@ module ArgentofxConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/dolares/{type}",
-                  "parts" => [
-                    "dolares",
-                    "{type}",
+                  "segments" => [
+                    {
+                      "lit" => "dolares",
+                    },
+                    {
+                      "var" => "type",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -229,6 +261,10 @@ module ArgentofxConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "dolares",
+                    "{type}",
+                  ],
                 },
               ],
             },
@@ -263,12 +299,13 @@ module ArgentofxConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/",
-                  "parts" => [],
+                  "segments" => [],
                   "select" => {},
                   "transform" => {
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [],
                 },
               ],
             },

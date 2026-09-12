@@ -60,12 +60,14 @@ class ArgentofxConfig
         'currency' => [
           'fields' => [
             [
+              'format' => 'float',
               'name' => 'compra',
               'req' => true,
               'short' => 'Buy price',
               'type' => '`$NUMBER`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'fechaActualizacion',
               'req' => true,
               'short' => 'Last update timestamp',
@@ -88,11 +90,16 @@ class ArgentofxConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'float',
               'name' => 'venta',
               'req' => true,
               'short' => 'Sell price',
               'type' => '`$NUMBER`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'currency',
           'op' => [
@@ -105,13 +112,18 @@ class ArgentofxConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/currencies',
-                  'parts' => [
-                    'currencies',
+                  'segments' => [
+                    [
+                      'lit' => 'currencies',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'currencies',
                   ],
                 ],
               ],
@@ -136,13 +148,17 @@ class ArgentofxConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/currencies/{currency}',
-                  'parts' => [
-                    'currencies',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'currency' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'currencies',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -153,6 +169,10 @@ class ArgentofxConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'currencies',
+                    '{id}',
                   ],
                 ],
               ],
@@ -165,12 +185,14 @@ class ArgentofxConfig
         'dollar_quote' => [
           'fields' => [
             [
+              'format' => 'float',
               'name' => 'compra',
               'req' => true,
               'short' => 'Buy price',
               'type' => '`$NUMBER`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'fechaActualizacion',
               'req' => true,
               'short' => 'Last update timestamp',
@@ -183,6 +205,7 @@ class ArgentofxConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'float',
               'name' => 'venta',
               'req' => true,
               'short' => 'Sell price',
@@ -200,13 +223,18 @@ class ArgentofxConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/dolares',
-                  'parts' => [
-                    'dolares',
+                  'segments' => [
+                    [
+                      'lit' => 'dolares',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'dolares',
                   ],
                 ],
               ],
@@ -230,9 +258,13 @@ class ArgentofxConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/dolares/{type}',
-                  'parts' => [
-                    'dolares',
-                    '{type}',
+                  'segments' => [
+                    [
+                      'lit' => 'dolares',
+                    ],
+                    [
+                      'var' => 'type',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -242,6 +274,10 @@ class ArgentofxConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'dolares',
+                    '{type}',
                   ],
                 ],
               ],
@@ -277,12 +313,13 @@ class ArgentofxConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/',
-                  'parts' => [],
+                  'segments' => [],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
+                  'parts' => [],
                 ],
               ],
             ],

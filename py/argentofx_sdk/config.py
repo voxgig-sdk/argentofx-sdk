@@ -1,6 +1,14 @@
 # Argentofx SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -55,12 +63,14 @@ def make_config():
       "currency": {
         "fields": [
           {
+            "format": "float",
             "name": "compra",
             "req": True,
             "short": "Buy price",
             "type": "`$NUMBER`",
           },
           {
+            "format": "date-time",
             "name": "fechaActualizacion",
             "req": True,
             "short": "Last update timestamp",
@@ -83,12 +93,17 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "float",
             "name": "venta",
             "req": True,
             "short": "Sell price",
             "type": "`$NUMBER`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "currency",
         "op": {
           "list": {
@@ -100,14 +115,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/currencies",
-                "parts": [
-                  "currencies",
+                "segments": [
+                  {
+                    "lit": "currencies",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "currencies",
+                ],
               },
             ],
           },
@@ -131,15 +151,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/currencies/{currency}",
-                "parts": [
-                  "currencies",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "currency": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "currencies",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -149,6 +173,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "currencies",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -160,12 +188,14 @@ def make_config():
       "dollar_quote": {
         "fields": [
           {
+            "format": "float",
             "name": "compra",
             "req": True,
             "short": "Buy price",
             "type": "`$NUMBER`",
           },
           {
+            "format": "date-time",
             "name": "fechaActualizacion",
             "req": True,
             "short": "Last update timestamp",
@@ -178,6 +208,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "float",
             "name": "venta",
             "req": True,
             "short": "Sell price",
@@ -195,14 +226,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/dolares",
-                "parts": [
-                  "dolares",
+                "segments": [
+                  {
+                    "lit": "dolares",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "dolares",
+                ],
               },
             ],
           },
@@ -225,9 +261,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/dolares/{type}",
-                "parts": [
-                  "dolares",
-                  "{type}",
+                "segments": [
+                  {
+                    "lit": "dolares",
+                  },
+                  {
+                    "var": "type",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -238,6 +278,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "dolares",
+                  "{type}",
+                ],
               },
             ],
           },
@@ -272,12 +316,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/",
-                "parts": [],
+                "segments": [],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [],
               },
             ],
           },

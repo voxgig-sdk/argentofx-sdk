@@ -6,12 +6,14 @@ main: kit: entity: currency: {
 
   fields: [
     {
+      format: "float"
       name: "compra"
       req: true
       short: "Buy price"
       type: "`$NUMBER`"
     }
     {
+      format: "date-time"
       name: "fechaActualizacion"
       req: true
       short: "Last update timestamp"
@@ -35,6 +37,7 @@ main: kit: entity: currency: {
       type: "`$STRING`"
     }
     {
+      format: "float"
       name: "venta"
       req: true
       short: "Sell price"
@@ -55,8 +58,10 @@ main: kit: entity: currency: {
         {
           method: "GET"
           orig: "/currencies"
-          parts: [
-            "currencies"
+          segments: [
+            {
+              lit: "currencies"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -83,15 +88,19 @@ main: kit: entity: currency: {
           }
           method: "GET"
           orig: "/currencies/{currency}"
-          parts: [
-            "currencies"
-            "{id}"
-          ]
           rename: {
             param: {
               currency: "id"
             }
           }
+          segments: [
+            {
+              lit: "currencies"
+            }
+            {
+              var: "id"
+            }
+          ]
           select: {
             exist: [
               "id"

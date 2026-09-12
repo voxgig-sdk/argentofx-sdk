@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -73,12 +84,14 @@ class Config {
     "currency": {
       "fields": [
         {
+          "format": "float",
           "name": "compra",
           "req": true,
           "short": "Buy price",
           "type": "`$NUMBER`"
         },
         {
+          "format": "date-time",
           "name": "fechaActualizacion",
           "req": true,
           "short": "Last update timestamp",
@@ -101,12 +114,17 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "float",
           "name": "venta",
           "req": true,
           "short": "Sell price",
           "type": "`$NUMBER`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "currency",
       "op": {
         "list": {
@@ -118,14 +136,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/currencies",
-              "parts": [
-                "currencies"
+              "segments": [
+                {
+                  "lit": "currencies"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "currencies"
+              ]
             }
           ]
         },
@@ -149,15 +172,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/currencies/{currency}",
-              "parts": [
-                "currencies",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "currency": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "currencies"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -166,7 +193,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "currencies",
+                "{id}"
+              ]
             }
           ]
         }
@@ -178,12 +209,14 @@ class Config {
     "dollar_quote": {
       "fields": [
         {
+          "format": "float",
           "name": "compra",
           "req": true,
           "short": "Buy price",
           "type": "`$NUMBER`"
         },
         {
+          "format": "date-time",
           "name": "fechaActualizacion",
           "req": true,
           "short": "Last update timestamp",
@@ -196,6 +229,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "float",
           "name": "venta",
           "req": true,
           "short": "Sell price",
@@ -213,14 +247,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/dolares",
-              "parts": [
-                "dolares"
+              "segments": [
+                {
+                  "lit": "dolares"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "dolares"
+              ]
             }
           ]
         },
@@ -243,9 +282,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/dolares/{type}",
-              "parts": [
-                "dolares",
-                "{type}"
+              "segments": [
+                {
+                  "lit": "dolares"
+                },
+                {
+                  "var": "type"
+                }
               ],
               "select": {
                 "exist": [
@@ -255,7 +298,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "dolares",
+                "{type}"
+              ]
             }
           ]
         }
@@ -290,12 +337,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/",
-              "parts": [],
+              "segments": [],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": []
             }
           ]
         }
@@ -311,6 +359,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 
