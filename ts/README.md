@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { ArgentofxSDK } from '@voxgig-sdk/argentofx'
+import { ArgentofxSDK } from '@voxgig-sdk/argentofx-sdk'
 
 const client = new ArgentofxSDK()
 ```
@@ -521,7 +521,7 @@ argentofx/
 Import the SDK from the package root:
 
 ```ts
-import { ArgentofxSDK } from '@voxgig-sdk/argentofx'
+import { ArgentofxSDK } from '@voxgig-sdk/argentofx-sdk'
 ```
 
 ### Entity state
