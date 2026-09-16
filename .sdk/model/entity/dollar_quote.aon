@@ -40,6 +40,12 @@ main: kit: entity: dollar_quote: {
       name: "list"
       points: [
         {
+          contract: {
+            id: "GET /dolares"
+            json: "{\"operationId\":\"getAllDollarQuotes\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"compra\":{\"description\":\"Buy price\",\"example\":365.5,\"format\":\"float\",\"type\":\"number\"},\"fechaActualizacion\":{\"description\":\"Last update timestamp\",\"example\":\"2024-01-15T10:30:00Z\",\"format\":\"date-time\",\"type\":\"string\"},\"nombre\":{\"description\":\"Name of the dollar type\",\"example\":\"Dólar Blue\",\"type\":\"string\"},\"venta\":{\"description\":\"Sell price\",\"example\":385.5,\"format\":\"float\",\"type\":\"number\"}},\"required\":[\"nombre\",\"compra\",\"venta\",\"fechaActualizacion\"],\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with all dollar quotations\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"detail\":{\"description\":\"Error message\",\"example\":\"Resource not found\",\"type\":\"string\"}},\"required\":[\"detail\"],\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/dolares"
           segments: [
@@ -68,6 +74,12 @@ main: kit: entity: dollar_quote: {
                 type: "`$STRING`"
               }
             ]
+          }
+          contract: {
+            id: "GET /dolares/{type}"
+            json: "{\"operationId\":\"getDollarQuoteByType\",\"parameters\":[{\"description\":\"Type of dollar quotation (oficial, blue, mep, ccl, tarjeta, mayorista, cripto)\",\"in\":\"path\",\"name\":\"type\",\"required\":true,\"schema\":{\"enum\":[\"oficial\",\"blue\",\"mep\",\"ccl\",\"tarjeta\",\"mayorista\",\"cripto\"],\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"compra\":{\"description\":\"Buy price\",\"example\":365.5,\"format\":\"float\",\"type\":\"number\"},\"fechaActualizacion\":{\"description\":\"Last update timestamp\",\"example\":\"2024-01-15T10:30:00Z\",\"format\":\"date-time\",\"type\":\"string\"},\"nombre\":{\"description\":\"Name of the dollar type\",\"example\":\"Dólar Blue\",\"type\":\"string\"},\"venta\":{\"description\":\"Sell price\",\"example\":385.5,\"format\":\"float\",\"type\":\"number\"}},\"required\":[\"nombre\",\"compra\",\"venta\",\"fechaActualizacion\"],\"type\":\"object\"}}},\"description\":\"Successful response with specific dollar quotation\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"detail\":{\"description\":\"Error message\",\"example\":\"Resource not found\",\"type\":\"string\"}},\"required\":[\"detail\"],\"type\":\"object\"}}},\"description\":\"Dollar quotation type not found\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"detail\":{\"description\":\"Error message\",\"example\":\"Resource not found\",\"type\":\"string\"}},\"required\":[\"detail\"],\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
           }
           method: "GET"
           orig: "/dolares/{type}"

@@ -4,7 +4,10 @@ declare(strict_types=1);
 // Argentofx SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class ArgentofxFeatures
@@ -14,8 +17,14 @@ class ArgentofxFeatures
         switch ($name) {
             case "base":
                 return new ArgentofxBaseFeature();
+            case "ratelimit":
+                return new ArgentofxRatelimitFeature();
+            case "retry":
+                return new ArgentofxRetryFeature();
             case "test":
                 return new ArgentofxTestFeature();
+            case "timeout":
+                return new ArgentofxTimeoutFeature();
             default:
                 return new ArgentofxBaseFeature();
         }
@@ -31,7 +40,10 @@ class ArgentofxFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

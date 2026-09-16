@@ -37,5 +37,197 @@
         "venta": 245
       }
     }
+  },
+  "requests": {
+    "GET /currencies": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getAllCurrencies",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "compra": {
+                        "description": "Buy price",
+                        "example": 395.25,
+                        "format": "float",
+                        "type": "number"
+                      },
+                      "fechaActualizacion": {
+                        "description": "Last update timestamp",
+                        "example": "2024-01-15T10:30:00Z",
+                        "format": "date-time",
+                        "type": "string"
+                      },
+                      "moneda": {
+                        "description": "Currency code",
+                        "example": "EUR",
+                        "type": "string"
+                      },
+                      "nombre": {
+                        "description": "Currency name",
+                        "example": "Euro",
+                        "type": "string"
+                      },
+                      "venta": {
+                        "description": "Sell price",
+                        "example": 415.75,
+                        "format": "float",
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "moneda",
+                      "nombre",
+                      "compra",
+                      "venta",
+                      "fechaActualizacion"
+                    ],
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response with all currency quotations"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "detail": {
+                      "description": "Error message",
+                      "example": "Resource not found",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "detail"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /currencies/{currency}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCurrencyQuote",
+        "parameters": [
+          {
+            "description": "Currency code (e.g., EUR, BRL, CLP, UYU)",
+            "in": "path",
+            "name": "currency",
+            "required": true,
+            "schema": {
+              "example": "EUR",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "compra": {
+                      "description": "Buy price",
+                      "example": 395.25,
+                      "format": "float",
+                      "type": "number"
+                    },
+                    "fechaActualizacion": {
+                      "description": "Last update timestamp",
+                      "example": "2024-01-15T10:30:00Z",
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "moneda": {
+                      "description": "Currency code",
+                      "example": "EUR",
+                      "type": "string"
+                    },
+                    "nombre": {
+                      "description": "Currency name",
+                      "example": "Euro",
+                      "type": "string"
+                    },
+                    "venta": {
+                      "description": "Sell price",
+                      "example": 415.75,
+                      "format": "float",
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "moneda",
+                    "nombre",
+                    "compra",
+                    "venta",
+                    "fechaActualizacion"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with specific currency quotation"
+          },
+          "404": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "detail": {
+                      "description": "Error message",
+                      "example": "Resource not found",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "detail"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Currency not found"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "detail": {
+                      "description": "Error message",
+                      "example": "Resource not found",
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "detail"
+                  ],
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

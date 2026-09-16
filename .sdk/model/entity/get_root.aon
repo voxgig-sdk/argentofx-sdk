@@ -23,6 +23,12 @@ main: kit: entity: get_root: {
       name: "load"
       points: [
         {
+          contract: {
+            id: "GET /"
+            json: "{\"operationId\":\"getRoot\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"documentation\":{\"example\":\"/docs\",\"type\":\"string\"},\"message\":{\"example\":\"Welcome to ArgentoFX API\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with API information\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/"
           transform: {

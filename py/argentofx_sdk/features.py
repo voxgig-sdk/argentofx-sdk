@@ -1,12 +1,18 @@
 # Argentofx SDK feature factory
 
 from argentofx_sdk.feature.base_feature import ArgentofxBaseFeature
+from argentofx_sdk.feature.ratelimit_feature import ArgentofxRatelimitFeature
+from argentofx_sdk.feature.retry_feature import ArgentofxRetryFeature
 from argentofx_sdk.feature.test_feature import ArgentofxTestFeature
+from argentofx_sdk.feature.timeout_feature import ArgentofxTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: ArgentofxBaseFeature(),
+    "ratelimit": lambda: ArgentofxRatelimitFeature(),
+    "retry": lambda: ArgentofxRetryFeature(),
     "test": lambda: ArgentofxTestFeature(),
+    "timeout": lambda: ArgentofxTimeoutFeature(),
 }
 
 
