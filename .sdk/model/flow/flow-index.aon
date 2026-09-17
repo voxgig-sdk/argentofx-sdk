@@ -1,5 +1,5 @@
 # Flows
 
-@"BasicCurrencyFlow.aon"
-@"BasicDollarQuoteFlow.aon"
-@"BasicGetRootFlow.aon"
+@"./BasicCurrencyFlow.aon"
+@"./BasicDollarQuoteFlow.aon"
+@"./BasicGetRootFlow.aon"

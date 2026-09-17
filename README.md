@@ -105,12 +105,12 @@ local results, err = client:Currency():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/argentofx-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/argentofx-sdk/releases) |
-| Python | `voxgig-sdk-argentofx` | publish pending — [install from git tag](https://github.com/voxgig-sdk/argentofx-sdk/releases) |
-| PHP | `voxgig-sdk/argentofx` | publish pending — [install from git tag](https://github.com/voxgig-sdk/argentofx-sdk/releases) |
+| TypeScript | `@voxgig-sdk/argentofx-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/argentofx-sdk/tags) |
+| Python | `voxgig-sdk-argentofx` | publish pending — [install from git tag](https://github.com/voxgig-sdk/argentofx-sdk/tags) |
+| PHP | `voxgig-sdk/argentofx` | publish pending — [install from git tag](https://github.com/voxgig-sdk/argentofx-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/argentofx-sdk/go` | `go get github.com/voxgig-sdk/argentofx-sdk/go@latest` |
-| Ruby | `voxgig-sdk-argentofx` | publish pending — [install from git tag](https://github.com/voxgig-sdk/argentofx-sdk/releases) |
-| Lua | `voxgig-sdk-argentofx` | publish pending — [install from git tag](https://github.com/voxgig-sdk/argentofx-sdk/releases) |
+| Ruby | `voxgig-sdk-argentofx` | publish pending — [install from git tag](https://github.com/voxgig-sdk/argentofx-sdk/tags) |
+| Lua | `voxgig-sdk-argentofx` | publish pending — [install from git tag](https://github.com/voxgig-sdk/argentofx-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/argentofx-sdk/go-cli` | `go install github.com/voxgig-sdk/argentofx-sdk/go-cli/cmd/argentofx@latest` |
 | Go MCP server | `github.com/voxgig-sdk/argentofx-sdk/go-mcp` | `go get github.com/voxgig-sdk/argentofx-sdk/go-mcp@latest` |
 

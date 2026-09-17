@@ -127,15 +127,15 @@ class Config {
 
     entity: {
       
-      currency: {
-      },
-
-      dollar_quote: {
-      },
-
-      get_root: {
-      },
-
+        currency: {
+        },
+  
+        dollar_quote: {
+        },
+  
+        get_root: {
+        },
+  
     }
   }
 
