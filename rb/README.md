@@ -44,15 +44,13 @@ rescue => err
 end
 ```
 
-### 3. Load a dollarquote
-
-DollarQuote is nested under type, so provide the `type`.
+### 3. Load a currency
 
 ```ruby
 begin
-  # load returns the ENTITY — call data_get for the DollarQuote record (raises on error).
-  dollarquote = client.DollarQuote.load({ "type" => "example_type" })
-  puts dollarquote
+  # load returns the ENTITY — call data_get for the Currency record (raises on error).
+  currency = client.Currency.load({ "id" => "example_id" })
+  puts currency
 rescue => err
   warn "load failed: #{err}"
 end

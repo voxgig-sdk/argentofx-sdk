@@ -1,0 +1,112 @@
+# Entity: dollar_quote
+
+main: kit: entity: dollar_quote: {
+
+  alias: field: {}
+
+  fields: {
+    compra: {
+      fo: "float"
+      h: "Compra"
+      n: "compra"
+      r: true
+      sh: "Buy price"
+      t: "`$NUMBER`"
+    }
+    fechaActualizacion: {
+      fo: "date-time"
+      h: "Fecha Actualizacion"
+      n: "fechaActualizacion"
+      r: true
+      sh: "Last update timestamp"
+      t: "`$STRING`"
+    }
+    nombre: {
+      h: "Nombre"
+      n: "nombre"
+      r: true
+      sh: "Name of the dollar type"
+      t: "`$STRING`"
+    }
+    venta: {
+      fo: "float"
+      h: "Venta"
+      n: "venta"
+      r: true
+      sh: "Sell price"
+      t: "`$NUMBER`"
+    }
+  }
+
+  name: "dollar_quote"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /dolares"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/dolares"
+          s: [
+            {
+              lit: "dolares"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /dolares/{type}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "type"
+                or: "type"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/dolares/{type}"
+          q: {
+            exist: [
+              "type"
+            ]
+          }
+          s: [
+            {
+              lit: "dolares"
+            }
+            {
+              var: "type"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

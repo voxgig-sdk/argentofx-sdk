@@ -46,15 +46,13 @@ try {
 }
 ```
 
-### 3. Load a dollarquote
-
-DollarQuote is nested under type, so provide the `type`.
+### 3. Load a currency
 
 ```php
 try {
-    // load() returns the ENTITY — call data_get() for the DollarQuote record (throws on error).
-    $dollarquote = $client->DollarQuote()->load(["type" => "example_type"]);
-    print_r($dollarquote->data_get());
+    // load() returns the ENTITY — call data_get() for the Currency record (throws on error).
+    $currency = $client->Currency()->load(["id" => "example_id"]);
+    print_r($currency->data_get());
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }

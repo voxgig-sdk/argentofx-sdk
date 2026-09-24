@@ -47,17 +47,14 @@ for (const currency of currencys) {
 }
 ```
 
-### 3. Load a dollarquote
+### 3. Load a currency
 
-DollarQuote is nested under type, so provide the `type`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const dollarquote = await client.DollarQuote().load({
-    type: 'example_type',
-  })
-  console.log(dollarquote)
+  const currency = await client.Currency().load({ id: 'example_id' })
+  console.log(currency)
 } catch (err) {
   console.error('load failed:', err)
 }

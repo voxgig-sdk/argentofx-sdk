@@ -115,7 +115,7 @@ function dollar_quote_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["dollar_quote01", "dollar_quote02", "dollar_quote03", "dolare01", "dolare02", "dolare03"] as $k) {
+    foreach (["dollar_quote01", "dollar_quote02", "dollar_quote03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

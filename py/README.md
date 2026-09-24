@@ -50,15 +50,14 @@ except Exception as err:
     print(f"list failed: {err}")
 ```
 
-### 3. Load a dollarquote
+### 3. Load a currency
 
-DollarQuote is nested under type, so provide the `type`.
 `load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
-    dollarquote = client.DollarQuote().load({"type": "example_type"})
-    print(dollarquote)
+    currency = client.Currency().load({"id": "example_id"})
+    print(currency)
 except Exception as err:
     print(f"load failed: {err}")
 ```

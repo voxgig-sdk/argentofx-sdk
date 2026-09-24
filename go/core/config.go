@@ -92,41 +92,47 @@ func MakeConfig() map[string]any {
 			"currency": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"format": "float",
 						"name": "compra",
+						"title": "Compra",
+						"type": "`$NUMBER`",
 						"req": true,
 						"short": "Buy price",
-						"type": "`$NUMBER`",
+						"format": "float",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "fechaActualizacion",
+						"title": "Fecha Actualizacion",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Last update timestamp",
-						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "id",
+						"title": "Id",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "moneda",
+						"title": "Moneda",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Currency code",
-						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "nombre",
+						"title": "Nombre",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Currency name",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "float",
 						"name": "venta",
+						"title": "Venta",
+						"type": "`$NUMBER`",
 						"req": true,
 						"short": "Sell price",
-						"type": "`$NUMBER`",
+						"format": "float",
 					},
 				},
 				"id": map[string]any{
@@ -140,7 +146,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/currencies",
@@ -149,14 +154,16 @@ func MakeConfig() map[string]any {
 										"lit": "currencies",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"currencies",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"currencies",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -165,26 +172,9 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"example": "EUR",
-											"kind": "param",
-											"name": "id",
-											"orig": "currency",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/currencies/{currency}",
-								"rename": map[string]any{
-									"param": map[string]any{
-										"currency": "id",
-									},
-								},
 								"segments": []any{
 									map[string]any{
 										"lit": "currencies",
@@ -193,18 +183,35 @@ func MakeConfig() map[string]any {
 										"var": "id",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"id",
+								"parts": []any{
+									"currencies",
+									"{id}",
+								},
+								"rename": map[string]any{
+									"param": map[string]any{
+										"currency": "id",
 									},
 								},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"currencies",
-									"{id}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "id",
+											"orig": "currency",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+											"example": "EUR",
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"id",
+									},
 								},
 							},
 						},
@@ -217,31 +224,35 @@ func MakeConfig() map[string]any {
 			"dollar_quote": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"format": "float",
 						"name": "compra",
+						"title": "Compra",
+						"type": "`$NUMBER`",
 						"req": true,
 						"short": "Buy price",
-						"type": "`$NUMBER`",
+						"format": "float",
 					},
 					map[string]any{
-						"format": "date-time",
 						"name": "fechaActualizacion",
+						"title": "Fecha Actualizacion",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Last update timestamp",
-						"type": "`$STRING`",
+						"format": "date-time",
 					},
 					map[string]any{
 						"name": "nombre",
+						"title": "Nombre",
+						"type": "`$STRING`",
 						"req": true,
 						"short": "Name of the dollar type",
-						"type": "`$STRING`",
 					},
 					map[string]any{
-						"format": "float",
 						"name": "venta",
+						"title": "Venta",
+						"type": "`$NUMBER`",
 						"req": true,
 						"short": "Sell price",
-						"type": "`$NUMBER`",
+						"format": "float",
 					},
 				},
 				"name": "dollar_quote",
@@ -251,7 +262,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/dolares",
@@ -260,14 +270,16 @@ func MakeConfig() map[string]any {
 										"lit": "dolares",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"dolares",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"dolares",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -276,17 +288,6 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"params": []any{
-										map[string]any{
-											"kind": "param",
-											"name": "type",
-											"orig": "type",
-											"reqd": true,
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/dolares/{type}",
@@ -298,39 +299,49 @@ func MakeConfig() map[string]any {
 										"var": "type",
 									},
 								},
-								"select": map[string]any{
-									"exist": []any{
-										"type",
-									},
+								"parts": []any{
+									"dolares",
+									"{type}",
 								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{
-									"dolares",
-									"{type}",
+								"args": map[string]any{
+									"params": []any{
+										map[string]any{
+											"name": "type",
+											"orig": "type",
+											"type": "`$STRING`",
+											"kind": "param",
+											"reqd": true,
+										},
+									},
+								},
+								"select": map[string]any{
+									"exist": []any{
+										"type",
+									},
 								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"dolare",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 			"get_root": map[string]any{
 				"fields": []any{
 					map[string]any{
 						"name": "documentation",
+						"title": "Documentation",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "message",
+						"title": "Message",
 						"type": "`$STRING`",
 					},
 				},
@@ -341,17 +352,18 @@ func MakeConfig() map[string]any {
 						"name": "load",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/",
 								"segments": []any{},
-								"select": map[string]any{},
+								"parts": []any{},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"parts": []any{},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},

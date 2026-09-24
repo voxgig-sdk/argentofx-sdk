@@ -43,18 +43,16 @@ local currencys, err = client:Currency():list()
 if err then error(err) end
 
 for _, item in ipairs(currencys) do
-  print(item["id"], item["fechaActualizacion"])
+  print(item["id"])
 end
 ```
 
-### 3. Load a dollarquote
-
-DollarQuote is nested under type, so provide the `type`.
+### 3. Load a currency
 
 ```lua
-local dollarquote, err = client:DollarQuote():load({ type = "example_type" })
+local currency, err = client:Currency():load({ id = "example_id" })
 if err then error(err) end
-print(dollarquote)
+print(currency)
 ```
 
 

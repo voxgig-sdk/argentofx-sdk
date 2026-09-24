@@ -88,41 +88,47 @@ local function make_config()
       ["currency"] = {
         ["fields"] = {
           {
-            ["format"] = "float",
             ["name"] = "compra",
+            ["title"] = "Compra",
+            ["type"] = "`$NUMBER`",
             ["req"] = true,
             ["short"] = "Buy price",
-            ["type"] = "`$NUMBER`",
+            ["format"] = "float",
           },
           {
-            ["format"] = "date-time",
             ["name"] = "fechaActualizacion",
+            ["title"] = "Fecha Actualizacion",
+            ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "Last update timestamp",
-            ["type"] = "`$STRING`",
+            ["format"] = "date-time",
           },
           {
             ["name"] = "id",
+            ["title"] = "Id",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "moneda",
+            ["title"] = "Moneda",
+            ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "Currency code",
-            ["type"] = "`$STRING`",
           },
           {
             ["name"] = "nombre",
+            ["title"] = "Nombre",
+            ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "Currency name",
-            ["type"] = "`$STRING`",
           },
           {
-            ["format"] = "float",
             ["name"] = "venta",
+            ["title"] = "Venta",
+            ["type"] = "`$NUMBER`",
             ["req"] = true,
             ["short"] = "Sell price",
-            ["type"] = "`$NUMBER`",
+            ["format"] = "float",
           },
         },
         ["id"] = {
@@ -136,7 +142,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/currencies",
@@ -145,14 +150,16 @@ local function make_config()
                     ["lit"] = "currencies",
                   },
                 },
-                ["select"] = {},
+                ["parts"] = {
+                  "currencies",
+                },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "currencies",
-                },
+                ["args"] = {},
+                ["select"] = {},
               },
             },
           },
@@ -161,26 +168,9 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["example"] = "EUR",
-                      ["kind"] = "param",
-                      ["name"] = "id",
-                      ["orig"] = "currency",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/currencies/{currency}",
-                ["rename"] = {
-                  ["param"] = {
-                    ["currency"] = "id",
-                  },
-                },
                 ["segments"] = {
                   {
                     ["lit"] = "currencies",
@@ -189,18 +179,35 @@ local function make_config()
                     ["var"] = "id",
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "id",
+                ["parts"] = {
+                  "currencies",
+                  "{id}",
+                },
+                ["rename"] = {
+                  ["param"] = {
+                    ["currency"] = "id",
                   },
                 },
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "currencies",
-                  "{id}",
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "id",
+                      ["orig"] = "currency",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                      ["example"] = "EUR",
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "id",
+                  },
                 },
               },
             },
@@ -213,31 +220,35 @@ local function make_config()
       ["dollar_quote"] = {
         ["fields"] = {
           {
-            ["format"] = "float",
             ["name"] = "compra",
+            ["title"] = "Compra",
+            ["type"] = "`$NUMBER`",
             ["req"] = true,
             ["short"] = "Buy price",
-            ["type"] = "`$NUMBER`",
+            ["format"] = "float",
           },
           {
-            ["format"] = "date-time",
             ["name"] = "fechaActualizacion",
+            ["title"] = "Fecha Actualizacion",
+            ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "Last update timestamp",
-            ["type"] = "`$STRING`",
+            ["format"] = "date-time",
           },
           {
             ["name"] = "nombre",
+            ["title"] = "Nombre",
+            ["type"] = "`$STRING`",
             ["req"] = true,
             ["short"] = "Name of the dollar type",
-            ["type"] = "`$STRING`",
           },
           {
-            ["format"] = "float",
             ["name"] = "venta",
+            ["title"] = "Venta",
+            ["type"] = "`$NUMBER`",
             ["req"] = true,
             ["short"] = "Sell price",
-            ["type"] = "`$NUMBER`",
+            ["format"] = "float",
           },
         },
         ["name"] = "dollar_quote",
@@ -247,7 +258,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/dolares",
@@ -256,14 +266,16 @@ local function make_config()
                     ["lit"] = "dolares",
                   },
                 },
-                ["select"] = {},
+                ["parts"] = {
+                  "dolares",
+                },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "dolares",
-                },
+                ["args"] = {},
+                ["select"] = {},
               },
             },
           },
@@ -272,17 +284,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["params"] = {
-                    {
-                      ["kind"] = "param",
-                      ["name"] = "type",
-                      ["orig"] = "type",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/dolares/{type}",
@@ -294,39 +295,49 @@ local function make_config()
                     ["var"] = "type",
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "type",
-                  },
+                ["parts"] = {
+                  "dolares",
+                  "{type}",
                 },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "dolares",
-                  "{type}",
+                ["args"] = {
+                  ["params"] = {
+                    {
+                      ["name"] = "type",
+                      ["orig"] = "type",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "param",
+                      ["reqd"] = true,
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "type",
+                  },
                 },
               },
             },
           },
         },
         ["relations"] = {
-          ["ancestors"] = {
-            {
-              "dolare",
-            },
-          },
+          ["ancestors"] = {},
         },
       },
       ["get_root"] = {
         ["fields"] = {
           {
             ["name"] = "documentation",
+            ["title"] = "Documentation",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "message",
+            ["title"] = "Message",
             ["type"] = "`$STRING`",
           },
         },
@@ -337,17 +348,18 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/",
                 ["segments"] = {},
-                ["select"] = {},
+                ["parts"] = {},
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {},
+                ["args"] = {},
+                ["select"] = {},
               },
             },
           },

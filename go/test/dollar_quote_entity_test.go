@@ -158,7 +158,7 @@ func dollar_quoteBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"dollar_quote01", "dollar_quote02", "dollar_quote03", "dolare01", "dolare02", "dolare03"},
+		[]any{"dollar_quote01", "dollar_quote02", "dollar_quote03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

@@ -104,7 +104,7 @@ def dollar_quote_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["dollar_quote01", "dollar_quote02", "dollar_quote03", "dolare01", "dolare02", "dolare03"],
+    ["dollar_quote01", "dollar_quote02", "dollar_quote03"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

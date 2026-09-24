@@ -1,7 +1,7 @@
 // Typed models for the Argentofx SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,12 +14,6 @@ import (
 
 // Currency is the typed data model for the currency entity.
 type Currency struct {
-	Compra float64 `json:"compra"`
-	FechaActualizacion string `json:"fechaActualizacion"`
-	Id *string `json:"id,omitempty"`
-	Moneda string `json:"moneda"`
-	Nombre string `json:"nombre"`
-	Venta float64 `json:"venta"`
 }
 
 // CurrencyLoadMatch is the typed request payload for Currency.LoadTyped.
@@ -39,10 +33,6 @@ type CurrencyListMatch struct {
 
 // DollarQuote is the typed data model for the dollar_quote entity.
 type DollarQuote struct {
-	Compra float64 `json:"compra"`
-	FechaActualizacion string `json:"fechaActualizacion"`
-	Nombre string `json:"nombre"`
-	Venta float64 `json:"venta"`
 }
 
 // DollarQuoteLoadMatch is the typed request payload for DollarQuote.LoadTyped.
@@ -60,8 +50,6 @@ type DollarQuoteListMatch struct {
 
 // GetRoot is the typed data model for the get_root entity.
 type GetRoot struct {
-	Documentation *string `json:"documentation,omitempty"`
-	Message *string `json:"message,omitempty"`
 }
 
 // GetRootLoadMatch is the typed request payload for GetRoot.LoadTyped.

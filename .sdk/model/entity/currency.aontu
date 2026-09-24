@@ -1,0 +1,136 @@
+# Entity: currency
+
+main: kit: entity: currency: {
+
+  alias: field: {}
+
+  fields: {
+    compra: {
+      fo: "float"
+      h: "Compra"
+      n: "compra"
+      r: true
+      sh: "Buy price"
+      t: "`$NUMBER`"
+    }
+    fechaActualizacion: {
+      fo: "date-time"
+      h: "Fecha Actualizacion"
+      n: "fechaActualizacion"
+      r: true
+      sh: "Last update timestamp"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    moneda: {
+      h: "Moneda"
+      n: "moneda"
+      r: true
+      sh: "Currency code"
+      t: "`$STRING`"
+    }
+    nombre: {
+      h: "Nombre"
+      n: "nombre"
+      r: true
+      sh: "Currency name"
+      t: "`$STRING`"
+    }
+    venta: {
+      fo: "float"
+      h: "Venta"
+      n: "venta"
+      r: true
+      sh: "Sell price"
+      t: "`$NUMBER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "currency"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /currencies"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/currencies"
+          s: [
+            {
+              lit: "currencies"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /currencies/{currency}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                ex: "EUR"
+                k: "param"
+                n: "id"
+                or: "currency"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/currencies/{currency}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              currency: "id"
+            }
+          }
+          s: [
+            {
+              lit: "currencies"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

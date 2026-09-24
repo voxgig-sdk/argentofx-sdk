@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -144,41 +137,47 @@ class Config {
     "currency": {
       "fields": [
         {
-          "format": "float",
           "name": "compra",
+          "title": "Compra",
+          "type": "`$NUMBER`",
           "req": true,
           "short": "Buy price",
-          "type": "`$NUMBER`"
+          "format": "float"
         },
         {
-          "format": "date-time",
           "name": "fechaActualizacion",
+          "title": "Fecha Actualizacion",
+          "type": "`$STRING`",
           "req": true,
           "short": "Last update timestamp",
-          "type": "`$STRING`"
+          "format": "date-time"
         },
         {
           "name": "id",
+          "title": "Id",
           "type": "`$STRING`"
         },
         {
           "name": "moneda",
+          "title": "Moneda",
+          "type": "`$STRING`",
           "req": true,
-          "short": "Currency code",
-          "type": "`$STRING`"
+          "short": "Currency code"
         },
         {
           "name": "nombre",
+          "title": "Nombre",
+          "type": "`$STRING`",
           "req": true,
-          "short": "Currency name",
-          "type": "`$STRING`"
+          "short": "Currency name"
         },
         {
-          "format": "float",
           "name": "venta",
+          "title": "Venta",
+          "type": "`$NUMBER`",
           "req": true,
           "short": "Sell price",
-          "type": "`$NUMBER`"
+          "format": "float"
         }
       ],
       "id": {
@@ -192,7 +191,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/currencies",
@@ -201,14 +199,16 @@ class Config {
                   "lit": "currencies"
                 }
               ],
-              "select": {},
+              "parts": [
+                "currencies"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "currencies"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -217,26 +217,9 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "example": "EUR",
-                    "kind": "param",
-                    "name": "id",
-                    "orig": "currency",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/currencies/{currency}",
-              "rename": {
-                "param": {
-                  "currency": "id"
-                }
-              },
               "segments": [
                 {
                   "lit": "currencies"
@@ -245,19 +228,36 @@ class Config {
                   "var": "id"
                 }
               ],
-              "select": {
-                "exist": [
-                  "id"
-                ]
+              "parts": [
+                "currencies",
+                "{id}"
+              ],
+              "rename": {
+                "param": {
+                  "currency": "id"
+                }
               },
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "currencies",
-                "{id}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "id",
+                    "orig": "currency",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true,
+                    "example": "EUR"
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "id"
+                ]
+              }
             }
           ]
         }
@@ -269,31 +269,35 @@ class Config {
     "dollar_quote": {
       "fields": [
         {
-          "format": "float",
           "name": "compra",
+          "title": "Compra",
+          "type": "`$NUMBER`",
           "req": true,
           "short": "Buy price",
-          "type": "`$NUMBER`"
+          "format": "float"
         },
         {
-          "format": "date-time",
           "name": "fechaActualizacion",
+          "title": "Fecha Actualizacion",
+          "type": "`$STRING`",
           "req": true,
           "short": "Last update timestamp",
-          "type": "`$STRING`"
+          "format": "date-time"
         },
         {
           "name": "nombre",
+          "title": "Nombre",
+          "type": "`$STRING`",
           "req": true,
-          "short": "Name of the dollar type",
-          "type": "`$STRING`"
+          "short": "Name of the dollar type"
         },
         {
-          "format": "float",
           "name": "venta",
+          "title": "Venta",
+          "type": "`$NUMBER`",
           "req": true,
           "short": "Sell price",
-          "type": "`$NUMBER`"
+          "format": "float"
         }
       ],
       "name": "dollar_quote",
@@ -303,7 +307,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/dolares",
@@ -312,14 +315,16 @@ class Config {
                   "lit": "dolares"
                 }
               ],
-              "select": {},
+              "parts": [
+                "dolares"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "dolares"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         },
@@ -328,17 +333,6 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {
-                "params": [
-                  {
-                    "kind": "param",
-                    "name": "type",
-                    "orig": "type",
-                    "reqd": true,
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/dolares/{type}",
@@ -350,39 +344,49 @@ class Config {
                   "var": "type"
                 }
               ],
-              "select": {
-                "exist": [
-                  "type"
-                ]
-              },
+              "parts": [
+                "dolares",
+                "{type}"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": [
-                "dolares",
-                "{type}"
-              ]
+              "args": {
+                "params": [
+                  {
+                    "name": "type",
+                    "orig": "type",
+                    "type": "`$STRING`",
+                    "kind": "param",
+                    "reqd": true
+                  }
+                ]
+              },
+              "select": {
+                "exist": [
+                  "type"
+                ]
+              }
             }
           ]
         }
       },
       "relations": {
-        "ancestors": [
-          [
-            "dolare"
-          ]
-        ]
+        "ancestors": []
       }
     },
     "get_root": {
       "fields": [
         {
           "name": "documentation",
+          "title": "Documentation",
           "type": "`$STRING`"
         },
         {
           "name": "message",
+          "title": "Message",
           "type": "`$STRING`"
         }
       ],
@@ -393,17 +397,18 @@ class Config {
           "name": "load",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/",
               "segments": [],
-              "select": {},
+              "parts": [],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "parts": []
+              "args": {},
+              "select": {}
             }
           ]
         }
